@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PingLaoshi – Ôn tập HSK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#faf5ea;--card:#fffdf8;--ink:#2b1512;--mut:#7a655f;--red:#b3141f;--gold:#d99a00;--soft:#f6ead0;--line:#e7d8b8;--ok:#1b8a4b;--bad:#c9283a;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d0e0c;--card:#2b1512;--ink:#f6e9d4;--mut:#bba594;--red:#ef5160;--gold:#f2b83a;--soft:#3a1d18;--line:#4e2b22;--ok:#46d081;--bad:#ff6b78;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d0e0c;--card:#2b1512;--ink:#f6e9d4;--mut:#bba594;--red:#ef5160;--gold:#f2b83a;--soft:#3a1d18;--line:#4e2b22;--ok:#46d081;--bad:#ff6b78;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:30}
+h1,h2,h3,.brand{font-family:"Be Vietnam Pro","Noto Sans SC","Noto Sans",system-ui,sans-serif}
+.hz{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;font-weight:700}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--card);border-bottom:1px solid var(--line)}
+.hin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.seal{width:36px;height:36px;border-radius:8px;background:var(--red);color:#fff;display:grid;place-items:center;font-size:20px;font-family:"Noto Sans SC",sans-serif;font-weight:900;transform:rotate(-4deg)}
+.brand b{color:var(--red)}
+#crumb{margin-left:auto;color:var(--mut);font-size:14px;font-weight:600}
+#back{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:6px 12px;font-weight:600;display:none}
+main{max-width:1040px;margin:0 auto;padding:22px 16px 40px;animation:up .3s ease}
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+.hero{text-align:center;margin:8px 0 22px}
+.hero h1{margin:0;font-size:clamp(24px,5vw,34px)}
+.hero p{margin:6px 0 0;color:var(--mut)}
+.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lvc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:16px;padding:18px 14px;text-align:center;transition:transform .15s,box-shadow .15s;display:block}
+a.lvc:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(120,40,20,.14)}
+.lvc .z{font-size:38px;color:var(--red);line-height:1.1}
+.lvc .n{font-family:"Be Vietnam Pro",sans-serif;font-weight:800;font-size:18px;margin-top:4px}
+.lvc .s{color:var(--mut);font-size:13px;margin-top:2px}
+.lvc.lock{opacity:.55;border-top-color:var(--line);border-style:dashed}
+.h2{font-size:clamp(20px,4vw,26px);margin:0 0 14px}
+.lg{display:grid;gap:12px;grid-template-columns:1fr}
+.lsn{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;transition:transform .15s,box-shadow .15s}
+.lsn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(120,40,20,.14)}
+.lsn i{font-style:normal;background:var(--red);color:#fff;border-radius:12px;padding:8px 12px;font-weight:700;font-size:14px;white-space:nowrap}
+.lsn .t{font-size:20px;color:var(--ink)}
+.lsn .v{color:var(--mut);font-size:14px}
+.soon{text-align:center;background:var(--card);border:2px dashed var(--line);border-radius:16px;padding:36px 16px;color:var(--mut)}
+.ltl{margin-bottom:12px}
+.ltl h1{margin:0;font-size:clamp(22px,4.5vw,30px)}
+.ltl p{margin:2px 0 0;color:var(--mut)}
+nav.tabs{display:flex;gap:8px;margin:14px 0 18px}
+nav.tabs a{flex:1;text-align:center;padding:10px 8px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:15px}
+nav.tabs a span{display:block;font-size:20px;line-height:1.2}
+nav.tabs a.on{background:var(--red);border-color:var(--red);color:#fff}
+.tool{display:flex;justify-content:flex-end;margin-bottom:6px}
+.sw{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.sw.on{background:var(--gold);border-color:var(--gold);color:#2b1512}
+h3{font-size:16px;margin:20px 0 10px;color:var(--red);display:flex;align-items:center;gap:8px}
+h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.vc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 8px 12px;text-align:center;position:relative}
+.vc .h{font-size:30px;color:var(--red);line-height:1.25}
+.vc .p{font-weight:600;color:var(--gold);font-size:15px;filter:brightness(.85)}
+.vc .m{font-size:14px;color:var(--ink)}
+.spk{position:absolute;top:4px;right:4px;border:0;background:none;font-size:15px;padding:6px;line-height:1}
+.hid .p,.hid .m{filter:blur(7px);cursor:pointer}
+.cl{display:grid;gap:2px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0}
+.cl .z{font-size:18px;color:var(--red)}
+.cl small{color:var(--mut)}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:12px;padding:14px 16px;margin:12px 0}
+.box h2{margin:0 0 6px;font-size:17px}
+.box p{margin:0}
+.ex{background:var(--soft);border-radius:10px;padding:8px 12px;margin-top:8px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 16px;text-align:center}
+.q .big{font-size:clamp(34px,9vw,54px);font-weight:700;color:var(--red);margin:8px 0;font-family:"Noto Sans SC","Noto Sans",sans-serif;line-height:1.2}
+.q .big.vi{font-size:clamp(22px,5vw,30px);font-family:"Be Vietnam Pro",sans-serif}
+.qh{color:var(--mut);font-size:15px}
+.opts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.opts button{border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:13px;font-size:18px;font-family:"Noto Sans SC","Noto Sans",sans-serif;font-weight:500}
+.opts button:hover{border-color:var(--red)}
+.opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opts button.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.bar{height:8px;background:var(--soft);border-radius:9px;overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;background:var(--red);transition:width .3s}
+.pri{background:var(--red);color:#fff;border:0;border-radius:12px;padding:10px 22px;font-weight:700;margin-top:12px}
+.mg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mg button{border:1.5px solid var(--line);background:var(--card);border-radius:12px;min-height:62px;padding:8px;font-size:17px;font-family:"Noto Sans SC","Noto Sans",sans-serif;font-weight:500}
+.mg button.sel{background:var(--gold);border-color:var(--gold);color:#2b1512}
+.mg button.done{visibility:hidden}
+.mg button.no{background:var(--bad);border-color:var(--bad);color:#fff}
+.cen{text-align:center}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:8px 16px 24px}
+@media(min-width:700px){
+ .grid4{grid-template-columns:repeat(4,1fr)}
+ .lg{grid-template-columns:1fr 1fr}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+ .cl{grid-template-columns:1.2fr 1.4fr 1.4fr auto;align-items:center}
+ .opts{grid-template-columns:1fr 1fr}
+ .mg{grid-template-columns:repeat(4,1fr)}
+ main{padding-top:32px}
+}
+@media(max-width:699px){
+ main{padding-bottom:96px}
+ nav.tabs{position:fixed;left:0;right:0;bottom:0;margin:0;gap:0;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:40}
+ nav.tabs a{border:0;border-radius:10px;font-size:12px;padding:6px 2px}
+ .brand{font-size:18px}
+}
+</style>
+</head>
+<body>
+<header><div class="hin">
+<button id="back" onclick="up()">← Quay lại</button>
+<a class="brand" href="#"><span class="seal">拼</span><span>Ping<b>Laoshi</b></span></a>
+<span id="crumb"></span><a id="hw" class="chip" href="#shop" aria-label="Cửa hàng"></a>
+</div></header>
+<main id="app"></main>
+<footer>© PingLaoshi · 拼老师 · 加油！</footer>
+<script>
+const D={1:{
+1:{t:"AI小语，你好！",vi:"Chào AI Xiaoyu!",
+ v:[["你好","nǐ hǎo","Chào bạn","Chào hỏi ở văn phòng"],["王老师","Wáng lǎoshī","Cô/Thầy Vương","Chào hỏi ở văn phòng"],
+ ["大家","dàjiā","Mọi người","Chào hỏi trong lớp"],["好","hǎo","Tốt, khỏe","Chào hỏi trong lớp"],["学生","xuésheng","Học sinh, sinh viên","Chào hỏi trong lớp"],["们","men","Hậu tố số nhiều","Chào hỏi trong lớp"],["老师","lǎoshī","Thầy giáo, cô giáo","Chào hỏi trong lớp"],["您","nín","Ngài, ông, bà (tôn xưng)","Chào hỏi trong lớp"],["你们","nǐmen","Các bạn","Chào hỏi trong lớp"],
+ ["谢谢","xièxie","Cảm ơn","Cảm ơn & tạm biệt"],["不客气","bú kèqi","Không có gì","Cảm ơn & tạm biệt"],["同学","tóngxué","Bạn học / các em","Cảm ơn & tạm biệt"],["再见","zàijiàn","Tạm biệt","Cảm ơn & tạm biệt"]],
+ cl:[["现在上课","xiànzài shàngkè","Bắt đầu học","Thầy/cô"],["请打开书，第X页","qǐng dǎkāi shū, dì X yè","Mời mở sách trang X","Thầy/cô"],["请跟我读","qǐng gēn wǒ dú","Mời đọc theo tôi","Thầy/cô"],["下课","xiàkè","Kết thúc giờ học","Thầy/cô"],
+ ["请再说一遍","qǐng zài shuō yí biàn","Làm ơn nói lại một lần nữa","Học sinh"],["老师，请慢点儿说","lǎoshī, qǐng màn diǎnr shuō","Thưa thầy/cô, xin nói chậm một chút","Học sinh"],["这个是什么意思？","zhège shì shénme yìsi?","Cái này nghĩa là gì?","Học sinh"]],
+ g:[["Mục tiêu bài học","Dùng các cụm từ lễ nghi cơ bản để <b>chào hỏi, cảm ơn và tạm biệt</b>."],
+ ["Đại từ tôn xưng 您 (nín)","Dùng với người lớn tuổi hơn hoặc người cần bày tỏ sự kính trọng.","<b>老师，您好！</b> Chào thầy/cô ạ!"],
+ ["Hậu tố số nhiều 们 (men)","Thêm sau đại từ hoặc danh từ chỉ người để biểu thị từ hai người trở lên.","你 → <b>你们</b> · 学生 → <b>学生们</b>"],
+ ["Luyện phát âm","Bài vè <b>“Mā zhòng má”</b> (Mẹ trồng gai) giúp làm quen với các thanh điệu cơ bản."],
+ ["Nội dung mở rộng của Tiểu Ngữ","Giới thiệu <b>Hệ thống Pinyin</b> (Hán ngữ ngữ âm) giúp người mới nắm vững quy tắc phát âm."]]},
+2:{t:"我叫李文",vi:"Tôi tên là Lý Văn",
+ v:[["请问","qǐngwèn","Xin hỏi","Hỏi tên"],["你","nǐ","Bạn, anh, chị","Hỏi tên"],["叫","jiào","Tên là, gọi là","Hỏi tên"],["什么","shénme","Cái gì, gì","Hỏi tên"],["名字","míngzi","Tên","Hỏi tên"],["我","wǒ","Tôi","Hỏi tên"],
+ ["不","bù","Không","Xin lỗi & đáp lại"],["是","shì","Là","Xin lỗi & đáp lại"],["对不起","duìbuqǐ","Xin lỗi","Xin lỗi & đáp lại"],["没关系","méi guānxi","Không sao đâu","Xin lỗi & đáp lại"],["没事","méishì","Không sao","Xin lỗi & đáp lại"],
+ ["很","hěn","Rất","Làm quen"],["高兴","gāoxìng","Vui mừng","Làm quen"],["认识","rènshi","Quen biết","Làm quen"],["也","yě","Cũng","Làm quen"],
+ ["李文","Lǐ Wén","Lý Văn","Tên riêng"],["白家月","Bái Jiāyuè","Bạch Gia Nguyệt","Tên riêng"],["陈天中","Chén Tiānzhōng","Trần Thiên Trung","Tên riêng"],["安妮","Ānnī","Anne (An-ni)","Tên riêng"]],
+ g:[["Trật tự từ cơ bản","Cấu trúc nền tảng: <b>Chủ ngữ + Vị ngữ (Động từ) + Tân ngữ</b>.","<b>我</b> (S) + <b>叫</b> (V) + <b>白家月</b> (O) → 我叫白家月。"],
+ ["Ghi chú của Tiểu Ngữ: Từ vựng","Trong khẩu ngữ, <b>没事</b> (méishì) thường thêm âm cuốn lưỡi thành <b>没事儿</b> (méishìr)."],
+ ["Ghi chú của Tiểu Ngữ: Văn hóa","Tên người Trung Quốc: <b>Họ trước, Tên sau</b>.","李 (họ) + 文 (tên) → <b>李文</b>"],
+ ["Luyện phát âm","Bài vè kết hợp các phép tính số học đơn giản để luyện thanh điệu."],
+ ["Nội dung mở rộng","Danh sách <b>tên các quốc gia</b> trên thế giới bằng tiếng Trung."]]}
+},2:null,3:null,4:null};
+const LV=[["一级","HSK 1","Nhập môn"],["二级","HSK 2","Sơ cấp"],["三级","HSK 3","Trung cấp"],["四级","HSK 4","Trung cao cấp"]];
+let self=false,Q,M;
+const $=s=>document.querySelector(s);
+const sh=a=>[...a].sort(()=>Math.random()-.5);
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="zh-CN";u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function route(){const m=/^hsk(\d)(?:-l(\d+))?(?:-([vgqm]))?$/.exec(location.hash.slice(1));return m?{lv:+m[1],ls:m[2]?+m[2]:0,tab:m[3]||"v"}:{lv:0,ls:0,tab:"v"}}
+function up(){const r=route();location.hash=r.ls?"hsk"+r.lv:""}
+function render(){
+ const r=route(),Ls=D[r.lv],L=Ls&&Ls[r.ls];
+ $("#back").style.display=r.lv?"block":"none";
+ $("#crumb").textContent=r.lv?"HSK "+r.lv+(L?" › Bài "+r.ls:""):"";
+ const A=$("#app");A.style.animation="none";A.offsetWidth;A.style.animation="";
+ if(!r.lv)home();else if(!Ls)soon(r.lv);else if(!L)lessons(r.lv);else lesson(r,L);
+ window.scrollTo(0,0);
+}
+function home(){
+ $("#app").innerHTML=`<div class="hero"><h1>Ôn tập HSK cùng PingLaoshi</h1><p>Chọn cấp độ để bắt đầu</p></div><div class="grid4">`+
+ LV.map((l,i)=>D[i+1]?`<a class="lvc" href="#hsk${i+1}"><div class="z hz">${l[0]}</div><div class="n">${l[1]}</div><div class="s">${Object.keys(D[i+1]).length} bài · ${l[2]}</div></a>`
+ :`<div class="lvc lock"><div class="z hz">${l[0]}</div><div class="n">${l[1]}</div><div class="s">Sắp ra mắt</div></div>`).join("")+"</div>";
+}
+function soon(n){$("#app").innerHTML=`<h2 class="h2">HSK ${n}</h2><div class="soon">${IC("clock")}Nội dung HSK ${n} đang được chuẩn bị.<br>Bạn quay lại sau nhé!</div>`}
+function lessons(n){
+ $("#app").innerHTML=`<h2 class="h2">HSK ${n} · Chọn bài học</h2><div class="lg">`+Object.entries(D[n]).map(([k,L])=>`<a class="lsn" href="#hsk${n}-l${k}-v"><i>Bài ${k}</i><div><div class="t hz">${L.t}</div><div class="v">${L.vi} · ${L.v.length} từ</div></div></a>`).join("")+"</div>";
+}
+function lesson(r,L){
+ const T=[["v","book","Từ vựng"],["g","edit","Ngữ pháp"],["q","target","Luyện tập"],["m","grid","Ghép đôi"],["d","chat","Dịch câu"]];
+ $("#app").innerHTML=`<div class="ltl"><h1 class="hz">第${r.ls}课：${L.t}</h1><p>Bài ${r.ls}: ${L.vi}</p></div><nav class="tabs">`+T.map(t=>`<a class="${t[0]==r.tab?"on":""}" href="#hsk${r.lv}-l${r.ls}-${t[0]}"><span>${IC(t[1])}</span>${t[2]}</a>`).join("")+`</nav><div id="c"></div>`;
+ ({v:vocab,g:gram,q:quiz,m:match,d:xlesson})[r.tab](L);
+}
+function vocab(L){
+ let h=`<div class="tool"><button class="sw ${self?"on":""}" onclick="self=!self;vocab(D[route().lv][route().ls])">${IC("eye")} Tự kiểm tra: ${self?"Bật":"Tắt"}</button></div>`;
+ [...new Set(L.v.map(x=>x[3]))].forEach(g=>{
+  h+=`<h3>${g}</h3><div class="grid">`+L.v.filter(x=>x[3]==g).map(x=>`<div class="vc ${self?"hid":""}" onclick="this.classList.remove('hid')"><button class="spk" onclick="event.stopPropagation();say('${x[0]}')" aria-label="Nghe">${IC("speaker")}</button><div class="h hz">${x[0]}</div><div class="p">${x[1]}</div><div class="m">${x[2]}</div></div>`).join("")+"</div>";
+ });
+ if(L.cl){h+="<h3>Ngôn ngữ lớp học</h3>";L.cl.forEach(x=>h+=`<div class="cl"><span class="z hz">${x[0]}</span><span>${x[1]}</span><span>${x[2]}</span><small>${x[3]} <button class="spk" style="position:static" onclick="say('${x[0].replace("X","五")}')">${IC("speaker")}</button></small></div>`)}
+ $("#c").innerHTML=h;
+}
+function gram(L){$("#c").innerHTML=L.g.map(x=>`<div class="box"><h2>${x[0]}</h2><p>${x[1]}</p>${x[2]?`<div class="ex hz" style="font-weight:500">${x[2]}</div>`:""}</div>`).join("")}
+function quiz(L){
+ const v=L.v;Q={i:0,s:0,list:sh(v).slice(0,10).map((w,i)=>{
+  const t=i%3,o=sh(v.filter(x=>x!=w)).slice(0,3);
+  if(t==0)return{q:"Nghĩa của từ này là gì?",big:w[0],sub:w[1],a:w[2],o:sh([w,...o]).map(x=>x[2]),say:w[0]};
+  if(t==1)return{q:"Chọn chữ Hán đúng với nghĩa:",big:w[2],vi:1,a:w[0],o:sh([w,...o]).map(x=>x[0])};
+  return{q:"Chọn chữ Hán đúng với pinyin:",big:w[1],vi:1,a:w[0],o:sh([w,...o]).map(x=>x[0])};
+ })};qshow();
+}
+function qshow(){
+ const L=Q.list;
+ if(Q.i>=L.length){const p=Q.s/L.length;hook("q",p*100);$("#c").innerHTML=`<div class="q"><div class="big">${IC(p>=.8?"trophy":p>=.5?"star":"target")}</div><h2>Bạn đúng ${Q.s}/${L.length} câu</h2><p class="qh">${p>=.8?"太棒了！Quá xuất sắc!":p>=.5?"不错！Khá lắm, cố thêm chút nữa!":"加油！Ôn lại từ vựng rồi thử lại nhé!"}</p><button class="pri" onclick="quiz(D[route().lv][route().ls])">Làm lại</button></div>`;return}
+ const q=L[Q.i];
+ $("#c").innerHTML=`<div class="bar"><i style="width:${Q.i/L.length*100}%"></i></div><div class="q"><div class="qh">Câu ${Q.i+1}/${L.length} · ${q.q}</div><div class="big ${q.vi?"vi":""}">${q.big}</div>${q.sub?`<div>${q.sub} <button class="spk" style="position:static" onclick="say('${q.say}')">${IC("speaker")}</button></div>`:""}<div class="opts">${q.o.map((o,i)=>`<button onclick="ans(this,${i})">${o}</button>`).join("")}</div></div>`;
+}
+function ans(b,i){
+ const q=Q.list[Q.i],p=b.parentNode;if(p.dataset.d)return;p.dataset.d=1;
+ const ok=q.o[i]==q.a;if(ok)Q.s++;b.classList.add(ok?"ok":"bad");
+ if(!ok)p.children[q.o.indexOf(q.a)].classList.add("ok");
+ setTimeout(()=>{Q.i++;qshow()},ok?700:1400);
+}
+function match(L){
+ const w=sh(L.v).slice(0,6);
+ M={sel:null,left:6,t:sh(w.flatMap((x,i)=>[{id:i,t:x[0]},{id:i,t:x[2]}]))};mdraw();
+}
+function mdraw(){
+ $("#c").innerHTML=`<p class="cen qh">Nối <b>chữ Hán</b> với <b>nghĩa tiếng Việt</b> tương ứng. ${M.left==0?"<br><b>Hoàn thành! 太好了！</b>":""}</p><div class="mg">${M.t.map((x,i)=>`<button id="t${i}" class="${x.done?"done":""} ${M.sel===i?"sel":""}" onclick="mpick(${i})">${x.t}</button>`).join("")}</div><div class="cen"><button class="pri" onclick="match(D[route().lv][route().ls])">Ván mới</button></div>`;
+}
+function mpick(i){
+ const t=M.t[i];if(t.done||M.sel===i)return;
+ if(M.sel===null){M.sel=i;mdraw();return}
+ const a=M.t[M.sel];
+ if(a.id==t.id){a.done=t.done=true;M.left--;M.sel=null;mdraw();if(M.left==0)hook("m",600/(6+(M.bad||0)))}
+ else{M.bad=(M.bad||0)+1;const j=M.sel;M.sel=null;mdraw();[j,i].forEach(k=>$("#t"+k).classList.add("no"));setTimeout(mdraw,600)}
+}
+addEventListener("hashchange",()=>render());
+</script>
+<style>
+.inp{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit;font-size:18px;text-align:center;margin:10px 0}
+.tg{display:inline-block;margin:3px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);font-size:13px}
+.cert{max-width:560px;margin:8px auto 14px;padding:10px;border-radius:22px;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));box-shadow:0 12px 34px rgba(0,0,0,.25);position:relative;overflow:hidden;animation:pop .6s}
+.cert::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-100%);animation:shine 3s infinite;pointer-events:none}
+@keyframes shine{to{transform:translateX(100%)}}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+.cin{background:#fffdf4;color:#3a1c12;border-radius:14px;border:3px double var(--c2);padding:22px 16px;text-align:center}
+.cin p{margin:6px 0;font-size:14px}
+.cs{font-family:"Noto Sans SC",sans-serif;font-weight:900;letter-spacing:2px;color:#b3141f}
+.ct{font-size:12px;letter-spacing:3px;color:#7a655f;font-weight:700}
+.medal{font-size:64px;line-height:1.2;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.tier{font-family:"Be Vietnam Pro",sans-serif;font-weight:800;font-size:clamp(26px,7vw,38px);letter-spacing:2px;color:var(--tc)}
+.nm{font-family:"Be Vietnam Pro",sans-serif;font-size:clamp(22px,6vw,30px);font-weight:700;border-bottom:2px solid var(--c2);display:inline-block;padding:0 14px;margin:4px 0 8px}
+.sc{display:inline-block;background:var(--tc);color:#fff;border-radius:999px;padding:6px 18px;font-weight:800;margin:8px 0}
+.rm{font-style:italic}
+.ft{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#7a655f;margin-top:10px}
+.stamp{width:44px;height:44px;display:grid;place-items:center;background:#b3141f;color:#fff;border-radius:8px;transform:rotate(-8deg);font-family:"Noto Sans SC",sans-serif;font-weight:900;font-size:24px}
+.diamond{--c1:#7be0ff;--c2:#b28cff;--c3:#ff8fd8;--tc:#6a3fd6}
+.gold{--c1:#ffe27a;--c2:#f5a300;--c3:#ffd24a;--tc:#a86a00}
+.silver{--c1:#f1f5f9;--c2:#9aa9bb;--c3:#dfe6ee;--tc:#5d6b7e}
+.bronze{--c1:#f0b27a;--c2:#b36a2e;--c3:#e0975b;--tc:#8a4a1c}
+.star{--c1:#ffc2c2;--c2:#ff6f7d;--c3:#ffd1a8;--tc:#c93a4d}
+.opts button.pick{background:var(--gold);border-color:var(--gold);color:#2b1512}
+.rw{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+.rw button,.rw a{border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:10px 16px;font-weight:600;display:inline-block}
+.rw button:disabled{opacity:.4;cursor:default}
+.rw .pri{background:var(--red);border-color:var(--red);color:#fff}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(36px,1fr));gap:6px;margin:10px 0 14px}
+.pb{border:1.5px solid var(--line);background:var(--card);border-radius:8px;padding:6px 0;font-weight:700;font-size:13px}
+.pb.an,.pb.ok{background:var(--gold);border-color:var(--gold);color:#2b1512}
+.pb.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.pb.no{background:var(--bad);border-color:var(--bad);color:#fff}
+.pb.fl{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad)}
+.pb.cur{outline:2.5px solid var(--red);outline-offset:2px}
+.tile{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:8px 14px;font-size:20px;font-family:"Noto Sans SC","Noto Sans",sans-serif;font-weight:500}
+.tile.on{background:var(--gold);border-color:var(--gold);color:#2b1512}
+.tile.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.tile.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.ans{min-height:58px;border:2px dashed var(--line);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin:12px 0}
+.bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.rs{padding:10px 14px;border-radius:12px;font-weight:700;margin-top:14px}
+.rs.ok{background:var(--ok);color:#fff}.rs.bad{background:var(--bad);color:#fff}
+.big.zs{font-size:clamp(26px,6.5vw,38px)}
+.xp{color:var(--mut)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-weight:700;border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:4px 12px;font-size:14px;margin-left:8px}
+@media(max-width:480px){#crumb{display:none}.chip{margin-left:auto}}
+.nav2{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.nav2 a,.nav2 button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 14px;font-weight:600;font-size:14px}
+.dash{display:grid;gap:14px;grid-template-columns:1fr}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.cd h3{margin-top:0}.pc{text-align:center}
+.pdw svg{width:100%;height:auto;display:block}.pdw{max-width:150px;margin:0 auto}.pdw.big{max-width:220px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.stats div{background:var(--soft);border-radius:12px;padding:10px;text-align:center}
+.stats b{display:block;font-size:22px;color:var(--red)}
+.qr{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.qr>div:first-child{flex:1}.qr.dn{opacity:.6}.qrr{text-align:right;display:flex;flex-direction:column}
+.bds{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:10px}
+.bd{border:1px solid var(--gold);background:var(--soft);border-radius:12px;padding:8px;text-align:center;font-size:13px}
+.bd .ic{width:26px;height:26px;display:block;margin:0 auto 4px;color:var(--gold)}
+.bd.lk,.bd2.lk{filter:grayscale(1);opacity:.55;border-color:var(--line)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.it{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center}
+.th{width:84px;height:84px}.th svg{width:100%;height:100%}
+.pr{font-weight:700;color:var(--gold)}.pr.no{color:var(--mut)}
+.it button{margin-top:6px;border-radius:10px;padding:8px 16px;font-weight:700;border:1.5px solid var(--line);background:var(--card)}
+.it button.pri{background:var(--red);color:#fff;border-color:var(--red)}
+.it button.on{background:var(--gold);border-color:var(--gold);color:#2b1512}
+.it button:disabled{opacity:.5;cursor:default}
+.bd2 .ic{width:34px;height:34px;color:var(--gold)}
+.bal{text-align:center;font-size:18px;margin-bottom:10px}
+.tabs2{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:12px 0}
+.tabs2 button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-weight:600}
+.tabs2 button.on{background:var(--red);border-color:var(--red);color:#fff}
+.scene{position:relative;border:2px solid var(--line);border-radius:18px;overflow:hidden;max-width:560px;margin:0 auto}
+.sc{display:block;width:100%;height:auto}
+.pdb{transform-box:fill-box;transform-origin:50% 100%}
+.idle .pdb{animation:br 3.2s ease-in-out infinite}
+.jump .pdb{animation:jp .6s ease-out 3}
+.wig .pdb{animation:wg .5s ease-in-out 3}
+@keyframes br{50%{transform:scale(1.025,.975)}}
+@keyframes jp{40%{transform:translateY(-26px)}}
+@keyframes wg{25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+.fxl{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fxl i{position:absolute;bottom:38%;width:28px;height:28px;animation:rise 1.6s ease-out forwards}
+@keyframes rise{to{transform:translateY(-120px);opacity:0}}
+.ov{position:fixed;inset:0;background:rgba(40,10,10,.55);display:grid;place-items:center;z-index:100;padding:16px;overflow:hidden}
+.mc{background:var(--card);border-radius:22px;max-width:400px;width:100%;padding:20px;text-align:center;animation:pop .35s;position:relative;z-index:2;max-height:90vh;overflow:auto}
+.cf{position:absolute;top:-16px;width:9px;height:15px;animation:fall 2.6s linear forwards;z-index:1}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.chips2{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chips2 span{background:var(--soft);border:1px solid var(--gold);border-radius:999px;padding:6px 14px;font-weight:700}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 70px);transform:translate(-50%,-20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:120;max-width:90%;text-align:center;font-weight:600}
+.toast.show{opacity:1;transform:translate(-50%,0)}.toast.bad{background:var(--bad);color:#fff}
+.mg2{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px}
+.tg3{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px;font-weight:600}
+.tg3.on{background:var(--gold);border-color:var(--gold);color:#2b1512}
+.tw{overflow-x:auto}.lt{width:100%;border-collapse:collapse;font-size:14px}.lt th,.lt td{padding:8px;border-bottom:1px solid var(--line);text-align:left}
+.inp.sm{font-size:15px;padding:8px;margin:8px 0}
+.lc{text-align:center;display:block}.lc .z{font-size:34px;color:var(--red)}.lc.off{opacity:.55}
+.sw.on{background:var(--gold);border-color:var(--gold);color:#2b1512}
+a.sw{display:inline-block}
+@media(min-width:700px){.dash{grid-template-columns:1fr 1fr}.wide{grid-column:1/-1}.grid2{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+@media(prefers-reduced-motion:reduce){.pdb,.cf,.fxl i,.cert::after,main{animation:none!important}}
+.mus{display:inline-flex;gap:8px;align-items:center}
+.mus button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 14px;font-weight:600;font-size:14px}
+.mus input{width:110px;accent-color:var(--red)}
+.mus.cen{display:flex;justify-content:center}
+.gi{cursor:grab}.gi.sel{filter:drop-shadow(0 0 3px #d7263d)}
+.scene.edit svg{touch-action:none}
+.nomo *{animation:none!important}
+.ptw{transform-box:fill-box;transform-origin:50% 100%}
+.p-hop{animation:hp .45s ease-out infinite}.p-wad{animation:wd .5s ease-in-out infinite}.p-bob,.p-play{animation:bb .35s ease-in-out infinite}.p-float{animation:fl 1.6s ease-in-out infinite}.p-react{animation:hp .35s ease-out 3}
+.p-sleep{transform:scale(1.1,.7);opacity:.9}
+@keyframes hp{50%{transform:translateY(-9px)}}@keyframes wd{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}@keyframes bb{50%{transform:translateY(-4px)}}@keyframes fl{50%{transform:translateY(-8px)}}
+.walk .pdb{animation:wk .5s ease-in-out infinite}.run .pdb{animation:wk .28s ease-in-out infinite}
+.crawl .pdb{transform:scaleY(.8);animation:ck .7s ease-in-out infinite}
+@keyframes wk{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+@keyframes ck{0%,100%{transform:scaleY(.8) translateY(0)}50%{transform:scaleY(.8) translateY(-3px)}}
+.sit .pdb{transform:scaleY(.92)}.sleep .pdb{transform:scale(1.05,.8) rotate(-4deg)}.curious .pdb{transform:rotate(6deg)}
+.eat .pdb{animation:ea 1s ease-in-out infinite}.play .pdb{animation:wg .5s ease-in-out infinite}
+.roll .pdb{transform-origin:50% 55%;animation:rl 1.1s linear 1}.dance .pdb{animation:dn .6s ease-in-out infinite}.happy .pdb{animation:jp .5s ease-out 2}
+@keyframes ea{50%{transform:translateY(3px) rotate(4deg)}}@keyframes rl{to{transform:rotate(360deg)}}@keyframes dn{25%{transform:rotate(-8deg) translateY(-8px)}75%{transform:rotate(8deg) translateY(-8px)}}
+.pf{animation:pfall 8s linear infinite}@keyframes pfall{from{transform:translateY(-10px)}to{transform:translate(18px,240px)}}
+.ff{animation:ffl 3s ease-in-out infinite}@keyframes ffl{0%,100%{opacity:.1;transform:translate(0,0)}50%{opacity:1;transform:translate(8px,-6px)}}
+.sway{animation:sw2 4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}@keyframes sw2{50%{transform:rotate(1.6deg)}}
+.shake{animation:shk .5s ease-in-out 3;transform-box:fill-box;transform-origin:50% 100%}@keyframes shk{25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+.wc{position:absolute;left:72%;top:22%;display:flex;gap:6px;color:#3d8fc0;pointer-events:none}
+.wc .ic{width:22px;height:22px;animation:dr 1s ease-in infinite}.wc .ic:nth-child(2){animation-delay:.2s}.wc .ic:nth-child(3){animation-delay:.4s}
+@keyframes dr{from{transform:translateY(0);opacity:1}to{transform:translateY(60px);opacity:0}}
+.rar{font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;background:var(--soft)}
+.rar.r1{background:#d8ecff;color:#1d5a8f}.rar.r2{background:#eadcff;color:#5b34a0}.rar.r3{background:#ffe9b8;color:#8a5a00}
+textarea.inp{font-size:12px;text-align:left;word-break:break-all}
+.aiex{white-space:pre-wrap;margin-top:8px}
+.ic{width:1.15em;height:1.15em;vertical-align:-.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block}
+.spk{color:var(--red)}
+.q .big .ic{width:.9em;height:.9em}
+.soon .ic{width:44px;height:44px;display:block;margin:0 auto 10px;color:var(--red)}
+.okc{color:var(--ok)}.nc{color:var(--bad)}
+.medal{line-height:0;margin:8px 0;display:flex;justify-content:center;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.tg .md{vertical-align:-4px}
+</style>
+<script>
+const P=s=>s.split("@").flatMap(g=>{const[n,r]=g.split(":");return r.split(";").map(x=>{const a=x.split(",");return[a[0],a[1],a[2],n]})});
+const B=D[1];
+B[3]={t:"我是中国人",vi:"Tôi là người Trung Quốc",v:P("Từ vựng:人,rén,Người;的,de,Trợ từ (của)/(tính chất);喂,wèi,Alo/Này;姐姐,jiějie,Chị gái;工作,gōngzuò,Công việc/Làm việc;还,hái,Vẫn/Còn;忙,máng,Bận;吗,ma,Trợ từ nghi vấn;对,duì,Đúng;太,tài,Quá/Lắm;我们,wǒmen,Chúng tôi/Chúng ta;想,xiǎng,Nhớ/Muốn@Danh từ riêng:中国,Zhōngguó,Trung Quốc;法国,Fǎguó,Pháp;中文,Zhōngwén,Tiếng Trung;泰国,Tàiguó,Thái Lan"),
+g:[["Câu chữ 是","Dùng để xác định danh tính/thuộc tính.","我<b>是</b>中国人。"],["Trợ từ kết cấu 的","Đặt giữa định ngữ và trung tâm ngữ, biểu thị sở hữu.","我<b>的</b>姐姐"],["Câu hỏi có-không với 吗","Thêm 吗 vào cuối câu trần thuật.","你忙<b>吗</b>？"],["Phát âm, văn hóa & tự đánh giá","Bài vè “Sì shì sì, shí shì shí…” luyện phân biệt âm đầu lưỡi và âm uốn lưỡi. Văn hóa: mời khách ăn nhiều hơn là nét hiếu khách. Cuối bài, tự đánh giá khả năng chào hỏi, cảm ơn, xin lỗi và giới thiệu bản thân (Bài 1–3)."]]};
+B[4]={t:"我有两个孩子",vi:"Tôi có hai người con",v:P("Khởi động:五,wǔ,Năm;哥哥,gēge,Anh trai;六十,liùshí,Sáu mươi;岁,suì,Tuổi;妈妈,māma,Mẹ@Bài khóa 2-3:妹妹,mèimei,Em gái;儿子,érzi,Con trai;孩子,háizi,Con cái;女儿,nǚ’ér,Con gái;他,tā,Anh ấy/Ông ấy;今年,jīnnián,Năm nay;多,duō,Bao nhiêu;大,dà,Lớn/Già@Số đếm:零,líng,0;一,yī,1;二,èr,2;两,liǎng,Hai (trước lượng từ);三,sān,3;四,sì,4;六,liù,6;七,qī,7;八,bā,8;九,jiǔ,9;十,shí,10;百,bǎi,Trăm;千,qiān,Nghìn;万,wàn,Mười nghìn"),
+g:[["Câu chữ 有","Biểu thị sự sở hữu.","我<b>有</b>两个孩子。"],["Số đếm 0–10.000","Số 2 có hai cách: <b>二</b> (đếm số, số thứ tự) và <b>两</b> (trước lượng từ).","两个孩子"],["Trợ từ 呢 (1)","Cuối câu, hỏi lại thông tin đã đề cập.","我很好，你<b>呢</b>？"],["Số từ + Lượng từ + Danh từ","Số + lượng từ + danh từ.","三<b>个</b>学生"],["Cách hỏi tuổi","<b>几岁</b>: trẻ dưới 10 tuổi · <b>多大</b>: người trên 10 tuổi hoặc người lớn.","你今年<b>多大</b>？"]]};
+B[5]={t:"今天我休息",vi:"Hôm nay tôi nghỉ ngơi",v:P("Bài khóa 1:今天,jīntiān,Hôm nay;号,hào,Ngày;月,yuè,Tháng;日,rì,Ngày;星期,xīngqī,Thứ/Tuần;星期天,xīngqītiān,Chủ nhật;休息,xiūxi,Nghỉ ngơi@Bài khóa 2:会,huì,Biết;做饭,zuò fàn,Nấu ăn;做,zuò,Làm;面条儿,miàntiáor,Mì;饺子,jiǎozi,Bánh chẻo;一些,yìxiē,Một số;菜,cài,Món ăn@Bài khóa 3:上班,shàngbān,Đi làm;下班,xiàbān,Tan làm;电脑,diànnǎo,Máy tính"),
+g:[["Cách nói thời gian (1)","Thứ tự: Năm → Tháng → Ngày → Thứ.","9月8号，星期五"],["Câu vị ngữ danh từ","Vị ngữ chỉ gồm danh từ/cụm danh từ (ngày tháng, tuổi tác).","今天星期天。"],["Động từ năng nguyện 会","Năng lực có được qua học tập.","我<b>会</b>做饭。"],["Ghi chú của Tiểu Ngữ","Ngày dùng 号 hoặc 日; Chủ nhật: 星期日 hoặc 星期天. Ẩm thực Trung Hoa: món bánh chẻo (饺子)."]]};
+B[6]={t:"你的手机号是多少？",vi:"Số điện thoại của bạn là bao nhiêu?",v:P("Khởi động:手机,shǒujī,Điện thoại;晚饭,wǎnfàn,Bữa tối;超市,chāoshì,Siêu thị;牛奶,niúnǎi,Sữa;出租车,chūzūchē,Taxi;米饭,mǐfàn,Cơm@Bài khóa 2:明天,míngtiān,Ngày mai;去,qù,Đi;哪儿,nǎr,Ở đâu;买,mǎi,Mua;东西,dōngxi,Đồ đạc;些,xiē,Một số@Bài khóa 3:吃,chī,Ăn;那边,nàbiān,Phía bên kia;包子,bāozi,Bánh bao;非常,fēicháng,Vô cùng;好吃,hǎochī,Ngon;怎么,zěnme,Như thế nào/Bằng cách nào;坐,zuò,Ngồi/Đi (xe);西安饭店,Xī’ān Fàndiàn,Nhà hàng Tây An"),
+g:[["Động từ năng nguyện 想","Đặt trước động từ, diễn tả mong muốn/ý định.","我<b>想</b>去超市。"],["Câu liên động (1)","Hai hay nhiều cụm động từ liền nhau, biểu thị mục đích hoặc cách thức.","去超市买东西 · 坐出租车去饭店"],["Đại từ nghi vấn 怎么","Đứng trước động từ để hỏi cách thức.","你<b>怎么</b>去？"],["Số điện thoại","Hỏi: 你的手机号是多少？ Khi đọc số điện thoại, số 1 thường đọc là <b>yāo</b> để khỏi nhầm với số 7 (qī)."]]};
+B[7]={t:"我晚上六点半下班",vi:"Tôi tan làm lúc 6 rưỡi tối",v:P("Bài khóa 2:电影院,diànyǐngyuàn,Rạp chiếu phim;看,kàn,Xem;电影,diànyǐng,Phim;事,shì,Việc;上课,shàngkè,Lên lớp;呢,ne,Trợ từ ngữ khí;半,bàn,Rưỡi;下课,xiàkè,Tan học@Bài khóa 3:在,zài,Ở;家,jiā,Nhà;里,li,Trong;晚上,wǎnshang,Buổi tối;医院,yīyuàn,Bệnh viện;店,diàn,Cửa hàng;分钟,fēnzhōng,Phút;后,hòu,Sau"),
+g:[["Cách nói thời gian (2)","Giờ và phút cụ thể: 点 (giờ), 分 (phút), 半 (rưỡi).","晚上六点半"],["Trợ từ 吧 (1)","Cuối câu, đưa ra lời đề nghị/thương lượng.","我们去看电影<b>吧</b>。"],["Vị trí trạng từ & danh từ thời gian","Làm trạng ngữ, đứng trước động từ/tính từ.","我晚上六点半下班。"],["Trợ từ 呢 (2)","Cuối câu, khẳng định một sự thật.","我在家里<b>呢</b>。"],["Ghi chú","里 sau danh từ (家里) đọc nhẹ “li”; trong 里边 phải đọc thanh ba “lǐ”."]]};
+B[8]={t:"我爸爸也在医院工作",vi:"Bố tôi cũng làm việc ở bệnh viện",v:P("Bài khóa 1:房间,fángjiān,Phòng;外,wài,Ngoài;只,zhī,Con (lượng từ);小,xiǎo,Nhỏ;猫,māo,Mèo;没,méi,Chưa/Không;看见,kànjiàn,Nhìn thấy;桌子,zhuōzi,Cái bàn;下,xià,Dưới;漂亮,piàoliang,Đẹp@Bài khóa 2:学校,xuéxiào,Trường học;书店,shūdiàn,Hiệu sách;前,qián,Trước;能,néng,Có thể;到,dào,Đến;午饭,wǔfàn,Bữa trưa@Bài khóa 3:饭,fàn,Cơm;病人,bìngrén,Bệnh nhân;医生,yīshēng,Bác sĩ;胡医生,Hú yīshēng,Bác sĩ Hồ"),
+g:[["Từ chỉ phương vị","Trên 上, dưới 下, trước 前, trong 里, ngoài 外…","桌子<b>下</b>"],["Giới từ 在","Chỉ nơi xảy ra hành động.","我爸爸<b>在</b>医院工作。"],["Động từ năng nguyện 能","Năng lực hoặc khả năng khách quan.","你<b>能</b>来吗？"],["Ghi chú của Tiểu Ngữ","Lượng từ có thể đi trực tiếp với đại từ chỉ định (这只). Gọi thân mật người trẻ hơn: 小 + Họ (小胡)."]]};
+B[9]={t:"我明天上午在学校学习",vi:"Sáng mai tôi học ở trường",v:P("Bài khóa 1:前边,qiánbian,Phía trước;边,bian,Phía;那个,nàge,Cái đó;外边,wàibian,Bên ngoài@Bài khóa 2:椅子,yǐzi,Ghế;上,shang,Trên;本,běn,Quyển;书,shū,Sách;那,nà,Kia;第,dì,Thứ (số thứ tự);学习,xuéxí,Học tập@Bài khóa 3:白天,báitiān,Ban ngày;读书,dúshū,Đọc sách/Học;和,hé,Và;朋友,péngyou,Bạn bè;唱,chàng,Hát;歌,gē,Bài hát;好听,hǎotīng,Hay/Dễ nghe;电视,diànshì,Tivi;狗,gǒu,Chó;玩,wán,Chơi"),
+g:[["Câu tồn tại (1)","Địa điểm + 有/是 + Đối tượng.","桌子上<b>有</b>一本书。"],["Thời gian đứng trước địa điểm","Khi cùng làm trạng ngữ, thời gian đứng trước địa điểm.","我明天上午<b>在学校</b>学习。"],["Số thứ tự với 第","第 + số.","<b>第</b>一课"],["Phát âm","前边 → 前边儿; 玩 → 玩儿; 那个 → nèige (khẩu ngữ). 边 làm hậu tố đọc nhẹ (bian), danh từ đơn lẻ đọc biān. 上 sau danh từ chỉ vị trí đọc nhẹ (shang), chỉ vị trí cao/thứ tự ưu tiên đọc shàng."]]};
+B[10]={t:"这儿的苹果真便宜！",vi:"Táo ở đây thật rẻ!",v:P("Bài khóa 1:杯子,bēizi,Cốc;售货员,shòuhuòyuán,Nhân viên bán hàng;这边,zhèbiān,Bên này;钱,qián,Tiền;这些,zhèxiē,Những cái này;块,kuài,Đồng (khẩu ngữ);那些,nàxiē,Những cái kia@Bài khóa 2:这儿,zhèr,Ở đây;水果,shuǐguǒ,Trái cây;少,shǎo,Ít;斤,jīn,Cân (0.5kg);苹果,píngguǒ,Táo;便宜,piányi,Rẻ@Bài khóa 3:商店,shāngdiàn,Cửa hàng;衣服,yīfu,Quần áo;件,jiàn,Chiếc (lượng từ);元,yuán,Đồng (Nhân dân tệ);怎么样,zěnmeyàng,Thế nào;贵,guì,Đắt;穿,chuān,Mặc;女,nǚ,Nữ;男,nán,Nam;那儿,nàr,Ở đó"),
+g:[["Cách nói số tiền","Nhân dân tệ: 元 · 角 · 分; khẩu ngữ: 块 · 毛 · 分.","3.5元 = 三块五"],["Câu vị ngữ tính từ","Tính từ làm vị ngữ, thường kèm 很 hoặc 真.","苹果<b>真</b>便宜！"],["Đại từ nghi vấn 怎么样","Hỏi tình trạng, tính chất hoặc xin ý kiến.","这件衣服<b>怎么样</b>？"],["Nội dung mở rộng","Làm quen các mệnh giá tiền giấy và tiền xu của Trung Quốc."]]};
+B[11]={t:"我读大学呢",vi:"Tôi đang học đại học",v:P("Bài khóa 1 & 2:读,dú,Học/Đọc;大学,dàxué,Đại học;大学生,dàxuéshēng,Sinh viên;正在,zhèngzài,Đang;电视剧,diànshìjù,Phim truyền hình@Bài khóa 3:起床,qǐchuáng,Thức dậy;睡觉,shuìjiào,Đi ngủ;考试,kǎoshì,Thi;开车,kāichē,Lái xe;找,zhǎo,Tìm;时候,shíhou,Lúc/Khi;要,yào,Muốn/Sẽ"),
+g:[["Câu chính phản","Dạng khẳng định + phủ định liền nhau để hỏi.","你好不好？ · 你<b>有没有</b>时间？"],["Phó từ 在/正在","Hành động đang diễn ra.","我<b>在</b>看电视剧。"],["Động từ năng nguyện 要","Ý muốn hoặc kế hoạch thực hiện hành động.","我<b>要</b>去考试。"],["Ghi chú của Tiểu Ngữ","Với 有 phải dùng 有没有 (không dùng 有不有). Phủ định hành động đang diễn ra dùng 没(有)."]]};
+B[12]={t:"昨天下雪了",vi:"Hôm qua tuyết rơi rồi",v:P("Bài khóa 1:天气,tiānqì,Thời tiết;这里,zhèlǐ,Ở đây;天,tiān,Trời;下雨,xià yǔ,Mưa rơi;了,le,Trợ từ (thay đổi);雨,yǔ,Mưa;有点儿,yǒudiǎnr,Hơi;觉得,juéde,Cảm thấy;冷,lěng,Lạnh@Bài khóa 2:下雪,xià xuě,Tuyết rơi;雪,xuě,Tuyết@Bài khóa 3:病,bìng,Bệnh;一点儿,yìdiǎnr,Một chút;药,yào,Thuốc;回,huí,Về;再,zài,Lại/Sau đó mới;喝,hē,Uống;热,rè,Nóng;水,shuǐ,Nước"),
+g:[["Câu không chủ ngữ","Thường dùng trong khẩu ngữ để nói về thời tiết, hiện tượng tự nhiên.","<b>下雨了</b>。"],["Trợ từ ngữ khí 了 (1)","Cuối câu, biểu thị sự thay đổi trạng thái hoặc tình huống mới.","天冷<b>了</b>。"],["Cấu trúc 太……了","Mức độ rất cao, sắc thái cảm thán.","<b>太冷了</b>！"],["Ghi chú của Tiểu Ngữ","看看 là dạng lặp của 看 (hành động ngắn, thử). Văn hóa: người Trung Quốc thích uống nước nóng vì tin tốt cho sức khỏe, nhất là khi ốm."]]};
+B[13]={t:"请给我一杯茶",vi:"Vui lòng cho tôi một tách trà",v:P("Bài khóa 1:可以,kěyǐ,Có thể;问题,wèntí,Vấn đề/Câu hỏi;卖,mài,Bán;打电话,dǎ diànhuà,Gọi điện;一下,yíxià,Một chút@Bài khóa 2:服务员,fúwùyuán,Nhân viên phục vụ;女士,nǚshì,Quý bà;请,qǐng,Mời;给,gěi,Cho;杯,bēi,Cốc/Tách;早饭,zǎofàn,Bữa sáng;面包,miànbāo,Bánh mì;鸡蛋,jīdàn,Trứng gà@Bài khóa 3:先生,xiānsheng,Ngài/Ông;一半,yíbàn,Một nửa;茶,chá,Trà"),
+g:[["Động từ năng nguyện 可以","Đứng trước động từ, biểu thị khả năng, sự cho phép hoặc đề nghị.","我<b>可以</b>坐这儿吗？"],["Động từ + 一下","Hành động ngắn, mang tính thử, làm ngữ khí nhẹ nhàng.","我问<b>一下</b>。"],["Câu song tân ngữ (1)","Động từ như 给, 问: tân ngữ chỉ người đứng trước, chỉ vật/việc đứng sau.","请<b>给我一杯茶</b>。"],["Nội dung mở rộng","Văn hóa trà Trung Hoa (中国茶): nghệ thuật thưởng trà và các loại trà phổ biến."]]};
+B[14]={t:"我看了一个电影",vi:"Tôi đã xem một bộ phim",v:P("Bài khóa 1:上,shàng,Lên (xe);火车,huǒchē,Tàu hỏa;中午,zhōngwǔ,Buổi trưa;开,kāi,Khởi hành;有些,yǒuxiē,Có một số@Bài khóa 2:写,xiě,Viết;都,dōu,Đều;听见,tīngjiàn,Nghe thấy;不要,búyào,Đừng;说话,shuōhuà,Nói chuyện;听,tīng,Nghe;哪些,nǎxiē,Những cái nào;字,zì,Chữ;汉语,Hànyǔ,Tiếng Hán;汉字,Hànzì,Chữ Hán@Bài khóa 3:明年,míngnián,Sang năm;中学,zhōngxué,Trung học;小学,xiǎoxué,Tiểu học;上学,shàngxué,Đi học;他们,tāmen,Họ;晚,wǎn,Muộn"),
+g:[["Trợ từ động thái 了 (2)","Đặt ngay sau động từ, hành động đã hoàn thành.","我看<b>了</b>一个电影。"],["Từ ly hợp (1)","Cấu trúc Động từ + Tân ngữ, có thể chèn thành phần khác ở giữa: 睡觉, 上课, 说话…"],["Phó từ phạm vi 都","Nghĩa là “đều”, chỉ toàn bộ đối tượng đã nêu.","我们<b>都</b>是学生。"],["Phân biệt đại từ số nhiều","她们 (nhóm nữ) · 他们 (nam hoặc cả nam và nữ) · 它们 (đồ vật/động vật): đều đọc là tāmen."]]};
+B[15]={t:"大兴机场见！",vi:"Hẹn gặp ở sân bay Đại Hưng!",v:P("Bài khóa 1:爱,ài,Yêu/Thích;哪个,nǎge,Cái nào@Bài khóa 2:去年,qùnián,Năm ngoái;男朋友,nánpéngyou,Bạn trai;几,jǐ,Vài/Mấy;年,nián,Năm;好玩儿,hǎowánr,Vui/Thú vị;西安,Xī’ān,Tây An;北京,Běijīng,Bắc Kinh@Bài khóa 3:飞机,fēijī,Máy bay;小时,xiǎoshí,Tiếng đồng hồ;家人,jiārén,Người nhà;时间,shíjiān,Thời gian;机场,jīchǎng,Sân bay;接,jiē,Đón;住,zhù,Ở (cư trú);早,zǎo,Sớm;大兴机场,Dàxìng Jīchǎng,Sân bay Đại Hưng"),
+g:[["Câu phức liên hợp “……，还/也……”","Nối hai hoặc nhiều vế đẳng lập hoặc bổ sung ý cho nhau.","我爱吃饺子，<b>也</b>爱吃面条儿。"],["Văn hóa & địa danh","Thủ đô Bắc Kinh và sân bay quốc tế Đại Hưng, biểu tượng kiến trúc hiện đại của Trung Quốc."],["Lễ nghi bàn ăn","Mời khách ăn nhiều hơn thể hiện sự hiếu khách; tìm hiểu các quy tắc lịch sự khi ăn uống của người Trung Quốc."]]};
+
+const TR=[[1,5],[6,10],[11,15],[1,15]],TN=["Bài 1–5","Bài 6–10","Bài 11–15","Tổng kết Bài 1–15"];
+const CZ=[[1,"老师，____好！","您",["吗","的","呢"]],[2,"我____李文。","叫",["吗","很","不"]],[3,"你是中国人____？","吗",["的","很","也"]],[3,"这是我____姐姐。","的",["吗","太","还"]],[4,"我____两个孩子。","有",["是","会","在"]],[4,"你今年____？","多大",["几个","什么","哪儿"]],[5,"我____做饭。","会",["吗","呢","很"]],
+[6,"我想去超市____东西。","买",["坐","读","唱"]],[6,"你____去饭店？","怎么",["什么","多少","哪个"]],[7,"我晚上六点半____。","下班",["下雨","下雪","漂亮"]],[7,"我们去看电影____。","吧",["吗","很","太"]],[8,"我爸爸____医院工作。","在",["有","是","和"]],[8,"桌子____有一只猫。","下",["吗","很","也"]],[9,"我明天上午在学校____。","学习",["漂亮","便宜","好听"]],[9,"这是____三课。","第",["个","些","本"]],[10,"这儿的苹果____便宜！","真",["吗","在","有"]],[10,"这件衣服____？","怎么样",["几岁","哪儿","多少"]],
+[11,"你有____有时间？","没",["不","吗","也"]],[11,"他____看电视。","在",["了","吗","是"]],[12,"下雨____！","了",["吗","的","吧"]],[12,"今天____冷了！","太",["吗","在","有"]],[13,"请____我一杯茶。","给",["去","吃","买"]],[13,"我可以问____吗？","一下",["一半","一些","一岁"]],[14,"我看____一个电影。","了",["吗","呢","会"]],[14,"我们____是学生。","都",["吗","的","呢"]],[15,"我爱吃饺子，____爱吃面条儿。","也",["吗","了","不"]],[15,"坐飞机____两个小时。","要",["吗","的","在"]]];
+const TI=[[27,"diamond","KIM CƯƠNG","","Xuất sắc! Bạn thật là cao thủ!"],[24,"gold","VÀNG","","Rất giỏi! Chỉ còn một bước nữa là kim cương!"],[20,"silver","BẠC","","Khá tốt! Cố gắng thêm chút nữa nhé!"],[15,"bronze","ĐỒNG","","Đạt yêu cầu, ôn thêm để lên hạng nhé!"],[0,"star","KHÍCH LỆ","","Cố lên! Ôn lại từ vựng rồi thử lại nhé!"]];
+let T;
+const nm=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/v/gi,"u").replace(/[^a-z]/gi,"").toLowerCase();
+function route(){const h=location.hash.slice(1);let m=/^hsk(\d)-t(\d)$/.exec(h);if(m)return{lv:+m[1],ls:0,tab:"v",t:+m[2]};if(/^hsk\d-d$/.test(h))return{lv:+h[3],ls:0,tab:"v",d:1};m=/^hsk(\d)(?:-l(\d+))?(?:-([vgqmd]))?$/.exec(h);return m?{lv:+m[1],ls:m[2]?+m[2]:0,tab:m[3]||"v"}:{lv:0,ls:0,tab:"v"}}
+function up(){const r=route();location.hash=(r.ls||r.t)?"hsk"+r.lv:""}
+function render(){
+ const r=route(),Ls=D[r.lv],L=Ls&&Ls[r.ls];
+ $("#back").style.display=r.lv?"block":"none";
+ $("#crumb").textContent=r.lv?"HSK "+r.lv+(L?" › Bài "+r.ls:r.t?" › Kiểm tra "+r.t:r.d?" › Luyện dịch":""):"";
+ const A=$("#app");A.style.animation="none";A.offsetWidth;A.style.animation="";
+ if(!r.lv)home();else if(!Ls)soon(r.lv);else if(r.d&&r.lv==1)xlevel();else if(r.t&&r.lv==1&&TR[r.t-1])tintro(r.t);else if(!L)lessons(r.lv);else lesson(r,L);
+ window.scrollTo(0,0);
+}
+function lessons(n){
+ $("#app").innerHTML=`<h2 class="h2">HSK ${n} · Chọn bài học</h2><div class="lg">`+Object.entries(D[n]).map(([k,L])=>`<a class="lsn" href="#hsk${n}-l${k}-v"><i>Bài ${k}</i><div><div class="t hz">${L.t}</div><div class="v">${L.vi} · ${L.v.length} từ</div></div></a>`).join("")+"</div>"+(n==1?`<h2 class="h2" style="margin-top:30px">Luyện dịch</h2><div class="lg"><a class="lsn" href="#hsk1-d"><i style="background:var(--gold);color:#2b1512">Dịch</i><div><div class="t">Luyện dịch tổng hợp HSK 1</div><div class="v">Việt – Trung và Trung – Việt · 12 câu từ tất cả các bài</div></div></a></div><h2 class="h2" style="margin-top:30px">Kiểm tra HSK 1</h2><div class="lg">`+TR.map((r,i)=>`<a class="lsn" href="#hsk1-t${i+1}"><i style="background:var(--gold);color:#2b1512">Test ${i+1}</i><div><div class="t">${TN[i]}</div><div class="v">30 câu · nhận chứng chỉ theo hạng</div></div></a>`).join("")+"</div>":"");
+}
+function tintro(n){
+ $("#app").innerHTML=`<div class="q"><h2 style="margin:0">Bài kiểm tra ${n}</h2><p class="qh">${TN[n-1]} · 30 câu hỏi đa dạng: điền từ, chọn nghĩa, chọn chữ Hán, chọn pinyin, nghe, đúng/sai, gõ pinyin. Bạn có thể chuyển qua lại giữa các câu, đánh dấu câu cần xem lại và bấm Nộp bài khi chốt. Sau khi nộp, bạn sẽ xem được lời giải thích vì sao đúng, vì sao sai.</p><div>`+TI.map((t,i)=>`<span class="tg">${MD(t[1],18)} ${t[2]}: ${i<4?"≥"+t[0]:"dưới 15"}</span>`).join("")+`</div><input id="nm" class="inp" maxlength="30" placeholder="Nhập tên của bạn để in lên chứng chỉ"><button class="pri" onclick="tstart(${n})">Bắt đầu làm bài</button></div>`;
+}
+function tbuild(n){
+ const[a,b]=TR[n-1],seen={},pool=[];
+ for(let i=a;i<=b;i++)D[1][i].v.forEach(w=>{if(!seen[w[0]]){seen[w[0]]=1;pool.push(w)}});
+ const W=sh(pool);let k=0,ci=0;const nx=()=>W[k++%W.length];
+ const od=(w,f)=>sh([w,...sh(pool.filter(x=>x[0]!=w[0]&&x[2]!=w[2]&&x[1]!=w[1])).slice(0,3)]).map(f);
+ const cz=sh(CZ.filter(c=>c[0]>=a&&c[0]<=b));
+ return sh("cccchhhhhhmmmmmppppqqqqlllttyy".split("")).map(t=>{
+  if(t=="c"){const c=cz[ci++%cz.length];return{q:"Điền từ vào chỗ trống:",cz:1,big:c[1],vi:1,a:c[2],o:sh([c[2],...c[3]])}}
+  const w=nx();
+  if(t=="h")return{q:"Nghĩa của từ này là gì?",big:w[0],sub:w[1],a:w[2],o:od(w,x=>x[2]),say:w[0]};
+  if(t=="m")return{q:"Chọn chữ Hán đúng với nghĩa:",big:w[2],vi:1,a:w[0],o:od(w,x=>x[0])};
+  if(t=="p")return{q:"Chọn chữ Hán đúng với pinyin:",big:w[1],vi:1,a:w[0],o:od(w,x=>x[0])};
+  if(t=="q")return{q:"Chọn pinyin đúng của chữ này:",big:w[0],a:w[1],o:od(w,x=>x[1])};
+  if(t=="l")return{q:"Nghe và chọn nghĩa đúng:",big:IC("speaker"),a:w[2],o:od(w,x=>x[2]),say:w[0],auto:1};
+  if(t=="t"){const ok=Math.random()<.5,o=ok?w:sh(pool.filter(x=>x[2]!=w[2]))[0];return{q:"Đúng hay Sai?",big:w[0]+" = "+o[2],vi:1,a:ok?"Đúng":"Sai",o:["Đúng","Sai"]}}
+  return{q:"Gõ pinyin (không cần dấu):",big:w[0],sub:w[2],a:w[1],ty:1};
+ });
+}
+const ALLV=[];for(let i=1;i<=15;i++)D[1][i].v.forEach(w=>ALLV.push([...w,i]));
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const uans=i=>{const q=T.qs[i],a=T.ans[i];return q.ty?(a||""):(a==null?"":q.o[a])};
+function fb(q){
+ if(q.cz)return"Câu hoàn chỉnh: "+q.big.replace("____","【"+q.a+"】");
+ const tf=q.q.startsWith("Đúng"),w=tf?ALLV.find(x=>q.big.startsWith(x[0]+" = ")):ALLV.find(x=>x[0]==q.a||x[1]==q.a||x[2]==q.a);
+ if(!w)return"Đáp án đúng: "+q.a;
+ return`${w[0]} (${w[1]}) nghĩa là “${w[2]}” – học ở Bài ${w[4]}.`+(tf?` Vì vậy phát biểu này là ${q.a}.`:"");
+}
+function tstart(n){
+ const e=$("#nm"),v=e?e.value:(T&&T.name)||"";
+ T={n,i:0,s:0,done:0,cf:0,ow:0,fl:{},ex:{},ans:Array(30).fill(null),name:v.replace(/[<>&"]/g,"").trim(),qs:tbuild(n)};tshow(1);window.scrollTo(0,0);
+}
+function tgo(i){T.i=Math.max(0,Math.min(29,i));T.cf=0;tshow(1);window.scrollTo(0,0)}
+function tset(v){T.ans[T.i]=v;const b=$("#pq"+T.i);if(b)b.classList.toggle("an",v!=null&&v!=="")}
+function tpick(i){tset(T.ans[T.i]===i?null:i);tshow()}
+function tshow(play){
+ if(T.done)return;
+ const q=T.qs[T.i],a=T.ans[T.i],ok=x=>x!=null&&x!=="",cnt=T.ans.filter(ok).length,un=30-cnt,fl=Object.values(T.fl).filter(Boolean).length;
+ const pal=T.qs.map((_,i)=>`<button id="pq${i}" class="pb ${ok(T.ans[i])?"an":""} ${i==T.i?"cur":""} ${T.fl[i]?"fl":""}" onclick="tgo(${i})">${i+1}</button>`).join("");
+ $("#app").innerHTML=`<div class="bar"><i style="width:${cnt/30*100}%"></i></div><div class="qh cen">Đã làm ${cnt}/30 · vàng = đã trả lời · viền đỏ = đánh dấu xem lại</div><div class="pal">${pal}</div>`
+ +`<div class="q"><div class="qh">Câu ${T.i+1}/30 · ${q.q}</div><div class="big ${q.vi?"vi":""}">${q.big}</div>${q.sub?`<div class="qh">${q.sub}</div>`:""}${q.say?`<button class="sw" onclick="say('${q.say}')">${IC("speaker")} Nghe</button>`:""}`
+ +(q.ty?`<div class="opts" style="grid-template-columns:1fr"><input class="inp" autocomplete="off" autocapitalize="none" placeholder="Gõ pinyin…" value="${(a||"").replace(/[<>&"]/g,"")}" oninput="tset(this.value)"></div>`:`<div class="opts">${q.o.map((o,i)=>`<button class="${a===i?"pick":""}" onclick="tpick(${i})">${o}</button>`).join("")}</div>`)+"</div>"
+ +`<div class="rw"><button onclick="tgo(T.i-1)" ${T.i?"":"disabled"}>← Câu trước</button><button onclick="T.fl[T.i]=!T.fl[T.i];tshow()">${IC("flag")} ${T.fl[T.i]?"Bỏ đánh dấu":"Đánh dấu"}</button><button onclick="tgo(T.i+1)" ${T.i<29?"":"disabled"}>Câu sau →</button></div>`
+ +(T.cf?`<div class="box"><b>Nộp bài?</b> ${un?`Bạn còn <b>${un}</b> câu chưa trả lời.`:"Bạn đã trả lời tất cả các câu."}${fl?` Có ${fl} câu đang đánh dấu.`:""} Sau khi nộp sẽ không sửa được nữa.<div class="rw"><button class="pri" onclick="tfin()">Nộp bài</button><button onclick="T.cf=0;tshow()">Làm tiếp</button></div></div>`:`<div class="cen"><button class="pri" onclick="T.cf=1;tshow();window.scrollTo(0,document.body.scrollHeight)">${IC("send")} Nộp bài</button></div>`);
+ if(play&&q.auto)setTimeout(()=>say(q.say),250);
+}
+function tfin(){
+ T.done=1;T.res=T.qs.map((q,i)=>{const a=T.ans[i];return q.ty?!!a&&nm(a)==nm(q.a):(a!=null&&q.o[a]==q.a)});
+ T.s=T.res.filter(Boolean).length;tend();
+}
+function rv(i){
+ const q=T.qs[i],ok=T.res[i],u=uans(i);
+ return`<div class="box" id="rv${i}" style="border-left-color:var(${ok?"--ok":"--bad"})"><div><b><span class="${ok?"okc":"nc"}">${IC(ok?"check":"x")}</span> Câu ${i+1}</b> · <span class="qh">${q.q}</span></div><div class="hz" style="font-size:20px;margin:4px 0">${q.big}${q.sub?` <small class="qh">${q.sub}</small>`:""}</div><div>Bạn chọn: <b>${esc(u||"(bỏ trống)")}</b>${ok?"":` · Đáp án đúng: <b>${q.a}</b>`}</div><div class="ex"><b>Ghi nhớ:</b> ${fb(q)}</div><div class="aiex" id="ex${i}">${T.ex[i]?esc(T.ex[i]):""}</div><button class="sw" style="margin-top:8px" onclick="tai(${i})">Xem giải thích</button></div>`;
+}
+function tlist(){return T.qs.map((_,i)=>T.ow&&T.res[i]?"":rv(i)).join("")}
+function tfilter(){T.ow=!T.ow;$("#rvl").innerHTML=tlist();$("#fbtn").textContent=T.ow?"Hiện tất cả câu":"Chỉ hiện câu sai"}
+function tend(){
+ const s=T.s,t=TI.find(x=>s>=x[0]),p=Math.round(s/30*100),wr=30-s;hook("t",100*s/30,T.n);
+ const pal=T.res.map((o,i)=>`<button class="pb ${o?"ok":"no"}" onclick="document.getElementById('rv${i}').scrollIntoView({behavior:'smooth',block:'center'})">${i+1}</button>`).join("");
+ $("#app").innerHTML=`<div class="cert ${t[1]}"><div class="cin"><div class="cs">拼老师 · PingLaoshi</div><div class="ct">证书 · CHỨNG CHỈ HSK 1</div><div class="medal">${MD(t[1],88)}</div><div class="tier">${t[2]}</div><p>Chứng nhận</p><div class="nm">${T.name||"Học viên PingLaoshi"}</div><p>đã hoàn thành<br><b>Bài kiểm tra ${T.n} · ${TN[T.n-1]}</b></p><div class="sc">${s}/30 điểm · ${p}%</div><p class="rm">${t[4]}</p><div class="ft"><span>${new Date().toLocaleDateString("vi-VN")}</span><span class="stamp">拼</span></div></div></div><p class="cen qh">${IC("camera")} Chụp màn hình để lưu chứng chỉ và khoe với bạn bè nhé!</p><div class="rw"><button class="pri" onclick="tstart(${T.n})">Làm lại</button><a class="pri" href="#hsk1">Chọn bài khác</a></div>`
+ +`<h3>Xem lại bài làm · ${s} đúng · ${wr} sai</h3><div class="pal">${pal}</div><div class="rw">${wr?`<button class="pri" id="ball" onclick="tall()">Giải thích tất cả câu sai</button>`:""}<button id="fbtn" onclick="tfilter()">Chỉ hiện câu sai</button></div><div id="rvl">${tlist()}</div>`;
+ window.scrollTo(0,0);
+}
+async function tai(i){
+ const el=$("#ex"+i);el.textContent="Đang soạn giải thích…";
+ const q=T.qs[i],u=uans(i);
+ const p=`Bạn là cô giáo tiếng Trung PingLaoshi, dạy HSK 1 cho người Việt. Giải thích bằng tiếng Việt, thân thiện, dễ hiểu, tối đa 5 câu, không dùng tiêu đề hay markdown.\nCâu hỏi (${q.q}): ${q.auto?q.say:q.big}${q.sub?" ("+q.sub+")":""}\n${q.o?"Các đáp án: "+q.o.join(" | ")+"\n":""}Đáp án đúng: ${q.a}\nHọc viên trả lời: ${u||"(bỏ trống)"} → ${T.res[i]?"ĐÚNG":"SAI"}\nYêu cầu: ${T.res[i]?"Giải thích vì sao đáp án này đúng, kèm 1 ví dụ câu ngắn có pinyin và nghĩa tiếng Việt.":"Nêu rõ vì sao đáp án học viên chọn chưa đúng (nếu có chọn), vì sao đáp án đúng mới đúng, và một mẹo nhớ ngắn."}`;
+ try{
+  const sm=await claude.use("sample");
+  if(!sm){el.textContent="Giải thích chi tiết chưa khả dụng ở đây. Bạn xem phần ghi nhớ bên trên nhé.";return}
+  const r=await sm(p,{modelTier:"quick",onText:x=>{el.textContent=x.text}});
+  T.ex[i]=r.text;el.textContent=r.text;
+ }catch(e){el.textContent=e&&e.code=="rate_limited"?"Bạn bấm hơi nhanh, chờ một chút rồi thử lại nhé.":"Chưa tải được giải thích lúc này. Bạn xem phần ghi nhớ bên trên nhé."}
+}
+async function tall(){
+ const ws=T.res.map((o,i)=>o?-1:i).filter(i=>i>=0),bt=$("#ball");
+ bt.disabled=true;bt.textContent="Đang giải thích…";
+ const p="Bạn là cô giáo tiếng Trung PingLaoshi dạy HSK 1 cho người Việt. Với mỗi câu sai dưới đây, giải thích bằng tiếng Việt, tối đa 3 câu: vì sao đáp án học viên chọn chưa đúng và vì sao đáp án đúng mới đúng. Chỉ trả về một mảng JSON các chuỗi, đúng thứ tự, không thêm gì khác.\n"+ws.map((i,k)=>{const q=T.qs[i];return`${k+1}. [${q.q}] ${q.auto?q.say:q.big}${q.sub?" ("+q.sub+")":""} | Đáp án đúng: ${q.a} | Học viên: ${uans(i)||"(bỏ trống)"}`}).join("\n");
+ try{
+  const sm=await claude.use("sample");if(!sm)throw 0;
+  const arr=await sm.json(p,{modelTier:"quick"});
+  if(!Array.isArray(arr))throw 0;
+  ws.forEach((i,k)=>{if(arr[k]){T.ex[i]=String(arr[k]);$("#ex"+i).textContent=T.ex[i]}});
+  bt.textContent="Đã giải thích xong";
+ }catch(e){bt.disabled=false;bt.textContent="Chưa tải được, bấm để thử lại"}
+}
+
+const IP={book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>',speaker:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',flag:'<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>',send:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',camera:'<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',check:'<polyline points="20 6 9 17 4 12"/>',x:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'};
+const IC=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IP[n]||""}</svg>`;
+const MC={diamond:["#8be8ff","#b28cff"],gold:["#ffe27a","#e09400"],silver:["#ffffff","#8f9fb3"],bronze:["#f4b985","#a85a22"],star:["#ffb3bd","#ff5f72"]};
+function MD(t,s){
+ const[a,b]=MC[t],g="mg"+t;
+ const def=`<defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs>`;
+ const body=t=="diamond"?`<path d="M18 8h28l12 16-26 34L6 24z" fill="url(#${g})" stroke="#fff" stroke-opacity=".7" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 24h52M24 24l8-16 8 16M24 24l8 34 8-34" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="1.5" stroke-linejoin="round"/>`
+ :`<path d="M18 3h10l6 20H24z" fill="#c8102e"/><path d="M46 3H36l-6 20h10z" fill="#9c0b22"/><circle cx="32" cy="42" r="18" fill="url(#${g})" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/><circle cx="32" cy="42" r="12.5" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.5"/>`+(t=="star"?`<path d="M26 42.5l4.2 4.2L38.5 38" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`:`<polygon points="32,34 34.4,39.6 40.5,40.2 35.9,44.2 37.3,50.2 32,47 26.7,50.2 28.1,44.2 23.5,40.2 29.6,39.6" fill="#fff" fill-opacity=".92"/>`);
+ return`<svg class="md" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true">${def}${body}</svg>`;
+}
+let ZV=null;
+function pickV(){
+ if(ZV)return ZV;
+ const vs=speechSynthesis.getVoices().filter(v=>/^(zh|cmn)[-_]CN/i.test(v.lang)&&!/cantonese|yue|粤|hong ?kong/i.test(v.name+" "+v.lang));
+ for(const r of [/Xiaoxiao|Xiaoyi|Yunxi|Yunyang|Yunjian|Yunxia/i,/普通话|Mandarin|Google.*Chinese/i,/Ting-?Ting|婷婷/i,/Huihui|Yaoyao|Kangkang/i]){const v=vs.find(x=>r.test(x.name));if(v)return ZV=v}
+ return ZV=vs[0]||null;
+}
+try{speechSynthesis.onvoiceschanged=()=>{ZV=null}}catch(e){}
+function say(t){try{const s=window.speechSynthesis;s.cancel();const u=new SpeechSynthesisUtterance(t),v=pickV();u.lang="zh-CN";if(v){u.voice=v;u.lang=v.lang}u.rate=.85;s.speak(u)}catch(e){}}
+
+IP.chat='<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>';
+const XD={1:{
+1:["老师， 您 好！|lǎoshī, nín hǎo!|Chào thầy/cô ạ!|您 là đại từ tôn xưng, dùng với thầy cô và người lớn tuổi; lời chào đặt người được chào trước, rồi đến 好.","大家 好！|dàjiā hǎo!|Chào mọi người!|大家 nghĩa là “mọi người”; cấu trúc chào hỏi là đối tượng + 好.","谢谢 老师！|xièxie lǎoshī!|Cảm ơn thầy/cô!|Trong tiếng Trung, lời cảm ơn đứng trước, sau đó mới gọi đối tượng được cảm ơn.","同学们 再见！|tóngxuémen zàijiàn!|Tạm biệt các em/các bạn!|们 gắn sau danh từ chỉ người để biểu thị số nhiều; 再见 đặt cuối câu."],
+2:["我 叫 李文。|wǒ jiào Lǐ Wén.|Tôi tên là Lý Văn.|Trật tự cơ bản: Chủ ngữ + Vị ngữ + Tân ngữ. Tên người Trung Quốc: họ trước, tên sau.","你 叫 什么 名字？|nǐ jiào shénme míngzi?|Bạn tên là gì?|Từ nghi vấn 什么 đứng đúng vị trí của phần cần hỏi, không đảo lên đầu câu.","认识 你 很 高兴。|rènshi nǐ hěn gāoxìng.|Rất vui được quen bạn.|认识你 làm chủ ngữ; 很 đứng trước tính từ 高兴.","我 不 是 学生。|wǒ bú shì xuésheng.|Tôi không phải là học sinh.|不 đặt ngay trước 是 để phủ định (不 đọc thành bú trước thanh bốn)."],
+3:["我 是 中国人。|wǒ shì Zhōngguórén.|Tôi là người Trung Quốc.|Câu chữ 是 dùng để xác định thân phận: A + 是 + B.","你 忙 吗？|nǐ máng ma?|Bạn có bận không?|吗 đặt cuối câu trần thuật để thành câu hỏi có–không.","我 的 姐姐 很 忙。|wǒ de jiějie hěn máng.|Chị gái tôi rất bận.|的 nối định ngữ (我) với trung tâm ngữ (姐姐); 很 đứng trước tính từ.","你 是 法国人 吗？|nǐ shì Fǎguórén ma?|Bạn là người Pháp phải không?|Câu chữ 是 kết hợp 吗 ở cuối để hỏi."],
+4:["我 有 两 个 孩子。|wǒ yǒu liǎng gè háizi.|Tôi có hai đứa con.|Trước lượng từ 个 dùng 两 chứ không dùng 二; cấu trúc: số từ + lượng từ + danh từ.","你 今年 多 大？|nǐ jīnnián duō dà?|Năm nay bạn bao nhiêu tuổi?|多大 dùng hỏi tuổi người lớn hoặc người trên 10 tuổi; trẻ dưới 10 tuổi hỏi 几岁.","他 有 一 个 妹妹。|tā yǒu yí gè mèimei.|Anh ấy có một em gái.|Câu chữ 有 biểu thị sở hữu: Chủ ngữ + 有 + Tân ngữ.","我 妈妈 六十 岁。|wǒ māma liùshí suì.|Mẹ tôi sáu mươi tuổi.|Nói tuổi bằng số + 岁, không cần động từ 是 (câu vị ngữ danh từ)."],
+5:["今天 星期天。|jīntiān xīngqītiān.|Hôm nay là Chủ nhật.|Câu vị ngữ danh từ: nói về ngày tháng, thứ thì không cần 是.","我 会 做饭。|wǒ huì zuò fàn.|Tôi biết nấu ăn.|会 biểu thị năng lực có được nhờ học tập, đặt trước động từ.","他 会 做 饺子。|tā huì zuò jiǎozi.|Anh ấy biết làm bánh chẻo.|Động từ năng nguyện 会 đứng trước động từ chính 做.","今天 九 月 八 号。|jīntiān jiǔ yuè bā hào.|Hôm nay là ngày 8 tháng 9.|Thứ tự nói ngày: năm → tháng → ngày → thứ (từ lớn đến nhỏ)."],
+6:["我 想 去 超市。|wǒ xiǎng qù chāoshì.|Tôi muốn đi siêu thị.|想 là động từ năng nguyện, đứng trước động từ để diễn tả mong muốn.","我们 坐 出租车 去 饭店。|wǒmen zuò chūzūchē qù fàndiàn.|Chúng tôi đi taxi đến nhà hàng.|Câu liên động chỉ cách thức: hành động phương tiện (坐出租车) đứng trước hành động chính (去).","你 怎么 去？|nǐ zěnme qù?|Bạn đi bằng cách nào?|怎么 đứng trước động từ để hỏi cách thức.","他 去 超市 买 牛奶。|tā qù chāoshì mǎi niúnǎi.|Anh ấy đi siêu thị mua sữa.|Câu liên động chỉ mục đích: đi đâu (去) trước, làm gì (买) sau."],
+7:["我 晚上 六 点 半 下班。|wǒ wǎnshang liù diǎn bàn xiàbān.|Tôi tan làm lúc 6 rưỡi tối.|Từ chỉ thời gian làm trạng ngữ, đứng trước động từ; 半 nghĩa là rưỡi.","我们 去 看 电影 吧。|wǒmen qù kàn diànyǐng ba.|Chúng ta đi xem phim nhé.|吧 đặt cuối câu để đưa ra lời đề nghị.","他 在 家里 呢。|tā zài jiāli ne.|Anh ấy đang ở nhà đấy.|在 + nơi chốn; 呢 cuối câu khẳng định một sự thật; 里 trong 家里 đọc nhẹ.","我 九 点 上课。|wǒ jiǔ diǎn shàngkè.|Tôi vào học lúc 9 giờ.|Thời điểm (九点) đứng trước động từ (上课)."],
+8:["我 爸爸 在 医院 工作。|wǒ bàba zài yīyuàn gōngzuò.|Bố tôi làm việc ở bệnh viện.|Giới từ 在 + địa điểm đứng trước động từ, khác với thứ tự tiếng Việt.","桌子 下 有 一 只 猫。|zhuōzi xià yǒu yì zhī māo.|Dưới bàn có một con mèo.|Câu tồn tại: nơi chốn + 有 + người/vật; 只 là lượng từ của con vật nhỏ.","你 能 去 学校 吗？|nǐ néng qù xuéxiào ma?|Bạn có thể đến trường không?|能 biểu thị khả năng khách quan, đứng trước động từ.","医生 的 病人 很 多。|yīshēng de bìngrén hěn duō.|Bệnh nhân của bác sĩ rất đông.|的 nối định ngữ với trung tâm ngữ; 很 đứng trước tính từ 多."],
+9:["我 明天 上午 在 学校 学习。|wǒ míngtiān shàngwǔ zài xuéxiào xuéxí.|Sáng mai tôi học ở trường.|Khi có cả thời gian và địa điểm làm trạng ngữ, thời gian đứng trước địa điểm.","桌子 上 有 一 本 书。|zhuōzi shang yǒu yì běn shū.|Trên bàn có một quyển sách.|Câu tồn tại: nơi chốn + 有 + vật; 本 là lượng từ của sách; 上 sau danh từ đọc nhẹ.","那 是 第 三 课。|nà shì dì sān kè.|Kia là bài thứ ba.|第 + số tạo thành số thứ tự.","我 和 朋友 在 家里 看 电视。|wǒ hé péngyou zài jiāli kàn diànshì.|Tôi và bạn xem tivi ở nhà.|和 nối hai danh từ; địa điểm (在家里) đứng trước động từ."],
+10:["这儿 的 苹果 真 便宜！|zhèr de píngguǒ zhēn piányi!|Táo ở đây rẻ thật!|Câu vị ngữ tính từ: tính từ làm vị ngữ trực tiếp, thường đi với 真 hoặc 很.","那 件 衣服 怎么样？|nà jiàn yīfu zěnmeyàng?|Chiếc áo kia thế nào?|怎么样 hỏi tình trạng, tính chất hoặc xin ý kiến; 件 là lượng từ của quần áo.","苹果 多少 钱 一 斤？|píngguǒ duōshao qián yì jīn?|Táo bao nhiêu tiền một cân?|Hỏi giá: 多少钱 đặt sau món hàng, đơn vị tính (一斤) đứng cuối.","杯子 三 块 五。|bēizi sān kuài wǔ.|Cái cốc giá 3,5 tệ.|Trong khẩu ngữ, 块 = 元; số lẻ cuối cùng thường lược đơn vị 毛."],
+11:["我 读 大学 呢。|wǒ dú dàxué ne.|Tôi đang học đại học.|呢 cuối câu cho biết trạng thái đang diễn ra.","他 正在 看 电视剧。|tā zhèngzài kàn diànshìjù.|Anh ấy đang xem phim truyền hình.|正在 đứng trước động từ để biểu thị hành động đang diễn ra.","你 有没有 时间？|nǐ yǒuméiyǒu shíjiān?|Bạn có thời gian không?|Câu chính phản của 有 phải là 有没有, không dùng 有不有.","我 要 去 考试。|wǒ yào qù kǎoshì.|Tôi sắp đi thi.|要 biểu thị ý muốn hoặc kế hoạch sắp thực hiện, đứng trước động từ."],
+12:["下雨 了。|xià yǔ le.|Mưa rồi.|Câu không chủ ngữ dùng tả thời tiết; 了 cuối câu cho thấy tình huống mới xuất hiện.","今天 太 冷 了！|jīntiān tài lěng le!|Hôm nay lạnh quá!|Cấu trúc 太……了 biểu thị mức độ cao, mang sắc thái cảm thán.","我 想 喝 热 水。|wǒ xiǎng hē rè shuǐ.|Tôi muốn uống nước nóng.|Tính từ 热 đứng trước danh từ 水; người Trung Quốc thích uống nước nóng.","我 觉得 有点儿 冷。|wǒ juéde yǒudiǎnr lěng.|Tôi cảm thấy hơi lạnh.|有点儿 đứng trước tính từ, thường chỉ mức độ “hơi” theo hướng không thoải mái."],
+13:["请 给 我 一 杯 茶。|qǐng gěi wǒ yì bēi chá.|Làm ơn cho tôi một tách trà.|给 mang hai tân ngữ: người nhận (我) trước, vật (一杯茶) sau.","我 可以 坐 这儿 吗？|wǒ kěyǐ zuò zhèr ma?|Tôi có thể ngồi ở đây không?|可以 dùng để xin phép; 吗 ở cuối câu tạo câu hỏi.","我 想 问 一下。|wǒ xiǎng wèn yíxià.|Tôi muốn hỏi một chút.|一下 đặt sau động từ để hành động nhẹ nhàng, ngắn gọn.","请 给 我 两 个 鸡蛋。|qǐng gěi wǒ liǎng gè jīdàn.|Làm ơn cho tôi hai quả trứng gà.|Trước lượng từ dùng 两; cấu trúc song tân ngữ với 给."],
+14:["我 看 了 一 个 电影。|wǒ kàn le yí gè diànyǐng.|Tôi đã xem một bộ phim.|了 đặt ngay sau động từ để biểu thị hành động đã hoàn thành.","我们 都 是 学生。|wǒmen dōu shì xuésheng.|Chúng tôi đều là học sinh.|都 đứng trước động từ, bao quát toàn bộ đối tượng đã nêu ở trước.","火车 中午 开。|huǒchē zhōngwǔ kāi.|Tàu hỏa chạy vào buổi trưa.|Từ chỉ thời gian (中午) đứng trước động từ (开).","你 不要 说话。|nǐ búyào shuōhuà.|Đừng nói chuyện.|不要 đặt trước động từ để ngăn cản; 说话 là từ ly hợp (động từ + tân ngữ)."],
+15:["我 爱 吃 饺子， 也 爱 吃 面条儿。|wǒ ài chī jiǎozi, yě ài chī miàntiáor.|Tôi thích ăn bánh chẻo, cũng thích ăn mì.|Câu phức liên hợp: hai vế bổ sung ý, dùng 也 ở vế sau.","我 去年 去 了 北京。|wǒ qùnián qù le Běijīng.|Năm ngoái tôi đã đến Bắc Kinh.|Thời gian (去年) đứng trước động từ; 了 sau 去 biểu thị đã hoàn thành.","坐 飞机 要 三 个 小时。|zuò fēijī yào sān gè xiǎoshí.|Đi máy bay mất ba tiếng.|要 biểu thị khoảng thời gian cần thiết để làm việc gì.","我 在 机场 接 家人。|wǒ zài jīchǎng jiē jiārén.|Tôi đón người nhà ở sân bay.|在 + địa điểm đứng trước động từ 接."]}};
+const XS={};for(const l in XD[1])XS[l]=XD[1][l].map(s=>{const[a,py,vi,nt]=s.split("|"),tk=a.split(" ");return{tk,zh:tk.join(""),py,vi,nt,l:+l}});
+const XA=Object.values(XS).flat();
+let X;
+function xq(it,d){
+ if(d=="vz"){let tk;for(let k=0;k<6;k++){tk=sh(it.tk);if(tk.join()!=it.tk.join())break}return{d,it,tk}}
+ const ds=sh(XA.filter(x=>x.vi!=it.vi)).sort((a,b)=>(b.l==it.l)-(a.l==it.l)).slice(0,3).map(x=>x.vi);
+ return{d,it,o:sh([it.vi,...ds])};
+}
+function xstart(mode,ls){
+ const list=mode=="lv"?sh(XA).slice(0,12).map(it=>xq(it,Math.random()<.5?"vz":"zv")):sh(XS[ls].flatMap(it=>[xq(it,"vz"),xq(it,"zv")]));
+ X={mode,ls,list,i:0,s:0,pl:[],pick:null,res:null,w:[]};xshow();
+}
+function xlesson(){xstart("ls",route().ls)}
+function xlevel(){$("#app").innerHTML=`<h2 class="h2">Luyện dịch tổng hợp · HSK 1</h2><p class="qh">12 câu lấy ngẫu nhiên từ Bài 1 đến Bài 15, gồm cả hai chiều Việt – Trung và Trung – Việt.</p><div id="c"></div>`;xstart("lv",0)}
+function xadd(k){X.pl.push(k);xshow()}
+function xrm(k){X.pl=X.pl.filter(x=>x!=k);xshow()}
+function xnext(){X.i++;X.pl=[];X.pick=null;X.res=null;xshow();window.scrollTo(0,0)}
+function xfin(ok,why){if(ok)X.s++;else X.w.push(X.list[X.i].it);X.res={ok,why};xshow()}
+function xchk(){
+ const q=X.list[X.i],it=q.it,u=X.pl.map(k=>q.tk[k]),n=it.tk.length,ok=u.length==n&&u.every((t,j)=>t==it.tk[j]);
+ let why="";
+ if(!ok){
+  if(u.length<n){const r=[...it.tk];u.forEach(t=>{const p=r.indexOf(t);if(p>=0)r.splice(p,1)});why=`Câu của bạn mới có ${u.length}/${n} từ, còn thiếu: “${r.join(" ")}”.`}
+  else why="Thứ tự chưa đúng: "+u.map((t,j)=>t==it.tk[j]?"":`vị trí ${j+1} bạn đặt “${t}”, cần “${it.tk[j]}”`).filter(Boolean).slice(0,2).join("; ")+".";
+ }
+ xfin(ok,why);
+}
+function xpick(i){
+ const q=X.list[X.i];if(X.res)return;X.pick=i;
+ const ok=q.o[i]==q.it.vi,o=XA.find(x=>x.vi==q.o[i]);
+ xfin(ok,ok?"":(o?`Đáp án bạn chọn “${q.o[i]}” là bản dịch của câu ${o.zh} (${o.py}), không phải câu này.`:"Đáp án bạn chọn chưa khớp với nghĩa của câu."));
+}
+function xres(q){
+ const it=q.it,r=X.res;
+ return`<div class="res"><div class="rs ${r.ok?"ok":"bad"}">${IC(r.ok?"check":"x")} ${r.ok?"Chính xác!":"Chưa đúng"}</div><div class="box"><div class="hz" style="font-size:22px">${it.zh} <button class="spk" style="position:static" onclick="say('${it.zh}')">${IC("speaker")}</button></div><div class="xp">${it.py}</div><div>${it.vi}</div></div><div class="ex"><b>${r.ok?"Vì sao đúng":"Vì sao sai"}:</b> ${r.ok?"":r.why+" "}${it.nt}</div><div id="xai" class="aiex"></div><div class="rw"><button onclick="xai()">Giải thích thêm</button><button class="pri" onclick="xnext()">${X.i+1<X.list.length?"Câu tiếp":"Xem kết quả"}</button></div></div>`;
+}
+function xshow(){
+ const q=X.list[X.i];if(!q)return xend();
+ const it=q.it,vz=q.d=="vz",r=X.res,u=X.pl;
+ let h=`<div class="bar"><i style="width:${X.i/X.list.length*100}%"></i></div><div class="q"><div class="qh">Câu ${X.i+1}/${X.list.length} · ${vz?"Dịch sang tiếng Trung":"Dịch sang tiếng Việt"}</div>`;
+ if(vz){
+  h+=`<div class="big vi">${it.vi}</div><div class="qh">Chạm các từ theo đúng thứ tự để ghép thành câu</div><div class="ans">${u.length?u.map((k,j)=>`<button class="tile ${r?(q.tk[k]==it.tk[j]?"ok":"bad"):"on"}" ${r?"disabled":""} onclick="xrm(${k})">${q.tk[k]}</button>`).join(""):'<span class="xp">Câu trả lời của bạn</span>'}</div>`;
+  if(!r)h+=`<div class="bank">${q.tk.map((t,k)=>u.includes(k)?"":`<button class="tile" onclick="xadd(${k})">${t}</button>`).join("")}</div><div class="rw"><button onclick="X.pl=[];xshow()">Xóa hết</button><button class="pri" onclick="xchk()" ${u.length?"":"disabled"}>Kiểm tra</button></div>`;
+ }else{
+  h+=`<div class="big zs">${it.zh}</div>${r?`<div class="xp">${it.py}</div>`:""}<button class="sw" onclick="say('${it.zh}')">${IC("speaker")} Nghe</button><div class="opts" style="grid-template-columns:1fr">${q.o.map((o,i)=>`<button class="${r?(o==it.vi?"ok":X.pick==i?"bad":""):""}" ${r?"disabled":""} onclick="xpick(${i})">${o}</button>`).join("")}</div>`;
+ }
+ $("#c").innerHTML=h+"</div>"+(r?xres(q):"");
+}
+function xend(){
+ const n=X.list.length,p=X.s/n,w=[...new Set(X.w)];hook(X.mode=="lv"?"dl":"d",p*100);
+ $("#c").innerHTML=`<div class="q"><div class="big">${IC(p>=.8?"trophy":p>=.5?"star":"target")}</div><h2>Bạn đúng ${X.s}/${n} câu</h2><p class="qh">${p>=.8?"太棒了！Bạn dịch rất tốt!":p>=.5?"不错！Khá tốt, ôn lại các điểm ngữ pháp bên dưới nhé.":"加油！Hãy xem lại ngữ pháp và thử lại."}</p><div class="rw"><button class="pri" onclick="xstart(X.mode,X.ls)">Làm lại</button></div></div>`+(w.length?"<h3>Các câu cần ôn lại</h3>"+w.map(it=>`<div class="box"><div class="hz" style="font-size:20px">${it.zh}</div><div class="xp">${it.py}</div><div>${it.vi}</div><div class="ex">${it.nt}</div></div>`).join(""):"");
+ window.scrollTo(0,0);
+}
+async function xai(){
+ const el=$("#xai");el.textContent="Đang soạn giải thích…";
+ const q=X.list[X.i],it=q.it,vz=q.d=="vz",u=vz?X.pl.map(k=>q.tk[k]).join(" "):q.o[X.pick];
+ const p=`Bạn là cô giáo tiếng Trung PingLaoshi dạy HSK 1 cho người Việt. Giải thích bằng tiếng Việt, thân thiện, tối đa 5 câu, không dùng markdown.\nBài luyện dịch: ${vz?"Việt → Trung (sắp xếp từ)":"Trung → Việt (chọn bản dịch)"}.\nCâu gốc: ${vz?it.vi:it.zh}\nĐáp án đúng: ${vz?it.zh+" ("+it.py+")":it.vi}\nHọc viên trả lời: ${u} → ${X.res.ok?"ĐÚNG":"SAI"}\nHãy giải thích từ vựng và ngữ pháp liên quan, chỉ rõ chỗ sai nếu có, kèm một ví dụ tương tự ngắn có pinyin và nghĩa.`;
+ try{const sm=await claude.use("sample");if(!sm){el.textContent="Giải thích thêm chưa khả dụng ở đây. Bạn xem phần Vì sao ở trên nhé.";return}
+  const r=await sm(p,{modelTier:"quick",onText:x=>{el.textContent=x.text}});el.textContent=r.text;
+ }catch(e){el.textContent="Chưa tải được giải thích thêm lúc này. Bạn xem phần Vì sao ở trên nhé."}
+}
+
+render();
+</script>
+
+<script>
+/*ENGINE*/
+const LK="pl_panda_v1",LVX=[0,100,250,500,900];
+const PN=[["熊猫宝宝","Gấu trúc sơ sinh"],["调皮熊猫","Gấu trúc tinh nghịch"],["成长熊猫","Gấu trúc trưởng thành"],["聪明熊猫","Gấu trúc thông minh"],["熊猫达人","Gấu trúc chuyên gia"]];
+const IT=[["bamboo","food","竹子","Trúc non",3],["apple","food","苹果","Táo",4],["carrot","food","胡萝卜","Cà rốt",4],["baozi","food","包子","Bánh bao",6],["jiaozi","food","饺子","Sủi cảo",8],
+["hanfu","outfit","唐装","Áo truyền thống",40,"outfit"],["school","outfit","校服","Áo học sinh",30,"outfit"],["winter","outfit","冬装","Áo mùa đông",35,"outfit"],["summer","outfit","夏装","Áo mùa hè",30,"outfit"],["special","outfit","特别装","Trang phục đặc biệt",80,"outfit"],
+["glasses","acc","眼镜","Kính",25,"glasses"],["hat","acc","帽子","Mũ",20,"hat"],["scarf","acc","围巾","Khăn quàng",20,"scarf"],["bag","acc","书包","Túi sách",25,"bag"],["bow","acc","蝴蝶结","Nơ",15,"bow"],
+["r_lantern","room","红灯笼","Đèn lồng đỏ",15],["r_desk","room","书桌","Bàn học",30],["r_shelf","room","书架","Giá sách",35],["r_art","room","书法画","Tranh thư pháp",25],["r_pot","room","竹盆栽","Chậu trúc",15],["r_window","room","中式窗","Cửa sổ Trung Hoa",40],
+["g_bamboo","garden","竹林","Cây trúc",15],["g_pond","garden","鱼池","Hồ cá",50],["g_bridge","garden","小桥","Cầu nhỏ",40],["g_lantern","garden","石灯笼","Đèn lồng",15],["g_rock","garden","假山","Núi đá",30],["g_lotus","garden","荷花","Hoa sen",25]].map(a=>({id:a[0],cat:a[1],zh:a[2],vi:a[3],price:a[4],slot:a[5]}));
+const IM={};IT.forEach(i=>IM[i.id]=i);
+const QS=[{id:"q1",zh:"完成一个练习",vi:"Hoàn thành một bài tập",d:"Làm xong 1 bài tập bất kỳ",m:"ex",need:1,xp:5,lf:3},{id:"q2",zh:"学习十分钟",vi:"Học tập 10 phút",d:"Học trên trang tổng cộng 10 phút",m:"sec",need:600,xp:8,lf:4},{id:"q3",zh:"完成一次复习",vi:"Hoàn thành một lần ôn tập",d:"Làm một bài kiểm tra hoặc luyện dịch tổng hợp",m:"rev",need:1,xp:10,lf:5},{id:"q4",zh:"完成三个练习",vi:"Hoàn thành ba bài tập",d:"Làm xong 3 bài tập khác nhau trong ngày",m:"ex",need:3,xp:10,lf:5},{id:"q5",zh:"连续学习",vi:"Giữ chuỗi ngày học",d:"Làm ít nhất một bài tập hôm nay để giữ chuỗi",m:"day",need:1,xp:5,lf:2}];
+const AC=[["first","初次见面","Hoàn thành bài tập đầu tiên",s=>s.st.cnt>=1],["leaf","竹叶收藏家","Tích lũy 100 lá trúc",s=>s.earned>=100],["ex20","勤奋学习者","Hoàn thành 20 bài tập",s=>s.st.cnt>=20],["run7","坚持不懈","Học liên tục 7 ngày",s=>s.st.best>=7],["rev10","复习小达人","Hoàn thành 10 bài ôn tập",s=>s.st.rev>=10],["care10","熊猫的好朋友","Tương tác với gấu trúc 10 lần",s=>s.st.care>=10],["ex100","学习达人","Hoàn thành 100 bài tập",s=>s.st.cnt>=100]];
+const today=d=>{d=d||new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const fresh=()=>({v:1,name:"我的熊猫",nick:"",xp:0,leaf:0,earned:0,lvl:1,levels:[1],inv:{bamboo:3},eq:{},place:{},done:{},led:[],q:{d:"",p:{},c:{},k:{ex:{},rev:{}}},ach:{},st:{cnt:0,rev:0,care:0,last:"",run:0,best:0},snd:1,mus:0,vol:.5,stars:0,best:{},rp:{d:"",n:0,x:0,l:0,k:{}},pets:{},pet:"",bam:{pts:0,last:"",n:0,hist:[]},ssn:{mode:"auto",hemi:"auto",man:"spring"},motion:-1,lay:{},prof:{name:""}});
+let S;
+function load(){try{const s=JSON.parse(localStorage.getItem(LK));if(s&&s.v==1)return Object.assign(fresh(),s)}catch(e){}return fresh()}
+function save(){try{localStorage.setItem(LK,JSON.stringify(S))}catch(e){}}
+S=load();
+const lvOf=x=>LVX.filter(t=>x>=t).length,starsOf=x=>x<1400?0:Math.min(3,Math.floor((x-900)/500));
+const newOut=()=>({xp:0,lf:0,lines:[],ach:[],up:0,kind:"ex"});
+function grant(o,xp,lf,note,key){S.xp+=xp;S.leaf+=lf;S.earned+=lf;o.xp+=xp;o.lf+=lf;o.lines.push(note);S.led.unshift({ts:Date.now(),key,xp,lf,note});if(S.led.length>500)S.led.length=500}
+function qday(){const t=today();if(S.q.d!=t)S.q={d:t,p:{ex:0,sec:0,rev:0,day:0},c:{},k:{ex:{},rev:{}}};S.q.k=S.q.k||{ex:{},rev:{}}}
+function qchk(o){qday();QS.forEach(q=>{if(!S.q.c[q.id]&&(S.q.p[q.m]||0)>=q.need){S.q.c[q.id]=1;grant(o,q.xp,q.lf,"Nhiệm vụ: "+q.vi,"quest:"+S.q.d+":"+q.id)}})}
+function touch(o){qday();const t=today();if(S.st.last!=t){const y=today(new Date(Date.now()-864e5));S.st.run=S.st.last==y?S.st.run+1:1;S.st.last=t;S.st.best=Math.max(S.st.best,S.st.run);S.q.p.day=1;if(S.st.run%7==0&&!S.done["st:"+S.st.run]){S.done["st:"+S.st.run]=1;grant(o,30,20,"Chuỗi học "+S.st.run+" ngày","streak:"+S.st.run)}}}
+function achChk(o){AC.forEach(a=>{if(!S.ach[a[0]]&&a[3](S)){S.ach[a[0]]=Date.now();o.ach.push(a[1]+" · "+a[2])}})}
+function fin(o){achChk(o);const nl=lvOf(S.xp);if(nl>S.lvl){o.up=nl;S.lvl=nl}const ns=starsOf(S.xp);if(ns>(S.stars||0)){o.star=ns;S.stars=ns}save();return o}
+function award(type,lv,ls,pct){
+ if(!S.levels.includes(lv))return null;
+ const rev=type=="t"||type=="dl",key=type+":"+lv+":"+ls,o=newOut();o.kind=rev?"rev":"ex";
+ const nm={q:"Luyện tập",m:"Ghép đôi",d:"Luyện dịch",t:"Kiểm tra",dl:"Luyện dịch tổng hợp"}[type]+(ls?" "+ls:"")+" · HSK "+lv;
+ S.st.cnt++;if(rev)S.st.rev++;
+ touch(o);qday();const qk=rev?"rev":"ex",first=!S.done[key];S.q.k[qk][key]=1;S.q.p[qk]=Object.keys(S.q.k[qk]).length;S.best[key]=Math.max(S.best[key]||0,pct);
+ if(!S.done[key]){S.done[key]=Date.now();grant(o,rev?15:10,rev?8:5,nm+": hoàn thành",key)}
+ if(pct>=80&&!S.done["hi:"+key]){S.done["hi:"+key]=Date.now();grant(o,5,3,nm+": đạt từ 80%","hi:"+key)}
+ if(pct>=100&&!S.done["pf:"+key]){S.done["pf:"+key]=Date.now();grant(o,5,3,nm+": đạt 100%","pf:"+key)}
+ if(!first&&pct>=60){const r=S.rp.d==today()?S.rp:(S.rp={d:today(),n:0,x:0,l:0,k:{}});if(!r.k[key]&&r.n<5&&r.x<10&&r.l<5){r.k[key]=1;r.n++;r.x+=2;r.l+=1;grant(o,2,1,"Ôn lại "+nm,"replay:"+key)}}
+ if(!rev&&["q","m","d"].every(x=>S.done[x+":"+lv+":"+ls])&&!S.done["ls:"+lv+":"+ls]){S.done["ls:"+lv+":"+ls]=Date.now();grant(o,20,10,"Hoàn thành toàn bộ bài tập Bài "+ls,"ls:"+lv+":"+ls)}
+ qchk(o);o.minor=o.lines.length==1&&o.lines[0].startsWith("Ôn lại");return fin(o);
+}
+function buy(id){const it=IM[id];if(!it)return{ok:0,msg:"Vật phẩm không tồn tại"};if(it.cat!="food"&&S.inv[id])return{ok:0,msg:"Bạn đã sở hữu vật phẩm này"};if(S.xp<(it.xp||0))return{ok:0,msg:"Chưa đủ XP để mở khóa"};if(S.leaf<it.price)return{ok:0,msg:"Chưa đủ lá trúc"};S.leaf-=it.price;S.inv[id]=(S.inv[id]||0)+1;S.led.unshift({ts:Date.now(),key:"buy:"+id,xp:0,lf:-it.price,note:"Mua "+it.vi});save();return{ok:1}}
+function equip(id){const it=IM[id];if(!S.inv[id]||!it.slot)return;if(S.eq[it.slot]==id)delete S.eq[it.slot];else S.eq[it.slot]=id;save()}
+function placeToggle(id){if(!S.inv[id])return;S.place[id]=!S.place[id];save()}
+function feed(id){if(!(S.inv[id]>0))return 0;S.inv[id]--;S.st.care++;fin(newOut());return 1}
+function addSec(n){qday();S.q.p.sec=(S.q.p.sec||0)+n;const o=newOut();o.kind="quest";qchk(o);if(o.lines.length){fin(o);return o}return null}
+/*ENDENGINE*/
+const PGN={panda:"Ngôi nhà gấu trúc",shop:"Cửa hàng",ach:"Thành tựu",ledger:"Lịch sử thưởng"};
+Object.assign(IP,{leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',bag:'<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>',home:'<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',award:'<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',mute:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>',list:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r=".5"/><circle cx="3.5" cy="12" r=".5"/><circle cx="3.5" cy="18" r=".5"/>',lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>'});
+const OUT={hanfu:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#c8102e"/><path d="M86 112l14 24 14-24" fill="none" stroke="#f5c542" stroke-width="3.5"/><rect x="64" y="150" width="72" height="7" fill="#f5c542"/>',school:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#2b4a9b"/><path d="M87 112l13 18 13-18z" fill="#fff"/><path d="M97 130h6l2 16-5 5-5-5z" fill="#c8102e"/>',winter:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#2f8f5b"/><path d="M66 138h68M68 154h64" stroke="#59b884" stroke-width="3"/><rect x="82" y="110" width="36" height="9" rx="4" fill="#59b884"/>',summer:'<path d="M61 126l13-12q26 9 52 0l13 12-7 13-9-5 2 38q-26 8-52 0l2-38-9 5z" fill="#ffd24a"/><path d="M78 150h44" stroke="#f5a300" stroke-width="3"/>',special:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#f2b611" stroke="#b3141f" stroke-width="2"/><circle cx="100" cy="146" r="12" fill="#c8102e" stroke="#fff3b0" stroke-width="2"/><path d="M86 112l14 22 14-22" fill="none" stroke="#b3141f" stroke-width="3"/>'};
+const HD={glasses:'<g fill="rgba(255,255,255,.3)" stroke="#3a1c12" stroke-width="3"><circle cx="84" cy="80" r="12"/><circle cx="116" cy="80" r="12"/><path d="M96 80h8" fill="none"/></g>',hat:'<path d="M68 58q32-32 64 0z" fill="#c8102e"/><rect x="64" y="55" width="72" height="7" rx="3" fill="#f5c542"/><circle cx="100" cy="30" r="5" fill="#f5c542"/>',bow:'<g fill="#ff7ba5"><path d="M134 56l17-9v19z"/><path d="M134 56l-17-9v19z"/><circle cx="134" cy="56" r="4.5"/></g>'};
+const CAP='<path d="M64 52l36-17 36 17-36 17z" fill="#2b2b3a"/><path d="M82 60v13q18 9 36 0V60" fill="#3b3b52"/><path d="M134 52v19" stroke="#f5c542" stroke-width="3"/><circle cx="134" cy="72" r="4" fill="#f5c542"/>';
+function PSTAR(lv){const n=lv==5?starsOf(S.xp):0;let s="";for(let i=0;i<n;i++)s+=`<polygon transform="translate(${100+(i-(n-1)/2)*26} 14)" points="0,-9 2.6,-3 9,-2.8 4,1.6 5.6,8 0,4.5 -5.6,8 -4,1.6 -9,-2.8 -2.6,-3" fill="#f5c542" stroke="#b3861d" stroke-width="1"/>`;return s}
+function PD(lv,eq,cls,at,vb){
+ eq=eq||{};const sc=[.66,.8,.92,1,1.06][lv-1],hs=[1.18,1.08,1,1,1][lv-1],dk="#2b2b2b";
+ const L1='<rect x="136" y="92" width="9" height="86" rx="3" fill="#6cc24a"/><path d="M136 118h9M136 144h9" stroke="#3d8f2a" stroke-width="2"/><path d="M145 104q16-2 20-12-14 0-20 12zM136 130q-16-2-20-12 14 0 20 12z" fill="#4fa83a"/>';
+ const L3='<circle cx="158" cy="164" r="15" fill="#e0433a" stroke="#8a1c14" stroke-width="2"/><path d="M144 160q14 8 28 0M158 150v28" stroke="#fff" stroke-width="2.5" fill="none"/>';
+ const L4='<path d="M70 130l30 6 30-6v34l-30 6-30-6z" fill="#fff" stroke="#8a4a1c" stroke-width="2.5"/><path d="M100 136v34M78 142l16 3M78 150l16 3M106 145l16-3M106 153l16-3" stroke="#9a8a7a" stroke-width="2"/>';
+ const L5='<path d="M90 112l10 18 10-18" fill="none" stroke="#c8102e" stroke-width="5"/><circle cx="100" cy="137" r="9" fill="#f5c542" stroke="#b3861d" stroke-width="2"/><path d="M100 131l2 4 4 .5-3 3 1 4-4-2-4 2 1-4-3-3 4-.5z" fill="#fff3b0"/>';
+ const ar=lv==2?58:18,tilt=lv==2?-5:0;
+ return`<svg viewBox="${vb||"0 0 200 200"}" class="pd ${cls||""}" ${at||""}><ellipse cx="100" cy="188" rx="${46*sc}" ry="6" fill="#000" opacity=".13"/><g transform="translate(100 186) scale(${sc}) translate(-100 -186)"><g class="pdb">`
+ +(lv==1?L1:"")+`<ellipse cx="78" cy="172" rx="15" ry="11" fill="${dk}"/><ellipse cx="122" cy="172" rx="15" ry="11" fill="${dk}"/>`+(lv==3?L3:"")
+ +`<ellipse cx="100" cy="140" rx="42" ry="38" fill="#fff" stroke="${dk}" stroke-width="2.5"/>`+(OUT[eq.outfit]||"")+(lv==4?L4:"")+(lv==5&&!eq.outfit?L5:"")
+ +`<ellipse cx="62" cy="136" rx="11" ry="24" transform="rotate(${ar} 62 136)" fill="${dk}"/><ellipse cx="138" cy="136" rx="11" ry="24" transform="rotate(${-ar} 138 136)" fill="${dk}"/>`
+ +(eq.bag?'<path d="M78 118l-6 38M122 118l6 38" stroke="#8a4a1c" stroke-width="6" stroke-linecap="round"/><rect x="134" y="132" width="24" height="30" rx="6" fill="#d97a2b" stroke="#8a4a1c" stroke-width="2"/>':"")
+ +(eq.fan?FAN:"")+`<g transform="rotate(${tilt} 100 110)"><g transform="translate(100 80) scale(${hs}) translate(-100 -80)"><circle cx="72" cy="48" r="13" fill="${dk}"/><circle cx="128" cy="48" r="13" fill="${dk}"/><circle cx="100" cy="80" r="38" fill="#fff" stroke="${dk}" stroke-width="2.5"/><ellipse cx="84" cy="80" rx="10" ry="13" transform="rotate(-22 84 80)" fill="${dk}"/><ellipse cx="116" cy="80" rx="10" ry="13" transform="rotate(22 116 80)" fill="${dk}"/><circle cx="85" cy="78" r="4" fill="#fff"/><circle cx="115" cy="78" r="4" fill="#fff"/><circle cx="86" cy="79" r="2" fill="${dk}"/><circle cx="114" cy="79" r="2" fill="${dk}"/><ellipse cx="100" cy="92" rx="6" ry="4.5" fill="${dk}"/><path d="M93 99q7 6 14 0" stroke="${dk}" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="70" cy="95" r="6" fill="#ff9aa8" opacity=".6"/><circle cx="130" cy="95" r="6" fill="#ff9aa8" opacity=".6"/>`
+ +(lv==2?'<path d="M100 42q4-16 22-18-2 16-22 18z" fill="#4fa83a"/>':"")+(lv==5&&!eq.hat?CAP:"")+(HD[eq.hat&&"hat"]||"")+(HD[eq.bow&&"bow"]||"")+(HD[eq.glasses&&"glasses"]||"")+(HD[eq.pin&&"pin"]||"")+`</g></g>`
+ +(eq.scarf?'<path d="M68 114q32 16 64 0l2 12q-34 16-68 0z" fill="#e8403a"/><rect x="114" y="122" width="13" height="30" rx="5" fill="#c8102e"/>':"")
+ +(lv==2?'<g fill="#f5c542"><path d="M40 70l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path d="M164 104l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g>':"")+PSTAR(lv)+`</g></g></svg>`;
+}
+const ART={bamboo:'<rect x="26" y="6" width="9" height="50" rx="3" fill="#6cc24a"/><path d="M26 22h9M26 38h9" stroke="#3d8f2a" stroke-width="2"/><path d="M35 14q14-2 18-10-12 0-18 10zM26 30q-14-2-18-10 12 0 18 10z" fill="#4fa83a"/>',
+apple:'<circle cx="30" cy="35" r="19" fill="#e23b3b"/><path d="M30 17q2-8 8-9" stroke="#6b3a1e" stroke-width="3" fill="none"/><path d="M34 15q8-6 14 0q-8 6-14 0z" fill="#4fa83a"/><ellipse cx="22" cy="28" rx="4" ry="6" fill="#fff" opacity=".35"/>',
+carrot:'<path d="M16 22q32-14 30 0-4 20-26 34-10-18-4-34z" fill="#f28c28"/><path d="M40 18q6-12 14-12M42 22q12-4 14-10" stroke="#4fa83a" stroke-width="4" stroke-linecap="round" fill="none"/>',
+baozi:'<ellipse cx="30" cy="36" rx="22" ry="17" fill="#fff6e0" stroke="#e0c590" stroke-width="2"/><path d="M30 20q-4 6 0 10q4-4 0-10M22 24q-2 6 3 8M38 24q2 6-3 8" stroke="#e0c590" stroke-width="2" fill="none"/>',
+jiaozi:'<path d="M6 38q24-34 48 0q-24 14-48 0z" fill="#fff6e0" stroke="#e0c590" stroke-width="2"/><path d="M14 34q16-14 32 0M18 38q12-8 24 0" stroke="#e0c590" stroke-width="2" fill="none"/>',
+r_lantern:'<path d="M30 0v8" stroke="#8a4a1c" stroke-width="2"/><rect x="24" y="6" width="12" height="4" fill="#f5c542"/><ellipse cx="30" cy="26" rx="18" ry="16" fill="#d7263d"/><path d="M30 10v32M20 12q-6 14 0 28M40 12q6 14 0 28" stroke="#a31c2e" stroke-width="2" fill="none"/><rect x="24" y="40" width="12" height="4" fill="#f5c542"/><path d="M30 44v10M26 44v8M34 44v8" stroke="#f5c542" stroke-width="2"/>',
+r_desk:'<rect x="4" y="24" width="52" height="6" rx="2" fill="#a6652d"/><rect x="8" y="30" width="5" height="26" fill="#8a4a1c"/><rect x="47" y="30" width="5" height="26" fill="#8a4a1c"/><rect x="16" y="14" width="18" height="10" fill="#fff" stroke="#c9a46b"/><rect x="38" y="16" width="10" height="8" rx="2" fill="#2b4a9b"/>',
+r_shelf:'<rect x="6" y="2" width="48" height="56" rx="3" fill="#a6652d"/><rect x="10" y="6" width="40" height="22" fill="#7a431d"/><rect x="10" y="32" width="40" height="22" fill="#7a431d"/><rect x="13" y="10" width="6" height="18" fill="#d7263d"/><rect x="21" y="13" width="6" height="15" fill="#2b4a9b"/><rect x="29" y="9" width="6" height="19" fill="#f5c542"/><rect x="37" y="12" width="7" height="16" fill="#3f9b5a"/><rect x="13" y="38" width="8" height="16" fill="#8a4ad0"/><rect x="23" y="36" width="6" height="18" fill="#d7263d"/><rect x="31" y="40" width="8" height="14" fill="#2b4a9b"/>',
+r_art:'<rect x="12" y="4" width="36" height="52" rx="2" fill="#fff8e6" stroke="#a6652d" stroke-width="3"/><rect x="8" y="2" width="44" height="4" rx="2" fill="#a6652d"/><rect x="8" y="54" width="44" height="4" rx="2" fill="#a6652d"/><path d="M22 16h16M30 14v14M22 26h16M24 36q6 8 12 0M30 34v12" stroke="#222" stroke-width="3" stroke-linecap="round" fill="none"/>',
+r_pot:'<path d="M16 38h28l-4 18H20z" fill="#c26a3a"/><rect x="14" y="34" width="32" height="6" rx="2" fill="#a8532a"/><path d="M26 34V8M34 34V14" stroke="#6cc24a" stroke-width="5" stroke-linecap="round"/><path d="M26 18q-12-2-14-10M34 24q12-2 14-10M26 26q-10 0-12-6" stroke="#4fa83a" stroke-width="4" fill="none" stroke-linecap="round"/>',
+r_window:'<rect x="6" y="6" width="48" height="48" rx="4" fill="#a31c2e"/><rect x="12" y="12" width="36" height="36" fill="#bfe6ff"/><path d="M12 30h36M30 12v36" stroke="#a31c2e" stroke-width="3"/><circle cx="30" cy="30" r="9" fill="none" stroke="#a31c2e" stroke-width="3"/>',
+g_bamboo:'<path d="M16 58V8M30 58V2M44 58V12" stroke="#6cc24a" stroke-width="7" stroke-linecap="round"/><path d="M16 20q-12-4-14-12M30 12q12-2 18-10M44 26q10-4 14-12M30 34q-12-2-18-10" stroke="#4fa83a" stroke-width="4" fill="none" stroke-linecap="round"/>',
+g_pond:'<ellipse cx="30" cy="38" rx="28" ry="14" fill="#5fb7e8" stroke="#3d8fc0" stroke-width="2"/><ellipse cx="24" cy="35" rx="10" ry="3" fill="#fff" opacity=".35"/><path d="M34 40q6-6 12 0q-6 6-12 0z" fill="#f28c28"/><path d="M46 40l5-4v8z" fill="#f28c28"/>',
+g_bridge:'<path d="M2 40q28-34 56 0" stroke="#a31c2e" stroke-width="7" fill="none"/><path d="M6 36v14M54 36v14M30 20v14" stroke="#7a1522" stroke-width="3"/><rect x="2" y="42" width="56" height="5" fill="#8a4a1c"/>',
+g_lantern:'<rect x="22" y="48" width="16" height="8" fill="#9aa0a6"/><rect x="26" y="30" width="8" height="18" fill="#b5bbc1"/><rect x="18" y="16" width="24" height="16" rx="2" fill="#f5c542"/><path d="M12 16l18-12 18 12z" fill="#7b8087"/>',
+g_rock:'<path d="M2 56l16-30 8 10 10-26 20 46z" fill="#8f979e"/><path d="M36 10l-6 14 8 4z" fill="#b8c0c7"/><path d="M18 26l-4 10 10 2z" fill="#a8b0b7"/>',
+g_lotus:'<ellipse cx="30" cy="48" rx="26" ry="8" fill="#5fb7e8"/><ellipse cx="22" cy="46" rx="12" ry="5" fill="#4fa83a"/><path d="M34 44q-18-10-16-22 14 6 16 22zM34 44q18-10 16-22-14 6-16 22z" fill="#ff6f9f"/><path d="M34 44q-8-20 0-32 8 12 0 32z" fill="#ff8fb5"/>'};
+const POS={r_lantern:[22,4,1],r_art:[150,4,1.1],r_window:[268,12,1.4],r_shelf:[4,84,1.5],r_desk:[262,110,1.2],r_pot:[84,150,.8],g_bamboo:[4,66,1.7],g_lantern:[304,76,.9],g_rock:[262,100,1.3],g_pond:[20,158,1.3],g_bridge:[40,136,1.1],g_lotus:[258,170,.9]};
+const BG={room:'<rect width="360" height="230" fill="#f6e3c0"/><rect y="140" width="360" height="90" fill="#c58f5a"/><path d="M0 140h360" stroke="#a6713f" stroke-width="3"/><path d="M0 170h360M0 200h360M60 140l-30 90M150 140l-20 90M240 140l20 90M330 140l30 90" stroke="#b07a46" stroke-width="1.5" opacity=".6"/>',garden:'<rect width="360" height="230" fill="#d9f0ff"/><ellipse cx="80" cy="30" rx="30" ry="9" fill="#fff"/><ellipse cx="250" cy="44" rx="26" ry="8" fill="#fff"/><path d="M0 130l50-52 40 40 50-62 60 72 60-50 100 62v-40H0z" fill="#b9d7c9"/><rect y="140" width="360" height="90" fill="#8fd16a"/><path d="M0 140h360" stroke="#6bb84a" stroke-width="3"/>'};
+function scene(kind){
+ const pl=IT.filter(i=>i.cat==kind&&S.place[i.id]).map(i=>{const p=POS[i.id];return`<g transform="translate(${p[0]} ${p[1]}) scale(${p[2]})">${ART[i.id]}</g>`}).join("");
+ return`<div class="scene"><svg viewBox="0 0 360 230" class="sc">${BG[kind]}${pl}${PD(S.lvl,S.eq,"idle",'id="pdh" x="110" y="84" width="140" height="140"')}</svg><div class="fxl" id="fx"></div></div>`;
+}
+const thumb=i=>i.slot?PD(S.lvl,{[i.slot]:i.id},"","","20 10 160 180"):`<svg viewBox="0 0 60 60">${ART[i.id]}</svg>`;
+let tt,MQ=[],MO=0,AX,lastAct=Date.now();
+const PG={},H={t:"feed"},SH={c:"food"};
+function toast(m,bad){let t=$("#toast");if(!t){t=document.createElement("div");t.id="toast";document.body.appendChild(t)}t.textContent=m;t.className="toast show"+(bad?" bad":"");clearTimeout(tt);tt=setTimeout(()=>t.className="toast",2600)}
+function sfx(k){if(!S.snd)return;try{AX=AX||new(window.AudioContext||window.webkitAudioContext)();const q={coin:[[880,.08],[1320,.14]],ok:[[660,.1]],buy:[[660,.08],[990,.12]],bad:[[220,.18]],up:[[523,.1],[659,.1],[784,.1],[1046,.25]]}[k];let t=AX.currentTime;q.forEach(([f,d])=>{const o=AX.createOscillator(),g=AX.createGain();o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(.07,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AX.destination);o.start(t);o.stop(t+d);t+=d*.9})}catch(e){}}
+const confetti=()=>Array.from({length:30},(_,i)=>`<span class="cf" style="left:${Math.random()*100}%;background:${["#c8102e","#f5c542","#2f8f5b","#2b4a9b","#ff7ba5"][i%5]};animation-delay:${Math.random()}s"></span>`).join("");
+function modal(h,cf){MQ.push([h,cf]);if(!MO)mnext()}
+function mnext(){const m=MQ.shift();let e=$("#ov");if(!m){MO=0;if(e)e.remove();return}MO=1;if(!e){e=document.createElement("div");e.id="ov";e.className="ov";document.body.appendChild(e)}e.innerHTML=`<div class="mc" role="dialog">${m[0]}<div class="rw"><button class="pri" onclick="mnext()">Tiếp tục</button></div></div>`+(m[1]?confetti():"")}
+const hw=()=>{const e=$("#hw");if(e)e.innerHTML=IC("leaf")+" "+S.leaf};
+function showOut(o){
+ hw();
+ if(o.minor){toast("Ôn lại: +"+o.xp+" XP, +"+o.lf+" lá trúc");sfx("ok")}else if(o.xp||o.lf){
+  const t={ex:["练习完成！","Hoàn thành bài tập"],rev:["复习完成！","Hoàn thành bài ôn tập"],quest:["任务完成！","Hoàn thành nhiệm vụ"],water:["竹子长大了！","Cây trúc lên giai đoạn mới"]}[o.kind];
+  modal(`<div class="pdw">${PD(S.lvl,S.eq,"jump")}</div><h2 class="hz" style="margin:6px 0">${t[0]}</h2><p class="qh">${t[1]}</p><p><b>你获得了：</b></p><div class="chips2"><span>+${o.xp} 成长值 (XP)</span><span>+${o.lf} 竹叶 (lá trúc)</span></div><div class="qh" style="text-align:left;margin-top:8px">${o.lines.map(l=>"• "+l).join("<br>")}</div><p>熊猫开心地跳了起来！</p>`);sfx("coin");
+ }else if(o.kind!="quest"&&!o.ach.length&&!o.up)toast("Bạn đã nhận thưởng bài này rồi. Kết quả mới vẫn được ghi nhận.");
+ if(o.ach.length){modal(`<h2 class="hz" style="margin:6px 0">恭喜你，获得新成就！</h2><p class="qh">Bạn vừa mở khóa thành tựu mới</p>`+o.ach.map(a=>`<div class="box" style="text-align:left">${IC("award")} ${a}</div>`).join(""));sfx("ok")}
+ if(o.star){modal(`<div class="pdw">${PD(5,S.eq,"jump")}</div><h2 class="hz" style="margin:6px 0">恭喜你！熊猫又得一颗星！</h2><p class="qh">Gấu trúc chuyên gia đạt ${o.star} sao</p>`,1);sfx("up")}
+ if(o.up){modal(`<div class="pdw">${PD(o.up,S.eq,"jump")}</div><h2 class="hz" style="margin:6px 0">恭喜你！熊猫升级啦！</h2><p><b>${PN[o.up-1][0]}</b><br><span class="qh">${PN[o.up-1][1]} · Cấp ${o.up}</span></p>`,1);sfx("up")}
+}
+function hook(type,pct,n){const r=route(),lv=r.lv||1,ls=type=="t"?n:type=="dl"?0:r.ls,o=award(type,lv,ls,pct);if(o)showOut(o)}
+function tick(){if(!document.hidden&&Date.now()-lastAct<60000){const o=addSec(5);if(o)showOut(o)}}
+["pointerdown","keydown","scroll"].forEach(e=>addEventListener(e,()=>{lastAct=Date.now()},{passive:true}));
+let tk=0;setInterval(()=>{tick();if(++tk%6==0)save()},5000);
+addEventListener("pagehide",save);document.addEventListener("visibilitychange",()=>{if(document.hidden)save()});
+function route(){const h=location.hash.slice(1);if(/^(panda|shop|ach|ledger|garden|pets|comm|honor)$/.test(h))return{lv:0,ls:0,tab:"v",pg:h};let m=/^hsk(\d)-t(\d)$/.exec(h);if(m)return{lv:+m[1],ls:0,tab:"v",t:+m[2]};if(/^hsk\d-d$/.test(h))return{lv:+h[3],ls:0,tab:"v",d:1};m=/^hsk(\d)(?:-l(\d+))?(?:-([vgqmd]))?$/.exec(h);return m?{lv:+m[1],ls:m[2]?+m[2]:0,tab:m[3]||"v"}:{lv:0,ls:0,tab:"v"}}
+function up(){const r=route();location.hash=(r.ls||r.t||r.d)?"hsk"+r.lv:""}
+function render(){
+ const r=route(),Ls=D[r.lv],L=Ls&&Ls[r.ls];
+ $("#back").style.display=(r.lv||r.pg)?"block":"none";
+ $("#crumb").textContent=r.pg?PGN[r.pg]:r.lv?"HSK "+r.lv+(L?" › Bài "+r.ls:r.t?" › Kiểm tra "+r.t:r.d?" › Luyện dịch":""):"";
+ const A=$("#app");A.style.animation="none";A.offsetWidth;A.style.animation="";hw();
+ if(r.pg)PG[r.pg]();else if(!r.lv)home();else if(!S.levels.includes(r.lv))locked(r.lv);else if(!Ls)soon(r.lv);else if(r.d&&r.lv==1)xlevel();else if(r.t&&r.lv==1&&TR[r.t-1])tintro(r.t);else if(!L)lessons(r.lv);else lesson(r,L);
+ window.scrollTo(0,0);bgmSync();
+}
+function locked(n){$("#app").innerHTML=`<div class="soon">${IC("lock")}Bạn chưa đăng ký HSK ${n} trên thiết bị này.<br><button class="pri" style="margin-top:12px" onclick="tgl(${n});location.hash='hsk${n}'">Đăng ký HSK ${n}</button></div>`}
+function tgl(n){const i=S.levels.indexOf(n);if(i>=0){if(S.levels.length<2){toast("Cần giữ ít nhất một khóa học",1);return}S.levels.splice(i,1)}else S.levels.push(n);S.levels.sort();save();if(!route().lv)render()}
+function setName(k,v){S[k]=v.replace(/[<>&"]/g,"").trim().slice(0,24)||(k=="name"?"我的熊猫":"");save()}
+function home(){
+ const lv=S.lvl,cu=LVX[lv-1],nx=LVX[lv],st=starsOf(S.xp),TS=[900,1400,1900,2400],pc=lv>=5?(st>=3?100:Math.round((S.xp-TS[st])/500*100)):Math.round((S.xp-cu)/(nx-cu)*100),nt=lv>=5?(st>=3?"Đã đạt cấp cao nhất · 3 sao":S.xp+" / "+TS[st+1]+" XP để được sao "+(st+1)):S.xp+" / "+nx+" XP để lên cấp "+(lv+1),own=Object.keys(S.inv).filter(k=>S.inv[k]>0).length;qday();
+ const cs=S.levels.map(n=>{const c=D[n]?Object.keys(D[n]).length:0,d=Object.keys(S.done).filter(k=>k.startsWith("q:"+n+":")||k.startsWith("m:"+n+":")||k.startsWith("d:"+n+":")).length,p=c?Math.round(d/(c*3)*100):0;
+  return c?`<a class="cd lc" href="#hsk${n}"><div class="z hz">${LV[n-1][0]}</div><b>HSK ${n}</b><div class="bar"><i style="width:${p}%"></i></div><small>${p}% bài tập · ${c} bài</small></a>`:`<div class="cd lc off"><div class="z hz">${LV[n-1][0]}</div><b>HSK ${n}</b><small>Sắp ra mắt</small></div>`}).join("");
+ const qs=QS.map(q=>{const p=Math.min(S.q.p[q.m]||0,q.need),dn=S.q.c[q.id],lab=q.m=="sec"?Math.floor(p/60)+"/10 phút":p+"/"+q.need;return`<div class="qr ${dn?"dn":""}"><div><b class="hz">${q.zh}</b> <small>${q.vi}</small><div class="bar"><i style="width:${p/q.need*100}%"></i></div></div><div class="qrr"><small>${dn?"Đã xong":lab}</small><small>+${q.xp} XP · +${q.lf} lá</small></div></div>`}).join("");
+ const ac=AC.map(a=>`<div class="bd ${S.ach[a[0]]?"":"lk"}" title="${a[2]}">${IC(S.ach[a[0]]?"award":"lock")}<b class="hz">${a[1]}</b></div>`).join("");
+ $("#app").innerHTML=`<div class="hero"><h1 class="hz" style="font-size:clamp(24px,5vw,34px)">我的学习空间</h1><p>Không gian học tập của tôi · 每天学一点，熊猫长一点。</p></div>
+<div class="nav2"><a href="#panda">${IC("home")} Ngôi nhà</a><a href="#shop">${IC("bag")} Cửa hàng</a><a href="#garden">${IC("leaf")} Khu vườn</a><a href="#pets">${IC("heart")} Thú nuôi</a><a href="#comm">${IC("award")} Cộng đồng</a><a href="#ach">${IC("award")} Thành tựu</a><a href="#ledger">${IC("list")} Lịch sử</a><button onclick="S.snd=S.snd?0:1;save();render()">${IC(S.snd?"speaker":"mute")} Hiệu ứng âm thanh: ${S.snd?"Bật":"Tắt"}</button><span class="mus">${musIn()}</span></div>
+<div class="dash"><section class="cd pc"><div class="pdw big">${PD(lv,S.eq,"idle")}</div><input class="inp sm" value="${S.name}" maxlength="24" onchange="setName('name',this.value)" aria-label="Tên gấu trúc"><div><b class="hz">${PN[lv-1][0]}</b> <small>${PN[lv-1][1]} · Cấp ${lv}/5${st?" · "+st+" sao":""}</small></div><div class="bar"><i style="width:${pc}%"></i></div><small>${nt}</small><div class="rw"><a class="pri" href="#panda">Chăm sóc</a><a class="sw" href="#panda" onclick="H.t='wear'">Thay trang phục</a></div></section>
+<section class="cd"><h3>Học viên</h3><input class="inp sm" placeholder="Tên của bạn" value="${S.nick}" maxlength="24" onchange="setName('nick',this.value)"><div class="stats"><div><b>${S.xp}</b><small>Tổng XP</small></div><div><b>${S.leaf}</b><small>Lá trúc</small></div><div><b>${own}</b><small>Vật phẩm</small></div><div><b>${S.st.run}</b><small>Ngày liên tiếp</small></div></div></section>
+<section class="cd wide"><h3>我的课程 · Khóa học của tôi</h3><div class="grid4">${cs}</div><div class="mg2"><small>Đăng ký khóa học trên thiết bị này:</small>${[1,2,3,4].map(n=>`<button class="tg3 ${S.levels.includes(n)?"on":""}" onclick="tgl(${n})">HSK ${n}</button>`).join("")}</div></section>
+<section class="cd"><h3>今日任务 · Nhiệm vụ hôm nay</h3>${qs}<small class="qh">Nhiệm vụ chỉ tính bài tập thuộc các khóa học bạn đã đăng ký.</small></section>
+<section class="cd"><h3>我的成就 · Thành tựu</h3><div class="bds">${ac}</div><a class="sw" href="#ach">Xem tất cả</a></section></div>
+<p class="qh cen">Tiến độ được lưu trên thiết bị này. Đổi máy hoặc xóa dữ liệu trình duyệt sẽ mất tiến độ. Làm lại bài chỉ nhận thưởng ôn lại nhỏ (tối đa 10 XP và 5 lá mỗi ngày).</p>`;
+}
+function fxSpawn(t){const f=$("#fx");if(!f)return;const sv={heart:'<svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.5-8 11-8 11z" fill="#ff5a7a"/></svg>',bubble:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#e8f6ff" stroke="#5fb7e8" stroke-width="2"/></svg>',star:'<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" fill="#f5c542"/></svg>'}[t];f.innerHTML=Array.from({length:7},(_,i)=>`<i style="left:${30+Math.random()*40}%;animation-delay:${i*.12}s">${sv}</i>`).join("");setTimeout(()=>{f.innerHTML=""},2200)}
+function act(k,id){
+ if(k=="feed"){if(!feed(id)){toast("Hết thức ăn, hãy mua thêm ở cửa hàng",1);sfx("bad");return}}
+ else{S.st.care++;const o=fin(newOut());if(o.ach.length)showOut(o)}
+ sfx("ok");const p=$("#pdh");if(p){p.classList.remove("idle","jump","wig");p.classList.add(k=="feed"?"jump":"wig");setTimeout(()=>{p.classList.remove("jump","wig");p.classList.add("idle")},1600)}
+ fxSpawn(k=="feed"?"heart":k=="bath"?"bubble":"star");$("#hb").innerHTML=hbody();
+}
+function wr(id,t){equip(id);PG.panda()}
+function pl(id){placeToggle(id);PG.panda()}
+const HT=[["feed","Cho ăn"],["play","Chơi"],["bath","Tắm"],["wear","Thay đồ"],["room","Phòng"],["garden","Vườn"]];
+function hbody(){
+ const t=H.t,own=c=>IT.filter(i=>i.cat==c&&S.inv[i.id]>0),empty='<p class="qh cen">Bạn chưa có vật phẩm nào ở mục này. <a href="#shop" style="color:var(--red);font-weight:700">Đến cửa hàng</a></p>';
+ if(t=="feed"){const f=own("food");return f.length?`<div class="grid2">${f.map(i=>`<div class="it"><div class="th">${thumb(i)}</div><b class="hz">${i.zh}</b><small>${i.vi} · còn ${S.inv[i.id]}</small><button class="sw" onclick="act('feed','${i.id}')">喂熊猫</button></div>`).join("")}</div>`:empty}
+ if(t=="play")return`<div class="cen"><p class="qh">Chơi cùng gấu trúc nào!</p><button class="pri" onclick="act('play')">陪熊猫玩</button></div>`;
+ if(t=="bath")return`<div class="cen"><p class="qh">Tắm thật sạch cho gấu trúc.</p><button class="pri" onclick="act('bath')">给熊猫洗澡</button></div>`;
+ if(t=="wear"){const w=own("outfit").concat(own("acc"));return(w.length?`<div class="grid2">${w.map(i=>`<div class="it"><div class="th">${thumb(i)}</div><b class="hz">${i.zh}</b><small>${i.vi}</small><button class="${S.eq[i.slot]==i.id?"sw on":"sw"}" onclick="wr('${i.id}')">${S.eq[i.slot]==i.id?"Tháo":"Mặc"}</button></div>`).join("")}</div>`:empty)}
+ const d=own(t);return d.length?`<div class="grid2">${d.map(i=>`<div class="it"><div class="th">${thumb(i)}</div><b class="hz">${i.zh}</b><small>${i.vi}</small><button class="${S.place[i.id]?"sw on":"sw"}" onclick="pl('${i.id}')">${S.place[i.id]?"Cất đi":"Đặt vào"}</button></div>`).join("")}</div>`:empty;
+}
+PG.panda=()=>{$("#app").innerHTML=`<h2 class="h2 hz">熊猫之家 <small style="font-size:14px;font-weight:500">Ngôi nhà gấu trúc</small></h2>`+'<div class="mus cen" style="margin-bottom:8px">'+musIn()+'</div>'+scene(H.t=="garden"?"garden":"room")+`<div class="tabs2">${HT.map(t=>`<button class="${H.t==t[0]?"on":""}" onclick="H.t='${t[0]}';PG.panda()">${t[1]}</button>`).join("")}</div><div id="hb">${hbody()}</div>`;bgmSync()};
+function bye(id){const it=IM[id],r=buy(id);if(!r.ok){toast(r.msg,1);sfx("bad");return}sfx("buy");toast("Đã mua "+it.vi);hw();PG.shop()}
+PG.shop=()=>{
+ const cs=[["food","Thức ăn"],["outfit","Trang phục"],["acc","Phụ kiện"],["room","Phòng"],["garden","Vườn"]];
+ $("#app").innerHTML=`<h2 class="h2 hz">竹叶商店 <small style="font-size:14px;font-weight:500">Cửa hàng</small></h2><div class="bal">${IC("leaf")} <b>${S.leaf}</b> lá trúc</div><div class="mus cen" style="margin-bottom:8px">${musIn()}</div><div class="tabs2">${cs.map(c=>`<button class="${SH.c==c[0]?"on":""}" onclick="SH.c='${c[0]}';PG.shop()">${c[1]}</button>`).join("")}</div><div class="grid2">${IT.filter(i=>i.cat==SH.c).map(i=>{const ow=i.cat!="food"&&S.inv[i.id];return`<div class="it"><div class="th">${thumb(i)}</div><b class="hz">${i.zh}</b><small>${i.vi}${i.cat=="food"?" · có "+(S.inv[i.id]||0):""}</small><div class="pr ${S.leaf<i.price&&!ow?"no":""}">${IC("leaf")} ${i.price}</div><button class="${ow?"sw":"pri"}" ${ow?"disabled":""} onclick="bye('${i.id}')">${ow?"Đã sở hữu":"Mua"}</button></div>`}).join("")}</div><p class="qh cen">Kiếm lá trúc bằng cách hoàn thành bài tập, ôn tập và nhiệm vụ mỗi ngày.</p>`;
+};
+PG.ach=()=>{$("#app").innerHTML=`<h2 class="h2 hz">成就系统 <small style="font-size:14px;font-weight:500">Thành tựu</small></h2><div class="grid2">${AC.map(a=>`<div class="it bd2 ${S.ach[a[0]]?"":"lk"}">${IC(S.ach[a[0]]?"award":"lock")}<b class="hz">${a[1]}</b><small>${a[2]}</small><small>${S.ach[a[0]]?"Đạt ngày "+new Date(S.ach[a[0]]).toLocaleDateString("vi-VN"):"Chưa mở khóa"}</small></div>`).join("")}</div>`};
+PG.ledger=()=>{$("#app").innerHTML=`<h2 class="h2">Lịch sử thưởng</h2><p class="qh">Ghi lại mọi lần cộng hoặc trừ XP và lá trúc (tối đa 500 dòng gần nhất).</p><div class="tw"><table class="lt"><tr><th>Thời gian</th><th>Nội dung</th><th>XP</th><th>Lá</th></tr>${S.led.length?S.led.slice(0,150).map(l=>`<tr><td>${new Date(l.ts).toLocaleString("vi-VN")}</td><td>${l.note}</td><td>${l.xp?"+"+l.xp:"–"}</td><td>${l.lf>0?"+"+l.lf:l.lf||"–"}</td></tr>`).join(""):'<tr><td colspan="4">Chưa có giao dịch nào.</td></tr>'}</table></div>`};
+
+const SC=[0,2,4,7,9];let BG1=null,bgT="",bgTimer=0;
+const MT={home:{b:84,r:72,w:"triangle",d:[1,.5,.5,1,2],rest:.2,a:.01,sus:1.1,bass:[48,45,41,43],bd:4,hi:0},house:{b:66,r:76,w:"sine",d:[.5,.5,.5,.5,1],rest:.12,a:.005,sus:1.6,bass:[48,45,48,43],bd:4,hi:1},garden:{b:72,r:62,w:"sine",d:[2,1.5,1,2],rest:.28,a:.12,sus:.95,bass:[50,47,45,50],bd:8,hi:0,vib:1},shop:{b:112,r:67,w:"triangle",d:[.5,.5,.5,1,.5],rest:.15,a:.005,sus:.6,bass:[43,48,45,50],bd:2,hi:0}};
+function bnote(mi,t,dur,type,a,v,vib){const o=AX.createOscillator(),g=AX.createGain();o.type=type;o.frequency.value=440*Math.pow(2,(mi-69)/12);if(vib){const l=AX.createOscillator(),lg=AX.createGain();l.frequency.value=5;lg.gain.value=5;l.connect(lg);lg.connect(o.detune);l.start(t);l.stop(t+dur+.2)}g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v*.5,t+a);g.gain.exponentialRampToValueAtTime(.0008,t+dur);o.connect(g);g.connect(BG1.g);o.start(t);o.stop(t+dur+.05)}
+function bgStep(){
+ if(!BG1)return;const m=MT[bgT],sb=60/m.b;
+ while(BG1.nt<AX.currentTime+.5){
+  const d=m.d[BG1.i++%m.d.length],t=BG1.nt,dur=d*sb;
+  if(BG1.beat<.001)bnote(m.bass[BG1.bar++%m.bass.length],t,m.bd*sb*.9,"sine",.05,.6);
+  if(Math.random()>m.rest){BG1.deg=Math.max(0,Math.min(9,BG1.deg+[-2,-1,-1,0,1,1,2][Math.random()*7|0]));bnote(m.r+SC[BG1.deg%5]+12*(BG1.deg/5|0),t,dur*m.sus,m.w,m.a,.7,m.vib)}
+  if(m.hi&&Math.random()<.5)bnote(m.r+12+SC[Math.random()*5|0],t+dur/2,sb*.6,"sine",.005,.25);
+  BG1.beat+=d;if(BG1.beat>=m.bd)BG1.beat-=m.bd;BG1.nt+=dur;
+ }
+}
+function bgmStop(quick){if(!BG1)return;clearInterval(bgTimer);const g=BG1.g;try{g.gain.cancelScheduledValues(AX.currentTime);g.gain.setValueAtTime(g.gain.value,AX.currentTime);g.gain.linearRampToValueAtTime(0,AX.currentTime+(quick?.4:.8))}catch(e){}setTimeout(()=>{try{g.disconnect()}catch(e){}},1000);BG1=null;bgT=""}
+function bgmStart(th){bgmStop(1);const g=AX.createGain();g.gain.value=0;g.connect(AX.destination);g.gain.linearRampToValueAtTime(S.vol*.5,AX.currentTime+1.2);BG1={g,nt:AX.currentTime+.1,i:0,deg:3,beat:0,bar:0};bgT=th;bgTimer=setInterval(bgStep,120)}
+function bgmSync(){
+ const r=route();let th=r.lv?"":r.pg=="garden"?"garden":r.pg=="panda"?"house":r.pg=="shop"?"shop":"home";
+ if(!S.mus||document.hidden)th="";
+ if(th==bgT)return;
+ if(!th){bgmStop();return}
+ try{AX=AX||new(window.AudioContext||window.webkitAudioContext)()}catch(e){return}
+ if(AX.state!="running"){AX.resume&&AX.resume().then(()=>bgmSync()).catch(()=>{});return}
+ bgmStart(th);
+}
+const musIn=()=>`<button onclick="musTog()">${IC(S.mus?"speaker":"mute")} Nhạc nền: ${S.mus?"Bật":"Tắt"}</button>${S.mus?`<input type="range" min="0" max="100" value="${Math.round(S.vol*100)}" oninput="setVol(this.value/100)" aria-label="Âm lượng nhạc nền">`:""}`;
+function musTog(){S.mus=S.mus?0:1;save();document.querySelectorAll(".mus").forEach(e=>{e.innerHTML=musIn()});if(S.mus)AX=AX||new(window.AudioContext||window.webkitAudioContext)();bgmSync()}
+function setVol(v){S.vol=v;if(BG1)BG1.g.gain.setTargetAtTime(v*.5,AX.currentTime,.05);save()}
+document.addEventListener("pointerdown",()=>{if(S.mus&&!BG1)bgmSync()},{passive:true});
+document.addEventListener("visibilitychange",()=>bgmSync());
+const _ti=tintro;
+tintro=function(n){_ti(n);const b=S.best["t:1:"+n];if(b!=null){const s=Math.round(b*30/100),t=TI.find(x=>s>=x[0]);$("#app").insertAdjacentHTML("afterbegin",`<div class="box" style="display:flex;align-items:center;gap:12px">${MD(t[1],44)}<div>Kết quả cao nhất: <b>${s}/30</b> · hạng <b>${t[2]}</b></div></div>`)}};
+
+render();
+
+</script>
+<script>
+/*ENGINE2*/
+const PETS=[["rabbit","小兔子","Thỏ trắng",150,40],["cat","小猫咪","Mèo con",300,60],["duck","小鸭子","Vịt con",500,80],["fox","小狐狸","Cáo nhỏ",750,100],["squirrel","小松鼠","Sóc",1000,130],["cub","小熊","Gấu nhỏ",1400,160],["dragon","小龙","Rồng con",1900,200],["koi","小锦鲤","Cá koi",2400,250]].map(a=>({id:a[0],zh:a[1],vi:a[2],xp:a[3],price:a[4]}));
+function petBuy(id){const p=PETS.find(x=>x.id==id);if(!p)return{ok:0,msg:"Thú nuôi không tồn tại"};if(S.pets[id])return{ok:0,msg:"Bạn đã có thú nuôi này"};if(S.xp<p.xp)return{ok:0,msg:"Chưa đủ XP để mở khóa"};if(S.leaf<p.price)return{ok:0,msg:"Chưa đủ lá trúc"};S.leaf-=p.price;S.pets[id]=Date.now();S.led.unshift({ts:Date.now(),key:"pet:"+id,xp:0,lf:-p.price,note:"Mua thú nuôi "+p.vi});save();return{ok:1}}
+function petPick(id){if(id===""||S.pets[id]){S.pet=id;save();return 1}return 0}
+const BST=[0,30,100,200,300],BSN=[["竹子种子","Hạt giống"],["小竹芽","Mầm trúc nhỏ"],["小竹苗","Cây trúc non"],["成长中的竹子","Cây trúc đang lớn"],["茂盛的竹子","Cây trúc xanh tốt"]];
+const bstage=p=>BST.filter(t=>p>=t).length;
+function water(){
+ const t=today();if(S.bam.last&&t<=S.bam.last)return{ok:0,msg:"Hôm nay bạn đã tưới cây rồi, hẹn bạn ngày mai nhé"};
+ const o=newOut();o.kind="water";S.bam.last=t;S.bam.n++;let g=10;if(S.bam.n%3==0)g+=5;if(S.bam.n%7==0)g+=10;
+ const s0=bstage(S.bam.pts);S.bam.pts+=g;S.bam.hist.unshift(t);if(S.bam.hist.length>60)S.bam.hist.length=60;const s1=bstage(S.bam.pts);
+ S.led.unshift({ts:Date.now(),key:"water:"+t,xp:0,lf:0,note:"Tưới cây trúc (+"+g+" điểm phát triển)"});
+ if(s1>s0&&!S.done["bs:"+s1]){S.done["bs:"+s1]=1;grant(o,20,10,"Cây trúc lên giai đoạn "+s1,"bamstage:"+s1)}
+ fin(o);return{ok:1,g,s0,s1,o};
+}
+const SOUTH=/^(Australia|Pacific\/(Auckland|Fiji)|America\/(Sao_Paulo|Argentina|Santiago|Lima|La_Paz|Montevideo|Asuncion)|Africa\/(Johannesburg|Maputo|Harare|Windhoek|Lusaka)|Indian\/(Antananarivo|Mauritius|Reunion))/;
+function hemi(){const h=S.ssn.hemi;if(h=="N"||h=="S")return h;try{return SOUTH.test(Intl.DateTimeFormat().resolvedOptions().timeZone)?"S":"N"}catch(e){return"N"}}
+function seasonOf(d,h){const s=["winter","winter","spring","spring","spring","summer","summer","summer","autumn","autumn","autumn","winter"][d.getMonth()];return h=="S"?{spring:"autumn",autumn:"spring",summer:"winter",winter:"summer"}[s]:s}
+const curSeason=()=>S.ssn.mode=="manual"?S.ssn.man:seasonOf(new Date(),hemi());
+Object.assign(POS,{g_table:[150,112,.9],g_gate:[96,60,1.2],g_fountain:[140,96,1],g_fence:[2,112,.9],g_path:[110,176,.7],g_pavilion:[168,56,1.4],i_swing:[190,112,1],r_bed:[92,106,1.2],r_lamp:[228,84,.9],r_rug:[120,176,1.3],r_toy:[62,160,.7],s_blossom:[8,70,1.4],s_umbrella:[160,130,.9],s_maple:[8,70,1.4],s_snowman:[200,140,.8]});
+[["g_table","garden","茶桌","Bàn trà",80,"",300],["g_gate","garden","月亮门","Cổng vườn",250,"",1000],["g_fountain","garden","喷泉","Đài phun nước",200,"",800],["g_fence","garden","篱笆","Hàng rào",40,"",150],["g_path","garden","石径","Đường đá",30,"",100],["g_pavilion","garden","中式亭子","Đình Trung Hoa",500,"",2000],["i_swing","garden","秋千","Xích đu",90,"",400],
+["r_bed","room","小床","Giường ngủ",50,"",150],["r_lamp","room","台灯","Đèn bàn",25,"",100],["r_rug","room","地毯","Thảm",40,"",200],["r_toy","room","玩具","Đồ chơi",15,"",50],
+["o_chef","outfit","厨师装","Áo đầu bếp",60,"outfit",400],["o_scholar","outfit","书生装","Áo thư sinh",70,"outfit",600],["o_festival","outfit","节日装","Trang phục lễ hội",110,"outfit",1000],["a_fan","acc","折扇","Quạt giấy",30,"fan",200],["a_pin","acc","发簪","Trâm cài",35,"pin",250],
+["s_blossom","garden","桃花树","Cây hoa đào",60,"",200,"spring"],["s_umbrella","garden","遮阳伞","Ô che nắng",60,"",200,"summer"],["s_maple","garden","枫树","Cây phong",60,"",200,"autumn"],["s_snowman","garden","雪人","Người tuyết",60,"",200,"winter"]].forEach(a=>{const o={id:a[0],cat:a[1],zh:a[2],vi:a[3],price:a[4],slot:a[5]||undefined,xp:a[6],sea:a[7]};IT.push(o);IM[o.id]=o});
+const SOL={g_rock:1,g_pond:1,g_bamboo:1,g_fountain:1,g_pavilion:1,g_table:1,s_blossom:1,s_maple:1,s_snowman:1};
+const isz=id=>60*(POS[id]||[0,0,1])[2];
+const lpos=id=>S.lay[id]||[(POS[id]||[150,120])[0],(POS[id]||[150,120])[1],0];
+function layoutOk(id,x,y,lay){const w=isz(id);if(x<0||y<10||x+w>360||y+w>230)return 0;for(const k in S.place){if(k==id||!S.place[k]||!IM[k]||IM[k].cat!="garden")continue;const p=(lay&&lay[k])||lpos(k),w2=isz(k),ox=Math.min(x+w,p[0]+w2)-Math.max(x,p[0]),oy=Math.min(y+w,p[1]+w2)-Math.max(y,p[1]);if(ox>0&&oy>0&&ox*oy>.35*Math.min(w*w,w2*w2))return 0}return 1}
+function b64(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o))))}
+function shareCode(){const g=IT.filter(i=>i.cat=="garden"&&S.place[i.id]).map(i=>{const p=lpos(i.id);return[i.id,Math.round(p[0]),Math.round(p[1]),p[2]?1:0]});return b64({n:S.prof.name||"Bạn học",l:S.lvl,s:starsOf(S.xp),e:S.eq,p:S.pet,b:bstage(S.bam.pts),se:curSeason(),g,a:Object.keys(S.ach).length})}
+function readCode(c){try{const o=JSON.parse(decodeURIComponent(escape(atob(String(c).trim()))));const eq={};for(const k in(o.e||{})){const it=IM[o.e[k]];if(it&&it.slot==k)eq[k]=it.id}const num=(v,a,b)=>Math.max(a,Math.min(b,Math.round(+v)||a));return{name:String(o.n||"Bạn học").replace(/[<>&"]/g,"").slice(0,24),lvl:num(o.l,1,5),stars:num(o.s,0,3),eq,pet:PETS.some(p=>p.id==o.p)?o.p:"",st:num(o.b,1,5),se:SE[o.se]?o.se:"spring",items:(Array.isArray(o.g)?o.g:[]).filter(a=>IM[a[0]]&&IM[a[0]].cat=="garden").slice(0,40).map(a=>[a[0],num(a[1],0,300),num(a[2],10,220),a[3]?1:0]),ach:num(o.a,0,99)}}catch(e){return null}}
+const SE={spring:{sky:"#e6f5ff",gr:"#9ad66e",ln:"#7cc055",mt:"#c3dccd",zh:"春天",vi:"Mùa xuân"},summer:{sky:"#bfe8ff",gr:"#6fc24a",ln:"#52a836",mt:"#a9cfae",zh:"夏天",vi:"Mùa hè"},autumn:{sky:"#ffe8cc",gr:"#c8b455",ln:"#a8943c",mt:"#d9b98f",zh:"秋天",vi:"Mùa thu"},winter:{sky:"#e4eef7",gr:"#f3f7fb",ln:"#cfdbe6",mt:"#cfd9e3",zh:"冬天",vi:"Mùa đông"}};
+function honors(){const w=Date.now()-6048e5,wx=S.led.filter(l=>l.ts>w).reduce((a,l)=>a+l.xp,0),gi=IT.filter(i=>i.cat=="garden"&&S.place[i.id]).length;return[["本周学习之星","Ngôi sao học tập tuần","Kiếm từ 150 XP trong 7 ngày",wx>=150],["最佳熊猫","Gấu trúc xuất sắc","Đạt cấp 5",S.lvl>=5],["最美花园","Khu vườn đẹp nhất","Đặt từ 8 đồ trang trí trong vườn",gi>=8],["最勤奋的竹子守护者","Người chăm trúc chăm chỉ","Tưới cây từ 14 ngày",S.bam.n>=14],["最佳宠物伙伴","Bộ đôi đồng hành","Có từ 3 thú nuôi và chọn một bạn đồng hành",Object.keys(S.pets).length>=3&&!!S.pet]]}
+/*ENDENGINE2*/
+Object.assign(PGN,{garden:"Khu vườn",pets:"Thú nuôi",comm:"Cộng đồng",honor:"Vinh danh"});
+Object.assign(IP,{heart:'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',drop:'<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>'});
+HT.splice(5,1);
+const winArt=s=>{const c=SE[s],cn={spring:"#ffb7cd",summer:"#4fa83a",autumn:"#e2552b",winter:"#fff"}[s];return`<rect x="6" y="6" width="48" height="48" rx="4" fill="#a31c2e"/><rect x="12" y="12" width="36" height="36" fill="${c.sky}"/><rect x="12" y="38" width="36" height="10" fill="${c.gr}"/><rect x="21" y="30" width="3" height="12" fill="#7a4a24"/><circle cx="22" cy="28" r="8" fill="${cn}" stroke="${s=="winter"?"#c9d6e0":"none"}"/><path d="M12 30h36M30 12v36" stroke="#a31c2e" stroke-width="3"/>`};
+Object.defineProperty(ART,"r_window",{get:()=>winArt(curSeason())});
+Object.assign(ART,{g_table:'<ellipse cx="30" cy="30" rx="24" ry="8" fill="#a6652d"/><rect x="26" y="30" width="8" height="22" fill="#8a4a1c"/><ellipse cx="30" cy="54" rx="14" ry="4" fill="#8a4a1c"/><path d="M22 20h12v10H22z" fill="#d7263d"/><circle cx="42" cy="26" r="4" fill="#fff"/>',g_gate:'<rect x="4" y="8" width="52" height="48" fill="#c9a46b"/><circle cx="30" cy="34" r="16" fill="#8fd16a"/><path d="M2 8h56l-4 6H6z" fill="#7a1522"/>',g_fountain:'<ellipse cx="30" cy="50" rx="26" ry="8" fill="#9aa0a6"/><ellipse cx="30" cy="47" rx="22" ry="6" fill="#5fb7e8"/><rect x="27" y="24" width="6" height="22" fill="#b5bbc1"/><path d="M30 24q-10-14-14-4M30 24q10-14 14-4M30 22V8" stroke="#8fd3f4" stroke-width="3" fill="none" stroke-linecap="round"/>',g_fence:'<g fill="#c9a46b"><rect x="4" y="16" width="6" height="36"/><rect x="18" y="16" width="6" height="36"/><rect x="32" y="16" width="6" height="36"/><rect x="46" y="16" width="6" height="36"/></g><rect x="2" y="26" width="56" height="5" fill="#a6652d"/><rect x="2" y="40" width="56" height="5" fill="#a6652d"/>',g_path:'<g fill="#b8bdc2"><ellipse cx="14" cy="14" rx="11" ry="7"/><ellipse cx="38" cy="26" rx="12" ry="7"/><ellipse cx="18" cy="42" rx="11" ry="7"/><ellipse cx="44" cy="52" rx="10" ry="6"/></g>',g_pavilion:'<rect x="10" y="30" width="5" height="26" fill="#a31c2e"/><rect x="45" y="30" width="5" height="26" fill="#a31c2e"/><path d="M2 30l28-22 28 22z" fill="#7a1522"/><path d="M8 30l22-16 22 16z" fill="#c8102e"/><rect x="8" y="52" width="44" height="5" fill="#8a4a1c"/>',i_swing:'<path d="M8 56V8h44v48" stroke="#8a4a1c" stroke-width="4" fill="none"/><path d="M22 8v32M38 8v32" stroke="#555" stroke-width="2"/><rect x="18" y="40" width="24" height="5" rx="2" fill="#d97a2b"/>',r_bed:'<rect x="4" y="28" width="52" height="22" rx="4" fill="#a6652d"/><rect x="8" y="22" width="44" height="14" rx="5" fill="#fff"/><rect x="8" y="34" width="44" height="12" rx="3" fill="#6fb3d9"/><rect x="2" y="24" width="6" height="30" fill="#8a4a1c"/>',r_lamp:'<rect x="27" y="30" width="6" height="22" fill="#8a4a1c"/><ellipse cx="30" cy="54" rx="12" ry="3" fill="#8a4a1c"/><path d="M16 30l6-18h16l6 18z" fill="#ffd24a"/>',r_rug:'<ellipse cx="30" cy="34" rx="28" ry="12" fill="#c8102e"/><ellipse cx="30" cy="34" rx="20" ry="8" fill="#f5c542"/><ellipse cx="30" cy="34" rx="10" ry="4" fill="#c8102e"/>',r_toy:'<rect x="14" y="30" width="32" height="22" rx="3" fill="#2b4a9b"/><circle cx="30" cy="20" r="10" fill="#ff7ba5"/><circle cx="26" cy="18" r="2" fill="#fff"/><circle cx="34" cy="18" r="2" fill="#fff"/>',s_blossom:'<rect x="27" y="30" width="7" height="28" fill="#7a4a24"/><circle cx="30" cy="22" r="16" fill="#ffb7cd"/><circle cx="18" cy="28" r="10" fill="#ffc9da"/><circle cx="42" cy="28" r="10" fill="#ffc9da"/>',s_umbrella:'<path d="M4 28q26-30 52 0z" fill="#ff7b54"/><path d="M30 28v28" stroke="#8a4a1c" stroke-width="3"/><path d="M18 22l12 6M42 22l-12 6" stroke="#fff" stroke-width="2"/>',s_maple:'<rect x="27" y="30" width="7" height="28" fill="#7a4a24"/><circle cx="30" cy="22" r="16" fill="#e2552b"/><circle cx="18" cy="28" r="10" fill="#f28c28"/><circle cx="42" cy="28" r="10" fill="#c8302a"/>',s_snowman:'<circle cx="30" cy="44" r="14" fill="#fff" stroke="#c9d6e0" stroke-width="2"/><circle cx="30" cy="22" r="10" fill="#fff" stroke="#c9d6e0" stroke-width="2"/><circle cx="27" cy="20" r="1.5" fill="#222"/><circle cx="33" cy="20" r="1.5" fill="#222"/><path d="M30 23l8 2-8 1z" fill="#f28c28"/><rect x="22" y="8" width="16" height="4" fill="#2b2b3a"/><rect x="25" y="1" width="10" height="8" fill="#2b2b3a"/>'});
+Object.assign(OUT,{o_chef:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#fff" stroke="#ddd" stroke-width="2"/><path d="M100 118v50" stroke="#ddd" stroke-width="2"/><circle cx="92" cy="132" r="2.5" fill="#c8102e"/><circle cx="92" cy="148" r="2.5" fill="#c8102e"/>',o_scholar:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#3b5fb0"/><path d="M86 112l14 24 14-24" fill="none" stroke="#fff" stroke-width="4"/><rect x="64" y="150" width="72" height="6" fill="#1e2f66"/>',o_festival:'<path d="M63 120q37-15 74 0l7 52q-44 11-88 0z" fill="#d7263d"/><circle cx="82" cy="140" r="6" fill="#f5c542"/><circle cx="118" cy="140" r="6" fill="#f5c542"/><circle cx="100" cy="158" r="6" fill="#f5c542"/><path d="M86 112l14 22 14-22" fill="none" stroke="#f5c542" stroke-width="3.5"/>'});
+Object.assign(HD,{pin:'<path d="M126 38l12-14" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/><circle cx="139" cy="23" r="4" fill="#ff7ba5"/>'});
+const FAN='<g transform="rotate(-20 140 130)"><path d="M140 150l-18-28a30 30 0 0 1 36 0z" fill="#fff" stroke="#c8102e" stroke-width="2"/><path d="M140 150l-8-26M140 150l8-26" stroke="#c8102e" stroke-width="1.5"/></g>';
+const EY=(a,b,y)=>`<circle cx="${a}" cy="${y}" r="2" fill="#2b2b2b"/><circle cx="${b}" cy="${y}" r="2" fill="#2b2b2b"/>`;
+const PTA=id=>({
+rabbit:`<ellipse cx="30" cy="44" rx="15" ry="12" fill="#fff" stroke="#d9d2c8" stroke-width="1.5"/><circle cx="30" cy="28" r="12" fill="#fff" stroke="#d9d2c8" stroke-width="1.5"/><ellipse cx="23" cy="10" rx="4" ry="11" fill="#fff" stroke="#d9d2c8" stroke-width="1.5"/><ellipse cx="37" cy="10" rx="4" ry="11" fill="#fff" stroke="#d9d2c8" stroke-width="1.5"/><ellipse cx="23" cy="11" rx="1.8" ry="7" fill="#ffb3c1"/><ellipse cx="37" cy="11" rx="1.8" ry="7" fill="#ffb3c1"/>${EY(25.5,34.5,27)}<circle cx="30" cy="32" r="2" fill="#ff8fa3"/>`,
+cat:`<path d="M44 44q14-4 8-18" stroke="#f0a030" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="44" rx="15" ry="12" fill="#f5a83a"/><path d="M19 20l3-12 9 8zM41 20l-3-12-9 8z" fill="#f5a83a"/><circle cx="30" cy="27" r="12" fill="#f5a83a"/><path d="M24 20v5M30 18v5M36 20v5" stroke="#d9801a" stroke-width="2"/>${EY(25.5,34.5,28)}<path d="M28 33l2 2 2-2z" fill="#ff8fa3"/><path d="M14 30h8M38 30h8" stroke="#fff" stroke-width="1"/>`,
+duck:`<ellipse cx="28" cy="44" rx="18" ry="12" fill="#ffd84a"/><circle cx="36" cy="24" r="11" fill="#ffd84a"/><path d="M45 25l9 3-9 3z" fill="#f28c28"/><circle cx="38" cy="21" r="2" fill="#2b2b2b"/><path d="M14 42q8-8 18 0q-8 8-18 0z" fill="#f2c230"/>`,
+fox:`<path d="M12 46q-12-6-4-22 10 8 10 22z" fill="#f28c28"/><path d="M8 28q2-6 6-6l2 8z" fill="#fff"/><ellipse cx="30" cy="44" rx="14" ry="12" fill="#f28c28"/><path d="M19 20l4-13 9 9zM41 20l-4-13-9 9z" fill="#f28c28"/><circle cx="30" cy="27" r="12" fill="#f28c28"/><path d="M18 30q12 14 24 0q-4-6-12-4-8-2-12 4z" fill="#fff"/>${EY(25.5,34.5,26)}<circle cx="30" cy="32" r="2" fill="#2b2b2b"/>`,
+squirrel:`<path d="M46 50q14-6 6-30-10 6-12 18z" fill="#b8732f"/><ellipse cx="28" cy="44" rx="13" ry="12" fill="#c98a45"/><circle cx="28" cy="27" r="11" fill="#c98a45"/><circle cx="20" cy="17" r="4" fill="#c98a45"/><circle cx="36" cy="17" r="4" fill="#c98a45"/><ellipse cx="28" cy="48" rx="7" ry="7" fill="#f3d9a8"/>${EY(23.5,32.5,26)}<circle cx="28" cy="31" r="2" fill="#2b2b2b"/>`,
+cub:`<ellipse cx="30" cy="44" rx="15" ry="12" fill="#9c6a3f"/><circle cx="19" cy="17" r="5" fill="#9c6a3f"/><circle cx="41" cy="17" r="5" fill="#9c6a3f"/><circle cx="30" cy="27" r="12" fill="#9c6a3f"/><ellipse cx="30" cy="32" rx="6" ry="4.5" fill="#e6c9a0"/>${EY(25,35,25)}<circle cx="30" cy="31" r="2" fill="#2b2b2b"/>`,
+dragon:`<path d="M8 50q12-22 24-8t20-12" stroke="#2fb59b" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="46" cy="24" r="11" fill="#2fb59b"/><path d="M40 14l-3-8M50 14l3-8" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/><path d="M52 30q8 2 8 8M52 26q8-2 6-8" stroke="#f5c542" stroke-width="1.5" fill="none"/><circle cx="48" cy="22" r="2" fill="#2b2b2b"/><circle cx="43" cy="22" r="2" fill="#2b2b2b"/><path d="M16 44l-2-8M26 38l-2-8M36 42l-2-8" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/>`,
+koi:`<ellipse cx="30" cy="32" rx="22" ry="22" fill="#e8f6ff" opacity=".7"/><ellipse cx="28" cy="32" rx="15" ry="9" fill="#fff" stroke="#e0e0e0"/><path d="M20 28q8-6 14 0q-6 6-14 0z" fill="#f2552b"/><path d="M42 32l10-8v16z" fill="#f2552b"/><circle cx="18" cy="30" r="2" fill="#2b2b2b"/><path d="M26 40l4 6 4-6z" fill="#f28c28"/>`}[id]||"");
+function BB(s,se){
+ const c={spring:"#6cc24a",summer:"#3fae3a",autumn:"#b9c04c",winter:"#8fbf9f"}[se],d="#3d7f2a",lf=(x,y,a)=>`<path d="M0 0q8-10 22-8-6 12-22 8z" transform="translate(${x} ${y}) rotate(${a})" fill="${c}"/>`,st=(x,t)=>`<path d="M${x} 104V${t}" stroke="${c}" stroke-width="6" stroke-linecap="round"/>`+[0,1,2,3,4].map(i=>104-(104-t)*(i+1)/5).filter(y=>y>t+6).map(y=>`<path d="M${x-3} ${y}h6" stroke="${d}" stroke-width="2"/>`).join(""),sn=se=="winter"?'<ellipse cx="40" cy="12" rx="22" ry="5" fill="#fff" opacity=".9"/>':"";
+ const g='<ellipse cx="40" cy="105" rx="30" ry="7" fill="#8a5a2b"/>';
+ if(s==1)return g+'<ellipse cx="40" cy="100" rx="5" ry="3.5" fill="#d9a441"/>';
+ if(s==2)return g+`<path d="M40 104V88" stroke="${c}" stroke-width="3" stroke-linecap="round"/>`+lf(40,90,-30)+lf(40,94,-150);
+ if(s==3)return g+st(40,55)+lf(40,60,-25)+lf(40,70,-155)+lf(40,82,-20)+lf(40,90,-160);
+ if(s==4)return g+st(28,42)+st(50,26)+lf(28,48,-25)+lf(28,62,-155)+lf(50,34,-20)+lf(50,50,-160)+lf(50,64,-30)+lf(28,78,-150);
+ return g+st(22,38)+st(40,8)+st(58,30)+lf(22,44,-25)+lf(22,60,-155)+lf(40,14,-20)+lf(40,30,-160)+lf(40,48,-25)+lf(58,36,-25)+lf(58,54,-150)+lf(40,66,-155)+sn;
+}
+const TREE={spring:'<rect x="150" y="84" width="9" height="58" fill="#7a4a24"/><circle cx="154" cy="76" r="20" fill="#ffb7cd"/><circle cx="140" cy="86" r="12" fill="#ffc9da"/><circle cx="168" cy="86" r="12" fill="#ffc9da"/>',summer:'<rect x="150" y="84" width="9" height="58" fill="#7a4a24"/><circle cx="154" cy="76" r="20" fill="#4fa83a"/><circle cx="140" cy="86" r="12" fill="#6cc24a"/><circle cx="168" cy="86" r="12" fill="#6cc24a"/>',autumn:'<rect x="150" y="84" width="9" height="58" fill="#7a4a24"/><circle cx="154" cy="76" r="20" fill="#e2552b"/><circle cx="140" cy="86" r="12" fill="#f28c28"/><circle cx="168" cy="86" r="12" fill="#c8302a"/>',winter:'<rect x="150" y="84" width="9" height="58" fill="#7a4a24"/><path d="M154 86l-18-18M154 92l20-22M154 80v-26" stroke="#7a4a24" stroke-width="4"/><ellipse cx="154" cy="68" rx="22" ry="6" fill="#fff"/>'};
+const SB=se=>{const c=SE[se];return`<rect width="360" height="230" fill="${c.sky}"/>`+(se=="summer"?'<circle cx="320" cy="34" r="16" fill="#ffd24a"/>':'<ellipse cx="80" cy="30" rx="30" ry="9" fill="#fff" opacity=".9"/><ellipse cx="250" cy="44" rx="26" ry="8" fill="#fff" opacity=".9"/>')+`<path d="M0 130l50-52 40 40 50-62 60 72 60-50 100 62v-40H0z" fill="${c.mt}"/>`+(se=="winter"?'<path d="M50 78l-12 16h24zM140 56l-14 20h28zM200 128l-12 14h24z" fill="#fff"/>':"")+`<rect y="140" width="360" height="90" fill="${c.gr}"/><path d="M0 140h360" stroke="${c.ln}" stroke-width="3"/>`+TREE[se]};
+const motionOn=()=>S.motion==-1?!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches):!!S.motion;
+function ptcl(se,live){if(!live||!motionOn())return"";const n=se=="winter"?20:se=="summer"?10:12;let s="";for(let i=0;i<n;i++){const x=Math.random()*360,d=6+Math.random()*6,dl=-Math.random()*d;s+=se=="summer"?`<circle class="ff" cx="${x}" cy="${100+Math.random()*100}" r="2" fill="#ffe66d" style="animation-delay:${dl}s"/>`:`<circle class="pf" cx="${x}" cy="0" r="${se=="winter"?2.2:3}" fill="${{spring:"#ffb7cd",autumn:"#e2552b",winter:"#fff"}[se]}" style="animation-duration:${d}s;animation-delay:${dl}s"/>`}return s}
+const G={tab:"bam",edit:0,sel:"",ed:null,run:0};
+const GS={x:110,y:196,f:1,st:"idle",tx:110,ty:196,until:0,last:"",mvg:0,cb:null,clk:[],px:150,py:200,pf:1,ps:"sit",pr:0,ct:0,now:0};
+const PB={rabbit:{sp:70,far:44,idle:"play",mv:"hop"},cat:{sp:55,far:50,idle:"sleep",mv:"bob"},duck:{sp:38,far:46,idle:"sit",mv:"wad"},fox:{sp:85,far:40,idle:"play",mv:"bob"},squirrel:{sp:95,far:36,idle:"play",mv:"bob"},cub:{sp:34,far:48,idle:"sit",mv:"wad"},dragon:{sp:60,far:44,idle:"play",mv:"float"},koi:{sp:0,far:0,idle:"sit",mv:"float"}};
+const PDS={rabbit:"Nhảy tưng tưng, hay chạy vòng quanh gấu trúc",cat:"Hay cuộn tròn ngủ khi gấu trúc nghỉ",duck:"Đi lạch bạch chậm rãi, thích ngồi cạnh hồ",fox:"Nhanh nhẹn, hay chạy quanh nghịch ngợm",squirrel:"Chạy rất nhanh, nhảy nhót không ngừng",cub:"Bước đi nặng nề, thích ngồi cạnh gấu trúc",dragon:"Lơ lửng bay nhẹ, rất hiền",koi:"Bơi trong chậu nước nhỏ, vẫy đuôi khi được chạm"};
+function snap(){const items=IT.filter(i=>i.cat=="garden"&&S.place[i.id]).map(i=>{const p=(G.ed&&G.ed[i.id])||lpos(i.id);return[i.id,p[0],p[1],p[2]||0]});return{se:curSeason(),items,eq:S.eq,lvl:S.lvl,st:bstage(S.bam.pts),pet:S.pet}}
+function gsvg(live,D){
+ D=D||snap();const gx=live?GS.x:110,gy=live?GS.y:196,px=live?GS.px:150,py=live?GS.py:200;
+ const its=D.items.slice().sort((a,b)=>a[2]-b[2]).map(([id,x,y,f])=>{const s=(POS[id]||[0,0,1])[2],w=60*s;return`<g class="gi${G.edit&&G.sel==id?" sel":""}" data-id="${id}" transform="translate(${x+(f?w:0)} ${y}) scale(${f?-s:s} ${s})">${ART[id]||""}</g>`}).join("");
+ const P=PETS.find(p=>p.id==D.pet);
+ return`<svg viewBox="0 0 360 230" class="sc" ${live?'id="gsvg"':""}>${SB(D.se)}${ptcl(D.se,live)}<g id="gbb" class="${D.st==5&&live&&motionOn()?"sway":""}" transform="translate(262 96)">${BB(D.st,D.se)}</g>${its}`
+ +(P?`<g id="gq" transform="translate(${px} ${py-34}) translate(-17 0)"><g class="ptw" id="ptw"><svg width="34" height="34" viewBox="0 0 60 60">${PTA(P.id)}</svg></g></g>`:"")
+ +`<g id="gp" transform="translate(${gx} ${gy-120}) translate(-60 0)">${PD(D.lvl,D.eq,"idle",'id="pdh" width="120" height="120"')}</g><text id="gz" x="0" y="0" font-size="13" fill="#5a6bd0" opacity="0" font-weight="700">z Z</text><g id="ge" opacity="0"><rect width="3" height="16" fill="#6cc24a"/></g></svg>`;
+}
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function pondRect(){const k=IT.find(i=>i.id=="g_pond"&&S.place.g_pond);if(!k)return null;const p=lpos("g_pond");return[p[0]+8,p[1]+30,p[0]+8+60*(POS.g_pond[2]||1)*.8]}
+function blocked(x,y){if(x>278&&x<326&&y>180)return 1;for(const k in S.place){if(!S.place[k]||!SOL[k]||!IM[k]||IM[k].cat!="garden")continue;const p=lpos(k),w=isz(k);if(x>p[0]+w*.15&&x<p[0]+w*.85&&y>p[1]+w*.55&&y<p[1]+w+4)return 1}return 0}
+function gGo(x,y,cb){GS.tx=Math.max(14,Math.min(346,x));GS.ty=Math.max(152,Math.min(214,y));GS.mvg=1;GS.cb=cb||null;GS.st=Math.hypot(GS.tx-GS.x,GS.ty-GS.y)>90?"run":"walk"}
+function gAct(st,dur){GS.st=st;GS.until=GS.now+dur;GS.mvg=0}
+function gThink(){
+ if(GS.mvg||GS.now<GS.until)return;
+ if(GS.ct&&GS.now-GS.ct<2.5)return;
+ const pd=pondRect(),o=[["walk",3],["sit",2],["sleep",1.2],["roll",1],["eat",1.5],["play",1],["curious",1],["dance",.6],["interact",S.pet&&S.pet!="koi"?1.6:0],["pond",pd?1:0],["crawl",.8]].filter(a=>a[0]!=GS.last&&a[1]>0);
+ let r=Math.random()*o.reduce((a,b)=>a+b[1],0),a=o[0][0];for(const x of o){r-=x[1];if(r<=0){a=x[0];break}}
+ GS.last=a;
+ if(a=="walk")gGo(rnd(20,340),rnd(160,212));
+ else if(a=="crawl")gGo(rnd(20,340),rnd(160,212),null),GS.st="crawl";
+ else if(a=="eat")gGo(236,204,()=>gAct("eat",5));
+ else if(a=="sleep")gGo(250,206,()=>gAct("sleep",9));
+ else if(a=="pond")gGo(pd[0]+30,206,()=>gAct("sit",6));
+ else if(a=="interact")gGo(GS.px-30,GS.py,()=>{gAct("happy",3);GS.pr=GS.now+2;fxSpawn("heart")});
+ else gAct(a,a=="roll"?1.2:a=="dance"?3:4);
+}
+function gMove(dt){
+ if(GS.mvg){const dx=GS.tx-GS.x,dy=GS.ty-GS.y,d=Math.hypot(dx,dy);
+  if(d<3){GS.mvg=0;GS.st="idle";const cb=GS.cb;GS.cb=null;if(cb)cb();else GS.until=GS.now+rnd(1,3)}
+  else{const sp=(GS.st=="run"?60:GS.st=="crawl"?16:30)*dt,nx=GS.x+dx/d*sp,ny=GS.y+dy/d*sp;if(!blocked(nx,ny)){GS.x=nx;GS.y=ny}else if(!blocked(nx,GS.y))GS.x=nx;else if(!blocked(GS.x,ny))GS.y=ny;else{GS.mvg=0;GS.st="idle";GS.until=GS.now+1}
+   if(Math.abs(dx)>1)GS.f=dx>0?1:-1}}
+ const P=S.pet&&PB[S.pet];if(!P)return;
+ if(S.pet=="koi"){GS.px=40;GS.py=206;GS.ps="float";return}
+ const tx=GS.x-GS.f*34,ty=GS.y+4,dx=tx-GS.px,dy=ty-GS.py,d=Math.hypot(dx,dy);
+ if(GS.st=="sleep"&&P.idle=="sleep"&&d<60){GS.ps="sleep";return}
+ if(d>P.far||(GS.mvg&&d>16)){const s=Math.min(d,P.sp*dt*(GS.mvg?1.3:1));GS.px+=dx/d*s;GS.py+=dy/d*s;GS.pf=dx>0?1:-1;GS.ps=P.mv}
+ else if(P.idle=="play"){GS.pa=(GS.pa||0)+dt*1.4;GS.px=GS.x+Math.cos(GS.pa)*36;GS.py=GS.y+4+Math.sin(GS.pa)*7;GS.pf=Math.sin(GS.pa)>0?-1:1;GS.ps=P.mv}
+ else GS.ps=P.idle;
+ if(GS.now<GS.pr)GS.ps="react";
+}
+function gDraw(){
+ const gp=$("#gp");if(!gp)return;
+ gp.setAttribute("transform",`translate(${GS.x} ${GS.y-120}) scale(${GS.f} 1) translate(-60 0)`);
+ $("#pdh").setAttribute("class","pd "+GS.st);
+ const gq=$("#gq");if(gq){gq.setAttribute("transform",`translate(${GS.px} ${GS.py-34}) scale(${GS.pf} 1) translate(-17 0)`);$("#ptw").setAttribute("class","ptw p-"+GS.ps)}
+ const z=$("#gz"),e=$("#ge");z.setAttribute("opacity",GS.st=="sleep"?1:0);z.setAttribute("x",GS.x+10);z.setAttribute("y",GS.y-96);
+ e.setAttribute("opacity",GS.st=="eat"?1:0);e.setAttribute("transform",`translate(${GS.x+GS.f*20} ${GS.y-62}) rotate(${GS.f*25})`);
+}
+function gFrame(ts){
+  if(ts-(G.lt||0)<32)return;const dt=Math.min(.1,(ts-(G.lt||ts))/1000);G.lt=ts;GS.now=ts/1000;
+ if(!$("#gsvg")||route().pg!="garden"){G.lid=(G.lid||0)+1;return}
+ if(GS.ct&&GS.now-GS.ct>2.5&&!GS.mvg&&GS.st!="sit"&&GS.st!="happy"){GS.ct=0;gAct("sit",3)}
+ gThink();gMove(dt);gDraw();
+}
+function gStop(){G.lid=(G.lid||0)+1}
+function gPt(e){const s=$("#gsvg"),p=s.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(s.getScreenCTM().inverse())}
+function gAttach(){
+ const s=$("#gsvg");if(!s)return;
+ if(G.edit){gEditAttach(s);return}
+ s.addEventListener("pointermove",e=>{if(e.pointerType!="mouse"||!motionOn())return;const q=gPt(e);GS.ct=GS.now||performance.now()/1000;if(Math.hypot(q.x-GS.x,q.y-GS.y)>36){gGo(q.x,q.y+30);GS.cb=null}});
+ s.addEventListener("pointerdown",e=>{const q=gPt(e),t=performance.now()/1000;GS.now=GS.now||t;
+  if(S.pet&&Math.hypot(q.x-GS.px,q.y-(GS.py-14))<22){GS.pr=GS.now+1.2;fxSpawn(S.pet=="koi"?"bubble":"heart");sfx("ok");return}
+  if(Math.hypot(q.x-GS.x,q.y-(GS.y-42))<48){GS.clk=GS.clk.filter(c=>t-c<2);GS.clk.push(t);fxSpawn("heart");sfx("ok");if(GS.clk.length>=3){GS.clk=[];gAct(Math.random()<.5?"roll":"dance",2.6)}else gAct("happy",1.3);S.st.care++;return}
+  if(motionOn()){GS.ct=0;gGo(q.x,q.y+30);GS.cb=null}else{GS.x=Math.max(14,Math.min(346,q.x));GS.y=Math.max(152,Math.min(214,q.y+30));gDraw()}
+ });
+}
+function gStart(){gAttach();if(!G.edit&&motionOn()){const id=G.lid=(G.lid||0)+1;G.lt=0;const f=ts=>{if(id!=G.lid)return;requestAnimationFrame(f);gFrame(ts)};requestAnimationFrame(f)}else gDraw()}
+function gEditAttach(s){
+ let drag=null;
+ s.addEventListener("pointerdown",e=>{const g=e.target.closest(".gi");if(!g)return;e.preventDefault();const id=g.dataset.id,q=gPt(e),p=G.ed[id]||lpos(id);G.sel=id;drag={id,ox:q.x-p[0],oy:q.y-p[1],x:p[0],y:p[1],f:p[2]||0,g};s.querySelectorAll(".gi").forEach(n=>n.classList.toggle("sel",n==g));s.setPointerCapture(e.pointerId);gEb()});
+ s.addEventListener("pointermove",e=>{if(!drag)return;const q=gPt(e),w=isz(drag.id);drag.x=Math.max(0,Math.min(360-w,q.x-drag.ox));drag.y=Math.max(10,Math.min(230-w,q.y-drag.oy));const sc=(POS[drag.id]||[0,0,1])[2];drag.g.setAttribute("transform",`translate(${drag.x+(drag.f?w:0)} ${drag.y}) scale(${drag.f?-sc:sc} ${sc})`)});
+ s.addEventListener("pointerup",()=>{if(!drag)return;if(layoutOk(drag.id,drag.x,drag.y,G.ed)){G.ed[drag.id]=[Math.round(drag.x),Math.round(drag.y),drag.f]}else{toast("Vị trí này bị chồng lấn hoặc ra ngoài khu vườn",1);sfx("bad");G.ed=G.ed;G.redraw=1}drag=null;if(G.redraw){G.redraw=0;gRedraw()}});
+}
+function gRedraw(){const sc=$("#gsc");if(sc){sc.innerHTML=gsvg(1)+'<div class="fxl" id="fx"></div>';gAttach()}}
+function gEdit(on){G.edit=on;G.sel="";G.ed=on?JSON.parse(JSON.stringify(S.lay)):null;PG.garden()}
+function gSave(){S.lay=G.ed;save();toast("Đã lưu bố cục khu vườn");gEdit(0)}
+function gFlip(){const id=G.sel;if(!id)return toast("Hãy chạm vào một vật phẩm trước",1);const p=G.ed[id]||lpos(id).slice();p[2]=p[2]?0:1;G.ed[id]=p;gRedraw();gEb()}
+function gTake(){const id=G.sel;if(!id)return toast("Hãy chạm vào một vật phẩm trước",1);S.place[id]=false;delete G.ed[id];G.sel="";save();gRedraw();gEb()}
+function gResetL(){G.ed={};G.sel="";gRedraw()}
+function gEb(){const e=$("#gb");if(e)e.innerHTML=gbody()}
+function fxSpawnX(){}
+function doWater(){
+ const r=water();if(!r.ok){toast(r.msg,1);sfx("bad");return}
+ sfx("ok");toast("谢谢你给我浇水！");
+ const sc=$("#gsc");if(sc){const w=document.createElement("div");w.className="wc";w.innerHTML=IC("drop")+IC("drop")+IC("drop");sc.appendChild(w);setTimeout(()=>w.remove(),2200)}
+ const b=$("#gbb");if(b){b.innerHTML=BB(bstage(S.bam.pts),curSeason());b.classList.add("shake");setTimeout(()=>b.classList.remove("shake"),1600)}
+ GS.st="happy";GS.until=GS.now+2;GS.mvg=0;fxSpawn("heart");
+ if(r.s1>r.s0){showOut(r.o)}else hw();
+ gEb();
+}
+const GT=[["bam","Cây trúc"],["pet","Thú nuôi"],["dec","Đồ vườn"],["sea","Bốn mùa"]];
+function gbody(){
+ if(G.edit)return`<div class="box">Chạm và kéo để di chuyển đồ vật. ${G.sel?"Đang chọn: <b>"+IM[G.sel].vi+"</b>":"Chạm vào một đồ vật để chọn."}</div><div class="rw"><button onclick="gFlip()">Lật hướng</button><button onclick="gTake()">Cất vào kho</button><button onclick="gResetL()">重置布局 · Đặt lại</button><button class="pri" onclick="gSave()">保存 · Lưu</button><button onclick="gEdit(0)">取消 · Hủy</button></div>`;
+ if(G.tab=="bam"){const st=bstage(S.bam.pts),n=BSN[st-1],nx=BST[st],pc=st>=5?100:Math.round((S.bam.pts-BST[st-1])/(nx-BST[st-1])*100),done=S.bam.last==today();
+  return`<div class="cd"><h3 class="hz">${n[0]} <small>${n[1]} · giai đoạn ${st}/5</small></h3><div class="bar"><i style="width:${pc}%"></i></div><small>${st>=5?"Cây đã trưởng thành":S.bam.pts+" / "+nx+" điểm phát triển"} · đã tưới ${S.bam.n} lần</small><div class="rw"><button class="pri" ${done?"disabled":""} onclick="doWater()">${IC("drop")} 浇水 · ${done?"Hôm nay đã tưới":"Tưới nước"}</button></div><small class="qh">Mỗi ngày tưới một lần. Bỏ lỡ ngày nào cây chỉ nghỉ chứ không héo, không mất điểm.</small></div>`}
+ if(G.tab=="pet"){const o=PETS.filter(p=>S.pets[p.id]);return`<div class="cd"><h3>Bạn đồng hành</h3>`+(o.length?`<div class="mg2"><button class="tg3 ${S.pet?"":"on"}" onclick="pickP('')">Không chọn</button>${o.map(p=>`<button class="tg3 ${S.pet==p.id?"on":""}" onclick="pickP('${p.id}')">${p.zh} ${p.vi}</button>`).join("")}</div>`:`<p class="qh">Bạn chưa có thú nuôi nào.</p>`)+`<a class="sw" href="#pets">Bộ sưu tập thú nuôi</a></div>`}
+ if(G.tab=="dec"){const o=IT.filter(i=>i.cat=="garden"&&S.inv[i.id]>0);return`<div class="cd"><div class="rw"><button class="pri" onclick="gEdit(1)">编辑 · Chỉnh sửa bố cục</button></div>`+(o.length?`<div class="grid2">${o.map(i=>`<div class="it"><div class="th">${thumb(i)}</div><b class="hz">${i.zh}</b><small>${i.vi}</small><button class="${S.place[i.id]?"sw on":"sw"}" onclick="gPl('${i.id}')">${S.place[i.id]?"Cất đi":"Đặt vào"}</button></div>`).join("")}</div>`:`<p class="qh cen">Chưa có đồ vườn. <a href="#shop" style="color:var(--red);font-weight:700">Đến cửa hàng</a></p>`)+`</div>`}
+ const se=curSeason(),au=S.ssn.mode!="manual";
+ return`<div class="cd"><h3>四季设置 · Bốn mùa</h3><div class="mg2"><button class="tg3 ${au?"on":""}" onclick="setSea('mode','auto')">自动 · Tự động</button><button class="tg3 ${au?"":"on"}" onclick="setSea('mode','manual')">手动 · Thủ công</button></div>`+(au?`<div class="mg2"><small>Bán cầu:</small>${[["auto","Theo múi giờ"],["N","Bắc"],["S","Nam"]].map(h=>`<button class="tg3 ${S.ssn.hemi==h[0]?"on":""}" onclick="setSea('hemi','${h[0]}')">${h[1]}</button>`).join("")}</div><small class="qh">Đang là: ${SE[se].zh} ${SE[se].vi} (${hemi()=="S"?"Nam":"Bắc"} bán cầu)</small>`:`<div class="mg2">${Object.keys(SE).map(k=>`<button class="tg3 ${S.ssn.man==k?"on":""}" onclick="setSea('man','${k}')">${SE[k].zh} ${SE[k].vi}</button>`).join("")}</div>`)+`<div class="mg2"><button class="tg3 ${motionOn()?"on":""}" onclick="S.motion=motionOn()?0:1;save();PG.garden()">Chuyển động: ${motionOn()?"Bật":"Giảm"}</button></div><small class="qh">Mùa chỉ đổi hình ảnh, không ảnh hưởng XP, lá trúc hay cây trúc.</small></div>`;
+}
+function pickP(id){petPick(id);PG.garden()}
+function gPl(id){placeToggle(id);PG.garden()}
+function setSea(k,v){S.ssn[k]=v;save();PG.garden()}
+PG.garden=()=>{
+ gStop();
+ $("#app").innerHTML=`<h2 class="h2 hz">我的花园 <small style="font-size:14px;font-weight:500">Khu vườn của tôi · ${SE[curSeason()].zh}</small></h2><div class="mus cen" style="margin-bottom:8px">${musIn()}</div><div class="scene${motionOn()?"":" nomo"}${G.edit?" edit":""}" id="gsc">${gsvg(1)}<div class="fxl" id="fx"></div></div>`+(G.edit?"":`<div class="tabs2">${GT.map(t=>`<button class="${G.tab==t[0]?"on":""}" onclick="G.tab='${t[0]}';PG.garden()">${t[1]}</button>`).join("")}</div>`)+`<div id="gb">${gbody()}</div>`;
+ gStart();bgmSync();
+};
+function pbuy(id){const r=petBuy(id),p=PETS.find(x=>x.id==id);if(!r.ok){toast(r.msg,1);sfx("bad");return}sfx("up");hw();modal(`<div class="th" style="margin:0 auto;width:110px;height:110px"><svg viewBox="0 0 60 60">${PTA(id)}</svg></div><h2 class="hz" style="margin:6px 0">新伙伴：${p.zh}</h2><p class="qh">${p.vi} đã về nhà với bạn. Hãy chọn bạn ấy làm bạn đồng hành trong khu vườn nhé.</p>`,1);PG.pets()}
+PG.pets=()=>{$("#app").innerHTML=`<h2 class="h2 hz">我的宠物 <small style="font-size:14px;font-weight:500">Thú nuôi của tôi</small></h2><div class="bal">${IC("leaf")} <b>${S.leaf}</b> lá trúc · <b>${S.xp}</b> XP</div><div class="grid2">${PETS.map(p=>{const ow=S.pets[p.id],lk=S.xp<p.xp;return`<div class="it"><div class="th"><svg viewBox="0 0 60 60" style="${lk&&!ow?"filter:grayscale(1);opacity:.5":""}">${PTA(p.id)}</svg></div><b class="hz">${p.zh}</b><small>${p.vi}</small><small class="qh">${PDS[p.id]}</small>`+(ow?`<button class="${S.pet==p.id?"sw on":"sw"}" onclick="pickP2('${p.id}')">${S.pet==p.id?"Đang đồng hành":"Chọn đồng hành"}</button>`:lk?`<div class="pr no">${IC("lock")} Cần ${p.xp} XP</div><button class="sw" disabled>Chưa mở khóa</button>`:`<div class="pr ${S.leaf<p.price?"no":""}">${IC("leaf")} ${p.price}</div><button class="pri" onclick="pbuy('${p.id}')">Mua</button>`)+`</div>`}).join("")}</div><p class="qh cen">Đạt đủ XP để mở khóa quyền mua, sau đó dùng lá trúc để mua. Thú nuôi không bao giờ bệnh hay biến mất.</p>`};
+function pickP2(id){petPick(id);toast("Đã chọn bạn đồng hành");PG.pets()}
+PG.comm=()=>{
+ const code=shareCode();
+ $("#app").innerHTML=`<h2 class="h2 hz">学习社区 <small style="font-size:14px;font-weight:500">Cộng đồng học tập</small></h2><div class="cd"><h3>Chia sẻ khu vườn của bạn</h3><p class="qh">Trang này lưu dữ liệu trên từng thiết bị nên chưa có bảng xếp hạng chung. Bạn có thể tạo <b>mã chia sẻ</b> để bạn bè tham quan khu vườn (chỉ xem, không sửa được). Mã chỉ chứa tên hiển thị, cấp gấu trúc, trang phục, thú nuôi, cây trúc, mùa và vị trí đồ vật. Không có thông tin cá nhân hay kết quả bài tập.</p><input class="inp sm" id="pn2" maxlength="24" placeholder="Tên hiển thị (không bắt buộc)" value="${S.prof.name||""}" onchange="S.prof.name=this.value.replace(/[<>&&quot;]/g,'').trim();save();PG.comm()"><textarea class="inp sm" id="cd1" rows="3" readonly onclick="this.select()">${code}</textarea><div class="rw"><button class="pri" onclick="cpy()">Sao chép mã</button></div></div><div class="cd" style="margin-top:14px"><h3>Tham quan khu vườn của bạn bè</h3><textarea class="inp sm" id="cd2" rows="3" placeholder="Dán mã chia sẻ vào đây"></textarea><div class="rw"><button class="pri" onclick="visit()">Tham quan</button></div><div id="vs"></div></div><div class="rw"><a class="sw" href="#honor">熊猫荣誉墙 · Bảng vinh danh</a></div>`};
+function cpy(){const e=$("#cd1");e.select();try{navigator.clipboard.writeText(e.value).then(()=>toast("Đã sao chép mã")).catch(()=>document.execCommand("copy"))}catch(x){try{document.execCommand("copy");toast("Đã sao chép mã")}catch(y){}}}
+function visit(){
+ const V=readCode($("#cd2").value);if(!V){toast("Mã không hợp lệ",1);return}
+ const tmp=G.edit;G.edit=0;
+ $("#vs").innerHTML=`<div class="scene" style="margin-top:12px">${gsvg(0,{se:V.se,items:V.items,eq:V.eq,lvl:V.lvl,st:V.st,pet:V.pet})}</div><div class="box"><b>${V.name}</b> · ${PN[V.lvl-1][0]} ${V.stars?"· "+V.stars+" sao":""} · ${V.ach} thành tựu</div><div class="mg2">${["你的花园真漂亮！","你的熊猫好可爱！","你的竹子长得真好！"].map(t=>`<button class="tg3" onclick="navigator.clipboard&&navigator.clipboard.writeText('${t}');toast('Đã chép lời khen, hãy gửi cho bạn bè nhé')">${t}</button>`).join("")}</div><small class="qh">Bạn chỉ xem được khu vườn, không thể thay đổi hay mua đồ trong đó.</small>`;G.edit=tmp;
+}
+PG.honor=()=>{$("#app").innerHTML=`<h2 class="h2 hz">熊猫荣誉墙 <small style="font-size:14px;font-weight:500">Bảng vinh danh</small></h2><div class="grid2">${honors().map(h=>`<div class="it bd2 ${h[3]?"":"lk"}">${IC(h[3]?"award":"lock")}<b class="hz">${h[0]}</b><small>${h[1]}</small><small class="qh">${h[2]}</small></div>`).join("")}</div>`};
+const shown=i=>!i.sea||i.sea==curSeason()||S.inv[i.id];
+const RAR=[[40,"普通","Thường"],[100,"稀有","Hiếm"],[250,"珍贵","Quý hiếm"],[1e9,"传说","Huyền thoại"]];
+PG.shop=()=>{
+ const cs=[["food","Thức ăn"],["outfit","Trang phục"],["acc","Phụ kiện"],["room","Phòng"],["garden","Vườn"]];
+ $("#app").innerHTML=`<h2 class="h2 hz">竹叶商店 <small style="font-size:14px;font-weight:500">Cửa hàng</small></h2><div class="bal">${IC("leaf")} <b>${S.leaf}</b> lá trúc · <b>${S.xp}</b> XP</div><div class="mus cen" style="margin-bottom:8px">${musIn()}</div><div class="tabs2">${cs.map(c=>`<button class="${SH.c==c[0]?"on":""}" onclick="SH.c='${c[0]}';PG.shop()">${c[1]}</button>`).join("")}</div><div class="grid2">${IT.filter(i=>i.cat==SH.c&&shown(i)).map(i=>{const ow=i.cat!="food"&&S.inv[i.id],lk=S.xp<(i.xp||0),r=RAR.find(x=>i.price<=x[0]);return`<div class="it"><div class="th">${thumb(i)}</div><b class="hz">${i.zh}</b><small>${i.vi}${i.cat=="food"?" · có "+(S.inv[i.id]||0):""}</small><small class="rar r${RAR.indexOf(r)}">${r[1]} ${r[2]}${i.sea?" · "+SE[i.sea].vi:""}</small>`+(ow?`<button class="sw" disabled>Đã sở hữu</button>`:lk?`<div class="pr no">${IC("lock")} Cần ${i.xp} XP</div><button class="sw" disabled>Chưa mở khóa</button>`:`<div class="pr ${S.leaf<i.price?"no":""}">${IC("leaf")} ${i.price}</div><button class="pri" onclick="bye('${i.id}')">Mua</button>`)+`</div>`}).join("")}</div><p class="qh cen">Vật phẩm theo mùa chỉ bán trong mùa tương ứng. Kiếm lá trúc bằng cách hoàn thành bài tập, ôn tập và nhiệm vụ mỗi ngày.</p>`;
+};
+render();
+
+</script>
+</body>
+</html>
