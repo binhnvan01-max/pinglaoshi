@@ -1402,7 +1402,7 @@ SUP.ok=()=>!!(SUP.ses&&SUP.prof&&(SUP.prof.approved||SUP.prof.is_teacher));
 SUP.errTxt=m=>{m=String(m||"");return /Could not find the function|schema cache|PGRST20|does not exist|http404/i.test(m)?"Máy chủ chưa cài bảng xếp hạng. Giáo viên cần chạy file pinglaoshi_supabase.sql trong Supabase (SQL Editor → Run).":/permission denied|http40[13]/i.test(m)?"Máy chủ từ chối truy cập. Hãy chạy lại file pinglaoshi_supabase.sql rồi thử lại.":m=="net"?"Không kết nối được máy chủ. Hãy kiểm tra mạng.":/already registered|already exists/i.test(m)?"Tên đăng nhập này đã có người dùng.":/Invalid login/i.test(m)?"Sai tên đăng nhập hoặc mật khẩu.":/at least 6|weak/i.test(m)?"Mật khẩu cần tối thiểu 6 ký tự.":/rate limit/i.test(m)?"Máy chủ đang giới hạn gửi email. Giáo viên cần tắt 'Confirm email' trong Supabase (Authentication → Sign In / Providers → Email), rồi thử lại sau ít phút.":m=="confirm"?"Máy chủ đang bật xác nhận email. Giáo viên cần tắt 'Confirm email' trong Supabase.":m=="not_approved"?"Tài khoản chưa được giáo viên duyệt.":m=="auth"?"Phiên đăng nhập đã hết, hãy đăng nhập lại.":m=="not_logged_in"?"Chưa đăng nhập.":m}
 SUP.logout=()=>{SUP.ses=null;SUP.prof=undefined;try{localStorage.removeItem("pl_sbp")}catch(e){};SUP.keep();CMX.lb=CMX.hl=null;try{localStorage.removeItem(SBQ)}catch(e){}};
 /* hàng đợi gửi kết quả bài làm lên máy chủ (XP do máy chủ tự tính) */
-const qld=()=>{try{return JSON.parse(localStorage.getItem(SBQ))||[]}catch(e){return[]}},qsv=q=>{try{localStorage.setItem(SBQ,JSON.stringify(q.slice(-100)))}catch(e){}};
+const qld=()=>{try{return JSON.parse(localStorage.getItem(SBQ))||[]}catch(e){return[]}},qsv=q=>{try{localStorage.setItem(SBQ,JSON.stringify(q.slice(-800)))}catch(e){}};
 /* kết quả bị máy chủ từ chối được giữ lại để gửi lại, không xóa */
 const rejLd=()=>{try{return JSON.parse(localStorage.getItem("pl_sbrej"))||[]}catch(e){return[]}},rejSv=q=>{try{localStorage.setItem("pl_sbrej",JSON.stringify(q.slice(-300)))}catch(e){}};
 SUP.drop=rejLd().length;
@@ -2279,5 +2279,40 @@ cmVisit=function(i){_cv(i);
  catch(e){}};
 })();
 </script>
+<style>
+/*PATCH-V19*/
+.upd{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;max-width:520px;margin:0 auto;padding:10px 14px;border-radius:14px;background:#2b1a10;color:#ffe08a;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:13px}
+.upd button{border:0;border-radius:99px;padding:6px 14px;background:#ffd84d;color:#3a2300;font-weight:800;cursor:pointer}
+.dgx{font-size:12.5px;line-height:1.5}.dgx b{color:#4a2a10}.dgx .bad{color:#b3261e;font-weight:700}
+</style>
+<script>
+/*PATCH-V19: gửi lại toàn bộ kết quả, chẩn đoán đồng bộ, báo bản web cũ, cảnh báo mất đăng nhập*/
+const PL_VER="2026-11-03.19";
+SUP.backfill=function(){if(!SUP.ses)return 0;const q=qld(),have=new Set(q.map(x=>x.k+":"+x.lv+":"+x.ls));let n=0;
+ Object.keys(S.done||{}).forEach(k=>{const m=/^(q|m|d|t|dl):(\d+):(\d+)$/.exec(k);if(!m||have.has(k))return;have.add(k);q.push({k:m[1],lv:+m[2],ls:+m[3],p:Math.round((+S.best[k]||100)*100)/100});n++});
+ rejLd().forEach(x=>{const k=x.k+":"+x.lv+":"+x.ls;if(have.has(k))return;have.add(k);q.push({k:x.k,lv:x.lv,ls:x.ls,p:x.p});n++});
+ rejSv([]);SUP.drop=0;qsv(q);SUP.flush();return n};
+function diagData(){const per={};Object.keys(S.done||{}).forEach(k=>{const m=/^ls:(\d+):(\d+)$/.exec(k);if(m)per["HSK/YCT cấp "+m[1]]=(per["HSK/YCT cấp "+m[1]]||0)+1});
+ const rj=rejLd(),why={};rj.forEach(x=>{const e=x.e||"?";(why[e]=why[e]||{n:0,ls:new Set(),lv:new Set()}).n++;why[e].ls.add(x.ls);why[e].lv.add(x.lv)});
+ const sy=SUP.sync||{};return{ver:PL_VER,name:SUP.prof&&SUP.prof.display_name,login:!!SUP.ses,approved:!!(SUP.prof&&SUP.prof.approved),teacher:!!(SUP.prof&&SUP.prof.is_teacher),
+  queue:qld().length,rejected:rj.length,why:Object.keys(why).map(e=>({err:e,n:why[e].n,lv:[...why[e].lv].join(","),ls:[...why[e].ls].sort((a,b)=>a-b).join(",")})),
+  sync:sy.ok?"ok":(sy.err||"chưa chạy"),xp:S.xp,lessonsLocal:per,doneKeys:Object.keys(S.done||{}).filter(k=>/^(q|m|d|t|dl):/.test(k)).length}}
+function diagHtml(){const d=diagData();return`<details class="cd" id="dgx"><summary class="hz">Chẩn đoán đồng bộ</summary><div class="dgx"><p>Đăng nhập: <b>${d.login?"có":"<span class='bad'>không</span>"}</b> · Đã duyệt: <b>${d.approved||d.teacher?"có":"<span class='bad'>chưa</span>"}</b> · Phiên bản web: <b>${d.ver}</b></p>
+<p>Kết quả đang chờ gửi: <b>${d.queue}</b> · Bị máy chủ từ chối: <b class="${d.rejected?"bad":""}">${d.rejected}</b> · Tự động lưu: <b>${escx(d.sync)}</b></p>
+${d.why.map(w=>`<p class="bad">Lỗi "${escx(w.err)}" ×${w.n} (cấp ${w.lv}, bài ${w.ls})</p>`).join("")}
+<p>Trên máy này: ${Object.keys(d.lessonsLocal).map(k=>`${k}: ${d.lessonsLocal[k]} bài`).join(" · ")||"chưa có bài hoàn thành"}</p>
+<div class="rw"><button class="pri" onclick="dgxResend()">Gửi lại toàn bộ kết quả</button><button class="sw" onclick="dgxCopy()">Sao chép báo cáo</button></div></div></details>`}
+function dgxResend(){if(!SUP.ses){toast("Hãy đăng nhập tài khoản lớp trước.",1);return}const n=SUP.backfill();toast(n?"Đang gửi lại "+n+" kết quả…":"Không có kết quả nào cần gửi lại.");setTimeout(()=>{const e=$("#dgx");if(e)e.outerHTML=diagHtml()},4000)}
+function dgxCopy(){const t=JSON.stringify(diagData(),null,1);try{navigator.clipboard.writeText(t).then(()=>toast("Đã sao chép báo cáo, hãy gửi cho giáo viên."),()=>prompt("Sao chép báo cáo:",t))}catch(e){prompt("Sao chép báo cáo:",t)}}
+const _ah19=acctHTML;acctHTML=function(){let h=_ah19();if(SUP.ses&&SUP.prof)h=h.replace(/<\/div>$/,diagHtml()+"</div>");return h};
+const _sp19=SUP.setP;SUP.setP=function(){const r=_sp19.apply(this,arguments);setTimeout(()=>{try{if(SUP.ok()){const k="pl_bf19_"+SUP.prof.display_name;if(!localStorage.getItem(k)){localStorage.setItem(k,"1");SUP.backfill()}}}catch(e){}},1500);return r};
+const _tk19=SUP.token;SUP.token=async function(){try{return await _tk19.apply(this,arguments)}catch(e){if(e.message!="net"&&!SUP.ses&&!SUP.lost){SUP.lost=1;try{toast("Phiên đăng nhập đã hết, hãy đăng nhập lại để kết quả được lưu lên bảng xếp hạng.",1)}catch(x){}}throw e}};
+const _hm19=home;home=function(){_hm19();try{const a=document.querySelector("#app");if(!a||a.querySelector(".sbw19"))return;
+ if(!SUP.ses&&(S.xp>0||Object.keys(S.done||{}).length>5)&&localStorage.getItem("pl_sbp"))a.insertAdjacentHTML("afterbegin",`<div class="sbw sbw19">Bạn đang học khi <b>chưa đăng nhập</b> tài khoản lớp nên kết quả chưa lên bảng xếp hạng. <a href="#comm">Đăng nhập ngay</a>: web sẽ tự gửi lại toàn bộ bài đã học.</div>`)}catch(e){}};
+/* báo khi đang dùng bản web cũ (bộ nhớ đệm của trình duyệt trong Messenger/Zalo) */
+(function(){if(!/^https?:/.test(location.protocol))return;
+ fetch(location.pathname+"?_="+Date.now(),{cache:"no-store"}).then(r=>r.text()).then(t=>{const m=/const PL_VER="([^"]+)"/.exec(t);if(m&&m[1]!=PL_VER&&!document.querySelector(".upd")){const d=document.createElement("div");d.className="upd";d.innerHTML='<span>Có bản web mới. Cập nhật để kết quả học được lưu đầy đủ.</span><button onclick="location.href=location.pathname+\'?v=\'+Date.now()+location.hash">Cập nhật</button>';document.body.appendChild(d)}}).catch(()=>{})})();
+</script>
+
 </body>
 </html>
