@@ -2,6 +2,8 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PingLaoshi – Ôn tập HSK</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2174,8 +2176,13 @@ if(typeof render=="function")render();
 const _cb17=cmBoard;
 cmBoard=function(){let h=_cb17();
  try{if(!(SUP.prof&&SUP.prof.is_teacher))return h;
-  const bad=(CMX.lb||[]).filter(r=>!r.is_me&&r._rl>1&&!(r.xp>0||r.lessons>0));if(!bad.length)return h;
-  const box=`<details class="cd" open><summary class="hz">Cần kiểm tra đồng bộ (${bad.length})</summary><p class="qh">Các bạn này có cấp gấu trúc từ 2 trở lên nhưng máy chủ chưa ghi nhận XP hay bài học nào, nên bảng xếp hạng đang hiện 0. Nguyên nhân thường gặp: máy chủ chưa nhận khóa học (ví dụ YCT 1), bạn học khi chưa đăng nhập, hoặc đang dùng bản web cũ.</p><ul>${bad.map(r=>`<li><b>${escx(r.display_name)}</b> <small>(thiết bị báo cấp ${r._rl})</small></li>`).join("")}</ul></details>`;
+  const ready=SUP.sync&&SUP.sync.ready;if(!ready)return h;
+  const agoV=iso=>{const m=Math.max(0,Math.round((Date.now()-new Date(iso).getTime())/6e4));return m<60?m+" phút trước":m<1440?Math.round(m/60)+" giờ trước":Math.round(m/1440)+" ngày trước"};
+  const DAY=864e5,now=Date.now(),lb=CMX.lb||[],
+   miss=lb.filter(r=>!r.is_me&&!r._p),stale=lb.filter(r=>!r.is_me&&r._p&&r._t&&now-new Date(r._t).getTime()>3*DAY);
+  if(!miss.length&&!stale.length)return h;
+  const li=(r,t)=>`<li><b>${escx(r.display_name)}</b> <small>${t}</small></li>`;
+  const box=`<details class="cd" open><summary class="hz">Cần kiểm tra đồng bộ (${miss.length+stale.length})</summary><p class="qh">Máy chủ chưa nhận được dữ liệu học của các bạn dưới đây (hoặc đã lâu không cập nhật), nên bảng xếp hạng hiện 0 hoặc số cũ. Thường do bạn ấy chưa mở bản web mới, đăng nhập ở trình duyệt khác (Safari, Messenger và Zalo lưu dữ liệu riêng), hoặc phiên đăng nhập đã hết. Hãy nhắn bạn mở lại web bằng link mới, đăng nhập, rồi vào Cài đặt → Chẩn đoán đồng bộ → Gửi lại toàn bộ kết quả.</p><ul>${miss.map(r=>li(r,"chưa có dữ liệu")).join("")}${stale.map(r=>li(r,"cập nhật lần cuối "+agoV(r._t))).join("")}</ul></details>`;
   return h.replace('<p class="qh cen">Tự làm mới',box+'<p class="qh cen">Tự làm mới')}catch(e){return h}};
 const _cv17=cmVisit;
 cmVisit=function(i){_cv17(i);try{const r=CMX.lb&&CMX.lb[i],o=document.querySelector("#vis");if(!o||!r||r.is_me)return;
@@ -2205,13 +2212,15 @@ function learn(){
  const y=today(new Date(Date.now()-864e5)),run=(S.st.last==today()||S.st.last==y)?(S.st.run||0):0;
  return{xp:S.xp||0,lessons,per,test:Math.round(test),run,best:S.st.best||0,ex:S.st.cnt||0,rev:S.st.rev||0}}
 function build(){
- const c=PCOL(),L=learn();
- const pub=Object.assign({v:1,lvl:S.lvl,stars:S.stars||0,eq:S.eq||{},col:{dk:c.dk,lt:c.lt,bl:c.bl},pet:okPet(S.pet),room:roomIds18(),garden:gardenSnap18(),ach:Object.keys(S.ach||{}).length},L);
+ const sf=(f,d)=>{try{return f()}catch(e){SY.warn=String(e&&e.message||e);return d}};
+ const c=sf(PCOL,{}),L=sf(learn,{xp:S.xp||0,lessons:0,per:{},test:0,run:0});
+ const pub=Object.assign({v:1,lvl:S.lvl,stars:S.stars||0,eq:S.eq||{},col:{dk:c.dk,lt:c.lt,bl:c.bl},pet:sf(()=>okPet(S.pet),""),room:sf(roomIds18,[]),garden:sf(gardenSnap18,{g:[]}),ach:sf(()=>Object.keys(S.ach||{}).length,0)},L);
  const prog={best:S.best||{},done:S.done||{},st:S.st||{},xp:S.xp||0,lvl:S.lvl||1,levels:S.levels||[1],leaf:S.leaf||0,inv:S.inv||{},place:S.place||{}};
  return{p_name:SUP.prof.display_name,p_pub:pub,p_progress:prog}}
 async function send(force){
  if(!SUP.ok()||!SUP.ses||SY.busy)return;
- const b=build(),sig=JSON.stringify([b.p_pub,b.p_progress]);
+ let b;try{b=build()}catch(e){SY.ok=0;SY.err="build: "+(e&&e.message||e);stNote();return}
+ const sig=JSON.stringify([b.p_pub,b.p_progress]);
  if(!force&&sig===SY.sig)return;
  SY.busy=1;
  try{await SUP.rpc("sync_me",b);SY.sig=sig;SY.ok=1;SY.ready=1;SY.t=Date.now();SY.err="";SY.last=Date.now()}
@@ -2287,7 +2296,7 @@ cmVisit=function(i){_cv(i);
 </style>
 <script>
 /*PATCH-V19: gửi lại toàn bộ kết quả, chẩn đoán đồng bộ, báo bản web cũ, cảnh báo mất đăng nhập*/
-const PL_VER="2026-11-03.19";
+const PL_VER="2026-11-03.20";
 SUP.backfill=function(){if(!SUP.ses)return 0;const q=qld(),have=new Set(q.map(x=>x.k+":"+x.lv+":"+x.ls));let n=0;
  Object.keys(S.done||{}).forEach(k=>{const m=/^(q|m|d|t|dl):(\d+):(\d+)$/.exec(k);if(!m||have.has(k))return;have.add(k);q.push({k:m[1],lv:+m[2],ls:+m[3],p:Math.round((+S.best[k]||100)*100)/100});n++});
  rejLd().forEach(x=>{const k=x.k+":"+x.lv+":"+x.ls;if(have.has(k))return;have.add(k);q.push({k:x.k,lv:x.lv,ls:x.ls,p:x.p});n++});
@@ -2314,5 +2323,15 @@ const _hm19=home;home=function(){_hm19();try{const a=document.querySelector("#ap
  fetch(location.pathname+"?_="+Date.now(),{cache:"no-store"}).then(r=>r.text()).then(t=>{const m=/const PL_VER="([^"]+)"/.exec(t);if(m&&m[1]!=PL_VER&&!document.querySelector(".upd")){const d=document.createElement("div");d.className="upd";d.innerHTML='<span>Có bản web mới. Cập nhật để kết quả học được lưu đầy đủ.</span><button onclick="location.href=location.pathname+\'?v=\'+Date.now()+location.hash">Cập nhật</button>';document.body.appendChild(d)}}).catch(()=>{})})();
 </script>
 
+<script>
+/*PATCH-V20: cảnh báo lỗi tự động lưu ngay trên trang chủ*/
+(function(){
+const why=e=>({not_approved:"tài khoản chưa được giáo viên duyệt",too_big:"dữ liệu quá lớn",bad_data:"dữ liệu không hợp lệ",not_logged_in:"chưa đăng nhập",auth:"phiên đăng nhập đã hết"}[e]||e);
+const _h=home;
+home=function(){_h();try{const a=document.querySelector("#app"),y=SUP.sync;
+ if(!a||a.querySelector(".sbw20")||!SUP.ses||!SUP.prof||!y||!y.err||y.err=="missing"||y.err=="net")return;
+ a.insertAdjacentHTML("afterbegin",`<div class="sbw sbw20">Chưa lưu được dữ liệu học lên máy chủ (<b>${escx(why(y.err))}</b>). Vào <b>Cài đặt → Chẩn đoán đồng bộ</b> để gửi lại; web cũng tự thử lại sau ít phút.</div>`)}catch(e){}};
+})();
+</script>
 </body>
 </html>
