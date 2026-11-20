@@ -2217,19 +2217,46 @@ function build(){
  const pub=Object.assign({v:1,lvl:S.lvl,stars:S.stars||0,eq:S.eq||{},col:{dk:c.dk,lt:c.lt,bl:c.bl},pet:sf(()=>okPet(S.pet),""),room:sf(roomIds18,[]),garden:sf(gardenSnap18,{g:[]}),ach:sf(()=>Object.keys(S.ach||{}).length,0)},L);
  const prog={best:S.best||{},done:S.done||{},st:S.st||{},xp:S.xp||0,lvl:S.lvl||1,levels:S.levels||[1],leaf:S.leaf||0,inv:S.inv||{},place:S.place||{}};
  return{p_name:SUP.prof.display_name,p_pub:pub,p_progress:prog}}
+/* khôi phục tiến độ đã lưu trên tài khoản (máy mới, trình duyệt mới, xóa dữ liệu) trước khi gửi bản của máy này */
+function mergeRemote(d){
+ const pr=d&&d.progress;if(!pr||typeof pr!=="object")return;
+ const fresh=!Object.keys(S.done||{}).length&&!(S.xp>0);let ch=0;
+ S.done=S.done||{};S.best=S.best||{};S.levels=S.levels||[1];
+ const dn=pr.done&&typeof pr.done==="object"?pr.done:{},bs=pr.best&&typeof pr.best==="object"?pr.best:{};
+ for(const k in dn)if(!S.done[k]){S.done[k]=dn[k];ch++}
+ for(const k in bs){const v=+bs[k];if(isFinite(v)&&(S.best[k]==null||v>S.best[k])){S.best[k]=v;ch++}}
+ if((+pr.xp||0)>(S.xp||0)){S.xp=+pr.xp;ch++}
+ if((+pr.lvl||0)>(S.lvl||1)){S.lvl=Math.min(5,Math.max(1,Math.round(+pr.lvl)));ch++}
+ if(Array.isArray(pr.levels))pr.levels.forEach(l=>{if(Number.isInteger(l)&&D[l]&&!S.levels.includes(l)){S.levels.push(l);ch++}});
+ if(pr.st&&typeof pr.st==="object"&&(+pr.st.best||0)>(S.st.best||0)){S.st.best=+pr.st.best;ch++}
+ if(fresh){
+  if((+pr.leaf||0)>(S.leaf||0))S.leaf=+pr.leaf;
+  ["inv","place"].forEach(k=>{if(pr[k]&&typeof pr[k]==="object")S[k]=Object.assign({},pr[k],S[k]||{})});
+  const pu=d.pub&&typeof d.pub==="object"?d.pub:{};
+  if(pu.eq&&typeof pu.eq==="object")S.eq=Object.assign({},pu.eq,S.eq||{});
+  if(pu.pet&&!S.pet)S.pet=pu.pet;ch++}
+ if(ch){save();try{toast("Đã khôi phục tiến độ từ tài khoản của bạn")}catch(e){}try{render()}catch(e){}}}
+async function restore(){
+ if(SY.restored)return true;
+ try{const d=await SUP.rpc("get_my_data");SY.v2=true;SY.restored=1;if(d)mergeRemote(d);return true}
+ catch(e){if(missing(e.message)){SY.restored=1;return true}
+  SY.err=e.message=="net"?"net":(e.message||"err");return false}}
 async function send(force){
  if(!SUP.ok()||!SUP.ses||SY.busy)return;
+ if(!SY.restored){SY.busy=1;let ok=false;try{ok=await restore()}catch(e){}SY.busy=0;if(!ok){stNote();return}}
  let b;try{b=build()}catch(e){SY.ok=0;SY.err="build: "+(e&&e.message||e);stNote();return}
  const sig=JSON.stringify([b.p_pub,b.p_progress]);
  if(!force&&sig===SY.sig)return;
+ const psig=JSON.stringify(b.p_progress),slim=!force&&SY.v2&&psig===SY.psig&&Date.now()-(SY.pt||0)<6e5;
  SY.busy=1;
- try{await SUP.rpc("sync_me",b);SY.sig=sig;SY.ok=1;SY.ready=1;SY.t=Date.now();SY.err="";SY.last=Date.now()}
+ try{await SUP.rpc("sync_me",slim?Object.assign({},b,{p_progress:null}):b);SY.sig=sig;if(!slim){SY.psig=psig;SY.pt=Date.now()}SY.ok=1;SY.ready=1;SY.t=Date.now();SY.err="";SY.last=Date.now()}
  catch(e){SY.ok=0;SY.err=missing(e.message)?"missing":(e.message||"err");if(e.message=="net"||e.message=="auth")SY.err=e.message}
  SY.busy=0;stNote()}
+SY.force=()=>send(1);
 let tm=0;
-function sched(ms){clearTimeout(tm);const wait=Math.max(ms||1500,4000-(Date.now()-SY.last));tm=setTimeout(()=>{send(0)},Math.max(0,wait))}
+function sched(ms){clearTimeout(tm);const wait=Math.max(ms||1500,10000-(Date.now()-SY.last));tm=setTimeout(()=>{send(0)},Math.max(0,wait))}
 const _save=save;save=function(){const r=_save.apply(this,arguments);try{if(SUP.ses&&SUP.prof)sched(1500)}catch(e){}return r};
-function ka(){try{if(!SUP.ok()||!SUP.ses)return;const body=JSON.stringify(build());if(body.length>60000)return;
+function ka(){try{if(!SUP.ok()||!SUP.ses||!SY.restored)return;const body=JSON.stringify(build());if(body.length>60000)return;
  fetch(SBU+"/rest/v1/rpc/sync_me",{method:"POST",keepalive:true,headers:{apikey:SBK,"Content-Type":"application/json",Authorization:"Bearer "+SUP.ses.at},body})}catch(e){}}
 document.addEventListener("visibilitychange",()=>{if(document.hidden)ka();else sched(500)});
 addEventListener("pagehide",ka);
@@ -2249,20 +2276,38 @@ const _cvw=commView;commView=function(){_cvw();stNote()};
 /* ---- đọc dữ liệu của mọi người chơi và gộp vào bảng xếp hạng ---- */
 const rk=(arr,v,f)=>{[...arr].sort((a,b)=>(+b[v]||0)-(+a[v]||0)||(a[f]||1e9)-(b[f]||1e9)||String(a.display_name).localeCompare(String(b.display_name))).forEach((r,i)=>{r[f]=i+1})};
 const _rpc=SUP.rpc;
+const num=v=>{v=+v;return isFinite(v)?v:0};
+function norm(x){x.display_name=x.display_name==null?"?":String(x.display_name);["xp","lessons","medals","cur_streak","test_score"].forEach(k=>{x[k]=num(x[k])});let e=x.panda_eq;if(typeof e==="string"){try{e=JSON.parse(e)}catch(_){e=null}}x.panda_eq=(e&&typeof e==="object"&&!Array.isArray(e))?e:{};return x}
+const PM={},PT={t:null,full:0},nk=s=>String(s).trim().toLowerCase();
+async function players(){
+ const delta=SY.v2!==false&&!!PT.t&&Date.now()-PT.full<6e5;
+ let ps;
+ try{ps=await _rpc.call(SUP,"get_players",SY.v2===false?undefined:{p_since:delta?new Date(new Date(PT.t).getTime()-5000).toISOString():null});if(SY.v2!==false)SY.v2=true}
+ catch(e){if(SY.v2!==false&&/p_since|Could not find the function|schema cache|PGRST202/i.test(String(e.message))){SY.v2=false;ps=await _rpc.call(SUP,"get_players")}else throw e}
+ if(!delta||SY.v2===false){Object.keys(PM).forEach(k=>{delete PM[k]});PT.full=Date.now()}
+ (ps||[]).forEach(p=>{if(!p||p.name==null)return;PM[nk(p.name)]=p;if(p.t&&(!PT.t||new Date(p.t)>new Date(PT.t)))PT.t=p.t});
+ SY.ready=1;return PM}
+function fromPlayer(p){const pu=p.pub||{};return{display_name:String(p.name),is_me:!!(SUP.prof&&nk(SUP.prof.display_name)===nk(p.name)),xp:num(pu.xp),lessons:num(pu.lessons),medals:0,panda_lvl:1,panda_eq:{},cur_streak:num(pu.run),test_score:num(pu.test),r_xp:0,r_lessons:0,r_streak:0,r_test:0,r_medals:1}}
 SUP.rpc=async function(n,a){
  if(n==="get_home"&&SY.ready)return{state:null};
- const r=await _rpc.call(SUP,n,a);
- if(n==="get_leaderboard"&&Array.isArray(r)){
-  try{const ps=await _rpc.call(SUP,"get_players");SY.ready=1;
-   const by={};(ps||[]).forEach(p=>{by[String(p.name).toLowerCase()]=p});
-   r.forEach(x=>{const p=by[String(x.display_name).toLowerCase()],pu=p&&p.pub;if(!pu)return;
-    x._p=pu;x._t=p.t;
-    x.xp=Math.max(+x.xp||0,+pu.xp||0);x.lessons=Math.max(+x.lessons||0,+pu.lessons||0);
-    x.cur_streak=Math.max(+x.cur_streak||0,+pu.run||0);x.test_score=Math.max(+x.test_score||0,+pu.test||0);
-    x.panda_eq=Object.assign({},x.panda_eq||{},pu.eq||{},{col:pu.col,pet:pu.pet,room:pu.room,lvl:pu.lvl});
-    x._rl=pu.lvl;x.panda_lvl=x.is_me?S.lvl:Math.max(1,Math.min(5,+pu.lvl||1))});
-   rk(r,"xp","r_xp");rk(r,"lessons","r_lessons");rk(r,"cur_streak","r_streak");rk(r,"test_score","r_test")}
-  catch(e){if(missing(e.message))SY.ready=0}}
+ if(n!=="get_leaderboard")return _rpc.call(SUP,n,a);
+ let r,fb=0,err=null;
+ try{r=await _rpc.call(SUP,n,a)}
+ catch(e){err=e;try{await players()}catch(_){throw e}
+  if(!Object.keys(PM).length)throw e;
+  r=Object.keys(PM).map(k=>fromPlayer(PM[k]));fb=1}
+ SY.fb=fb;SY.fbErr=fb?String(err&&err.message||""):"";
+ if(!Array.isArray(r))return r;
+ r.forEach(x=>{try{norm(x)}catch(_){}});
+ try{if(!fb)await players();SY.pErr="";
+  r.forEach(x=>{try{const p=PM[nk(x.display_name)],pu=p&&p.pub;if(!pu||typeof pu!=="object")return;
+   x._p=pu;x._t=p.t;
+   x.xp=Math.max(x.xp,num(pu.xp));x.lessons=Math.max(x.lessons,num(pu.lessons));
+   x.cur_streak=Math.max(x.cur_streak,num(pu.run));x.test_score=Math.max(x.test_score,num(pu.test));
+   x.panda_eq=Object.assign({},x.panda_eq,pu.eq&&typeof pu.eq==="object"?pu.eq:{},{col:pu.col,pet:pu.pet,room:pu.room,lvl:pu.lvl});
+   x._rl=pu.lvl;x.panda_lvl=x.is_me?S.lvl:Math.max(1,Math.min(5,Math.round(num(pu.lvl))||1))}catch(_){}});
+  rk(r,"xp","r_xp");rk(r,"lessons","r_lessons");rk(r,"cur_streak","r_streak");rk(r,"test_score","r_test")}
+ catch(e){SY.pErr=String(e&&e.message||e);if(missing(e.message))SY.ready=0}
  return r};
 /* ---- khi ghé thăm: phòng, vườn và thời điểm cập nhật ---- */
 const ago=iso=>{const m=Math.max(0,Math.round((Date.now()-new Date(iso).getTime())/6e4));return m<1?"vừa xong":m<60?m+" phút trước":m<1440?Math.round(m/60)+" giờ trước":Math.round(m/1440)+" ngày trước"};
@@ -2296,7 +2341,7 @@ cmVisit=function(i){_cv(i);
 </style>
 <script>
 /*PATCH-V19: gửi lại toàn bộ kết quả, chẩn đoán đồng bộ, báo bản web cũ, cảnh báo mất đăng nhập*/
-const PL_VER="2026-11-03.20";
+const PL_VER="2026-11-03.21";
 SUP.backfill=function(){if(!SUP.ses)return 0;const q=qld(),have=new Set(q.map(x=>x.k+":"+x.lv+":"+x.ls));let n=0;
  Object.keys(S.done||{}).forEach(k=>{const m=/^(q|m|d|t|dl):(\d+):(\d+)$/.exec(k);if(!m||have.has(k))return;have.add(k);q.push({k:m[1],lv:+m[2],ls:+m[3],p:Math.round((+S.best[k]||100)*100)/100});n++});
  rejLd().forEach(x=>{const k=x.k+":"+x.lv+":"+x.ls;if(have.has(k))return;have.add(k);q.push({k:x.k,lv:x.lv,ls:x.ls,p:x.p});n++});
@@ -2311,7 +2356,7 @@ function diagHtml(){const d=diagData();return`<details class="cd" id="dgx"><summ
 ${d.why.map(w=>`<p class="bad">Lỗi "${escx(w.err)}" ×${w.n} (cấp ${w.lv}, bài ${w.ls})</p>`).join("")}
 <p>Trên máy này: ${Object.keys(d.lessonsLocal).map(k=>`${k}: ${d.lessonsLocal[k]} bài`).join(" · ")||"chưa có bài hoàn thành"}</p>
 <div class="rw"><button class="pri" onclick="dgxResend()">Gửi lại toàn bộ kết quả</button><button class="sw" onclick="dgxCopy()">Sao chép báo cáo</button></div></div></details>`}
-function dgxResend(){if(!SUP.ses){toast("Hãy đăng nhập tài khoản lớp trước.",1);return}const n=SUP.backfill();toast(n?"Đang gửi lại "+n+" kết quả…":"Không có kết quả nào cần gửi lại.");setTimeout(()=>{const e=$("#dgx");if(e)e.outerHTML=diagHtml()},4000)}
+function dgxResend(){if(!SUP.ses){toast("Hãy đăng nhập tài khoản lớp trước.",1);return}const n=SUP.backfill();try{SUP.sync.force()}catch(e){}toast(n?"Đang gửi lại "+n+" kết quả…":"Không có kết quả nào cần gửi lại.");setTimeout(()=>{const e=$("#dgx");if(e)e.outerHTML=diagHtml()},4000)}
 function dgxCopy(){const t=JSON.stringify(diagData(),null,1);try{navigator.clipboard.writeText(t).then(()=>toast("Đã sao chép báo cáo, hãy gửi cho giáo viên."),()=>prompt("Sao chép báo cáo:",t))}catch(e){prompt("Sao chép báo cáo:",t)}}
 const _ah19=acctHTML;acctHTML=function(){let h=_ah19();if(SUP.ses&&SUP.prof)h=h.replace(/<\/div>$/,diagHtml()+"</div>");return h};
 const _sp19=SUP.setP;SUP.setP=function(){const r=_sp19.apply(this,arguments);setTimeout(()=>{try{if(SUP.ok()){const k="pl_bf19_"+SUP.prof.display_name;if(!localStorage.getItem(k)){localStorage.setItem(k,"1");SUP.backfill()}}}catch(e){}},1500);return r};
@@ -2332,6 +2377,15 @@ home=function(){_h();try{const a=document.querySelector("#app"),y=SUP.sync;
  if(!a||a.querySelector(".sbw20")||!SUP.ses||!SUP.prof||!y||!y.err||y.err=="missing"||y.err=="net")return;
  a.insertAdjacentHTML("afterbegin",`<div class="sbw sbw20">Chưa lưu được dữ liệu học lên máy chủ (<b>${escx(why(y.err))}</b>). Vào <b>Cài đặt → Chẩn đoán đồng bộ</b> để gửi lại; web cũng tự thử lại sau ít phút.</div>`)}catch(e){}};
 })();
+</script>
+<script>
+/*PATCH-V21: ghi chú khi bảng gốc lỗi / không đọc được dữ liệu tự động lưu (giáo viên)*/
+(function(){const _c=commView;
+commView=function(){_c();try{const y=SUP.sync;if(!y||!SUP.prof||!SUP.prof.is_teacher)return;const m=document.querySelector("#app .cmme");if(!m||document.querySelector("#fbn"))return;
+ let h="";
+ if(y.fb)h=`<p id="fbn" class="qh err" style="color:#b3261e">Bảng xếp hạng gốc trên máy chủ đang lỗi${y.fbErr?` (${escx(y.fbErr)})`:""}; đang hiển thị từ dữ liệu tự động lưu (chưa có huy chương).</p>`;
+ else if(y.pErr&&!/net|auth/.test(y.pErr))h=`<p id="fbn" class="qh err" style="color:#b3261e">Không đọc được dữ liệu tự động lưu của học viên (${escx(y.pErr)}), nên bảng có thể chưa mới nhất.</p>`;
+ if(h)m.insertAdjacentHTML("afterend",h)}catch(e){}}})();
 </script>
 </body>
 </html>
